@@ -6,10 +6,11 @@ using UnityEngine;
 
 public class LevelSelectController : MonoBehaviour
 {
+    [Header("Levels")]
     [SerializeField] List<SelectableLevels> levelsList;
     [SerializeField] List<GameObject> levelObjects;
 
-    public int levelSelectCount;
+    int levelSelectCount;
 
     // Start is called before the first frame update
     void Awake()
@@ -30,12 +31,6 @@ public class LevelSelectController : MonoBehaviour
         {
             item.transform.position = new Vector3(-1000, -1000, -1000);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void PressNext()

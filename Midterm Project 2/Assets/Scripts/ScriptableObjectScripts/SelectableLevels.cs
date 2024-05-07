@@ -8,5 +8,4 @@ public class SelectableLevels : ScriptableObject
 {
     public GameObject levelModel;
     public string levelName;
-
 }
