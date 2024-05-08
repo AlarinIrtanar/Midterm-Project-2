@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamage
 {
 
 
@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int jumpSpeed;
     [SerializeField] int maxJumps;
     [SerializeField] int gravity;
+    [SerializeField] int Hp;
 
     [Header("-----Shooting-----")]
     [SerializeField] int shootDamage;
@@ -67,6 +68,21 @@ public class PlayerController : MonoBehaviour
         controller.Move(playerVel * Time.deltaTime);
     }
 
+    public void takeDamage(int amount)
+    {
+        Hp -= amount;
+
+        if(Hp < 0)
+        {
+            die();
+        }
+
+    }
+
+    public void die()
+    {
+        Destroy(gameObject);
+    }
 
     IEnumerator shoot()
     {

@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Target : MonoBehaviour , IDamage
+public class Target : MonoBehaviour, IDamage
 {
 
-    public int Health = 5;
+    [SerializeField] int Health = 5;
 
-    bool isDestroyed = false;
+  
     
 
     public void takeDamage(int damage)
@@ -23,8 +23,6 @@ public class Target : MonoBehaviour , IDamage
 
    public void DestroyTarget()
    {
-      
-        isDestroyed = true;
         Destroy(gameObject);
    }
 
