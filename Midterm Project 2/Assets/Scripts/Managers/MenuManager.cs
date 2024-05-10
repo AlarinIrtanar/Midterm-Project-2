@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,7 +9,7 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     [Header("----- Components -----")]
-    public MenuManager instance;
+    public static MenuManager instance;
     //[SerializeField] Player player;
 
     [Header("----- Menus -----")]
@@ -75,4 +77,18 @@ public class MenuManager : MonoBehaviour
         Cursor.visible = true;
         isPaused = !isPaused;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
