@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour, IDamage
         controller.Move(playerVel * Time.deltaTime);
     }
 
-    public void takeDamage(int amount)
+    public void TakeDamage(int amount)
     {
         Hp -= amount;
 
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
             if (hit.transform != transform && dmg != null)
             {
-               dmg.takeDamage(shootDamage);
+               dmg.TakeDamage(shootDamage);
             }
         }
         

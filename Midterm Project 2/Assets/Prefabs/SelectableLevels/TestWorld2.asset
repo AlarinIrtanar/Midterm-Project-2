@@ -7,10 +7,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28a5bd75c9e74ab46a4e7281b7fa5f8a, type: 3}
-  m_Name: TestLevel1
+  m_Name: TestWorld2
   m_EditorClassIdentifier: 
-  levelModel: {fileID: 8420708056970740051, guid: f8bbbc294596ee140b63a607fce1032d, type: 3}
-  levelName: TestLevel1
+  levelImagePrefab: {fileID: 1249369623761289563, guid: 00536049e3f8cba48b2b1f7d77eae6cc, type: 3}
+  levelName:
+  - First Level
+  - Second Level
+  - Third Level
+  spacing: 1.75

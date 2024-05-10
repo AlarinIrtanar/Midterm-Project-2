@@ -7,7 +7,7 @@ public class Target : MonoBehaviour, IDamage
 
     [SerializeField] int Health = 5;
 
-    public void takeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         Health -= damage;   
         if(Health <= 0)

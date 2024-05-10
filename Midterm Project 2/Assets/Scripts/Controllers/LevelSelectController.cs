@@ -3,64 +3,81 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelSelectController : MonoBehaviour
 {
     [Header("Levels")]
-    [SerializeField] List<SelectableLevels> levelsList;
-    [SerializeField] List<GameObject> levelObjects;
+    [SerializeField] List<SelectableWorlds> worldsList;
 
-    int levelSelectCount;
+    int worldSelectCount;
+    SelectableWorlds currentWorld;
+    List<SelectableWorlds> newWorldsList;
 
     // Start is called before the first frame update
     void Awake()
     {
-        foreach (var level in levelsList)
+        newWorldsList = new List<SelectableWorlds>();
+        for (int i = 0; i < worldsList.Count; ++i)
         {
-            levelObjects.Add(Instantiate(level.levelModel, new Vector3(-1000,-1000,-1000), new Quaternion(5,5,0,30)));
+            currentWorld = Instantiate(worldsList[i], this.transform);
+            newWorldsList.Add(currentWorld);
+            //Debug.Log("Disabling New World " + (i + 1).ToString());
+            newWorldsList[i].SetEnabled(false);
+            //Debug.Log("New World " + (i + 1).ToString() + " Disabled");
         }
     }
 
     private void OnEnable()
     {
-        levelObjects[levelSelectCount].transform.position = new Vector3(0, 0, 0);
+        //Debug.Log("Enabling World 1");
+        newWorldsList[worldSelectCount].SetEnabled(true);
+        //Debug.Log("World 1 Enabled");
     }
     public void OnDisable()
     {
-        foreach (var item in levelObjects)
+        for (int i = 0; i < worldsList.Count; ++i)
         {
-            item.transform.position = new Vector3(-1000, -1000, -1000);
+            //Debug.Log("Disabling World " + (i + 1).ToString());
+            newWorldsList[i].SetEnabled(false);
+            //Debug.Log("World " + i.ToString() + " Disabled");
         }
     }
-
+    public void PressMainMenu()
+    {
+        for (int i = 0; i < worldsList.Count; ++i)
+        {
+            newWorldsList[i].SaveLevelUnlocks();
+        }
+    }
     public void PressNext()
     {
-        if(levelSelectCount < levelsList.Count - 1)
+        if(worldSelectCount < worldsList.Count - 1)
         {
-            levelObjects[levelSelectCount].transform.position = new Vector3(-1000, -1000, -1000);
-            levelSelectCount++;
-            levelObjects[levelSelectCount].transform.position = new Vector3(0, 0, 0);
+            newWorldsList[worldSelectCount].SetEnabled(false);
+            worldSelectCount++;
+            newWorldsList[worldSelectCount].SetEnabled(true);
         }
         else
         {
-            levelObjects[levelSelectCount].transform.position = new Vector3(-1000, -1000, -1000);
-            levelSelectCount = 0;
-            levelObjects[levelSelectCount].transform.position = new Vector3(0, 0, 0);
+            newWorldsList[worldSelectCount].SetEnabled(false);
+            worldSelectCount = 0;
+            newWorldsList[worldSelectCount].SetEnabled(true);
         }
     }
     public void PressPrev()
     {
-        if (levelSelectCount > 0)
+        if (worldSelectCount > 0)
         {
-            levelObjects[levelSelectCount].transform.position = new Vector3(-1000, -1000, -1000);
-            levelSelectCount--;
-            levelObjects[levelSelectCount].transform.position = new Vector3(0, 0, 0);
+            newWorldsList[worldSelectCount].SetEnabled(false);
+            worldSelectCount--;
+            newWorldsList[worldSelectCount].SetEnabled(true);
         }
         else
         {
-            levelObjects[levelSelectCount].transform.position = new Vector3(-1000, -1000, -1000);
-            levelSelectCount = levelsList.Count - 1;
-            levelObjects[levelSelectCount].transform.position = new Vector3(0, 0, 0);
+            newWorldsList[worldSelectCount].SetEnabled(false);
+            worldSelectCount = worldsList.Count - 1;
+            newWorldsList[worldSelectCount].SetEnabled(true);
         }
     }
 }

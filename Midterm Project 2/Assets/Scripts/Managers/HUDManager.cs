@@ -5,7 +5,7 @@ using UnityEngine;
 public class HUDManager : MonoBehaviour
 {
     [Header("----- Components -----")]
-    public HUDManager instance;
+    public static HUDManager instance;
 
     // Start is called before the first frame update
     void Awake()
