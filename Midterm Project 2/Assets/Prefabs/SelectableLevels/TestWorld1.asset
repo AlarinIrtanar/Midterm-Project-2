@@ -7,10 +7,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28a5bd75c9e74ab46a4e7281b7fa5f8a, type: 3}
-  m_Name: TestLevel2
+  m_Name: TestWorld1
   m_EditorClassIdentifier: 
-  levelModel: {fileID: 1508861468606783125, guid: 09c9d15027dae12408172ad9eff76d42, type: 3}
-  levelName: TestLevel2
+  levelImagePrefab: {fileID: 1249369623761289563, guid: 00536049e3f8cba48b2b1f7d77eae6cc, type: 3}
+  levelName:
+  - Level 1 - The OG
+  - Level 2 - Electric Boogaloo
+  - Level 3 - The Trio
+  - Level 4 - The Quad
+  - Level 5 - 5 Star Pizza
+  spacing: 2
