@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,9 +20,20 @@ public class GameManager : MonoBehaviour
         playerScript = player.GetComponent<PlayerController>();
 
     }
+    public void YouWin()
+    {
+        Debug.Log("Germ");
 
+    }
 
-
+    public void YouLose()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying =  false;
+#else
+        Application.Quit();
+#endif
+    }
 
     void Start()
     {

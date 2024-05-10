@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         Hp -= amount;
 
-        if(Hp < 0)
+        if(Hp <= 0)
         {
             die();
         }
