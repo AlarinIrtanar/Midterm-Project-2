@@ -18,6 +18,10 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] string mainMenuName;
 
+    [Header("----- Audio -----")]
+    //[SerializeField] AudioClip buttonPressSound;
+    [SerializeField] AudioSource audioSource;
+
     bool isPaused;
     // Start is called before the first frame update
     void Awake()
@@ -45,24 +49,30 @@ public class MenuManager : MonoBehaviour
 
     public void PressResume()
     {
+        audioSource.Play();
         Unpause();
+        
     }
     public void PressNextLevel()
     {
+        audioSource.Play();
         Unpause(); // Temp
     }
     public void PressRestart()
     {
+        audioSource.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Unpause();
     }
     public void PressQuit()
     {
+        audioSource.Play();
         SceneManager.LoadScene(mainMenuName);
     }
 
     void Unpause()
     {
+        audioSource.Play();
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -72,6 +82,7 @@ public class MenuManager : MonoBehaviour
     }
     void Pause()
     {
+        audioSource.Play();
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
