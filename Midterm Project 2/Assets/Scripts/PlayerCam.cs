@@ -8,6 +8,7 @@ public class PlayerCam : MonoBehaviour
     public float sensX;
     public float sensY;
 
+    [Header("Drag the player's \"Orientation\" onto this")]
     public Transform orientation;
 
     float rotX;
