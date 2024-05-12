@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public PlayerController playerScript;
 
     public float timer;
+
+    public AudioSource timeLow;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -43,9 +45,16 @@ public class GameManager : MonoBehaviour
     {
         timer -= Time.deltaTime;
         Debug.Log(timer);
-        if (timer < 0)
+        if (timer < 30)
         {
-            YouLose();
+            if (!timeLow.isPlaying)
+            {
+                timeLow.Play();
+            }
+            if (timer < 0)
+            {
+                YouLose();
+            }
         }
     }
 
