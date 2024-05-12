@@ -14,12 +14,14 @@ public class GameManager : MonoBehaviour
    
     public PlayerController playerScript;
 
+    public float timer;
     // Start is called before the first frame update
     private void Awake()
     {
         Instance = this;
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
+        timer = 120f;
 
     }
     public void YouWin()
@@ -35,6 +37,16 @@ public class GameManager : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    private void FixedUpdate()
+    {
+        timer -= Time.deltaTime;
+        Debug.Log(timer);
+        if (timer < 0)
+        {
+            YouLose();
+        }
     }
 
     void Start()
