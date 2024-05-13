@@ -32,6 +32,7 @@ public class LevelSelectController : MonoBehaviour
             newWorldsList[i].SetEnabled(false);
             //Debug.Log("New World " + (i + 1).ToString() + " Disabled");
         }
+        newWorldsList[0].levelImages[0].GetComponent<LevelInfoController>().SetUnlocked(true);
     }
 
     private void OnEnable()

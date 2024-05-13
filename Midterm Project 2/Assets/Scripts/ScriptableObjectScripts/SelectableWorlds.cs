@@ -15,7 +15,7 @@ public class SelectableWorlds : ScriptableObject
 
     [Range(1,2)][SerializeField] float spacing;
 
-    List<Image> levelImages;
+    public List<Image> levelImages;
     List<bool> levelUnlocks;
     Image currentImage;
     LevelInfoController levelInfoController;

@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
-        timer = 5f;
+        timer = 120f;
 
     }
     public void YouWin()
