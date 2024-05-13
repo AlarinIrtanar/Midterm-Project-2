@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GrapplingHookPull : MonoBehaviour
 {
-    /*
+    
     [Header("References")]
-    //private PlayerMovementGrappling playerMovement;
+    private PlayerMovement playerMovement;
     public Transform camera;
     public Transform gunTip;
     public LayerMask whatIsGrappleable;
@@ -29,7 +29,7 @@ public class GrapplingHookPull : MonoBehaviour
 
     void Start()
     {
-        playerMovement = GetComponent<PlayerMovementGrappling>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
 
@@ -56,7 +56,7 @@ public class GrapplingHookPull : MonoBehaviour
 
         isGrappling = true;
 
-        RaycastCommand hit;
+        RaycastHit hit;
         
         if(Physics.Raycast(camera.position, camera.forward, out hit, grappleRange, whatIsGrappleable))
         {
@@ -83,5 +83,5 @@ public class GrapplingHookPull : MonoBehaviour
         isGrappling = false;
 
         grapplingCooldownTimer = grapplingCooldown;
-    }*/
+    }
 } 
