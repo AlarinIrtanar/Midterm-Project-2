@@ -22,6 +22,11 @@ public class PlayerMovement : MonoBehaviour
     public float airMultiplier;
     bool readyToJump;
 
+    [Header("Sprinting")]
+    public float sprintStaminaRegenSpeed;
+    public float sprintStaminaDrainSpeed;
+    float sprintStamina = 1f;
+
     [Header("Crouching")]
     public float crouchSpeed;
     public float crouchYScale;
@@ -35,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
-    bool grounded;
+    public bool grounded;
 
     [Header("Slope Handling")]
     public float maxSlopeAngle;
@@ -154,10 +159,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Mode - Sprinting
-        else if (grounded && Input.GetKey(sprintKey))
+        else if (grounded && Input.GetKey(sprintKey) && sprintStamina > 0f)
         {
             state = MovementState.Sprinting;
             desiredMoveSpeed = sprintSpeed;
+
+            // Drain sprint stamina
+            sprintStamina -= sprintStaminaDrainSpeed * Time.deltaTime;
+            if (sprintStamina < 0f) sprintStamina = 0f;
         }
 
         // Mode - Walking
@@ -165,6 +174,10 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.Walking;
             desiredMoveSpeed = walkSpeed;
+
+            // Regen sprint stamina
+            sprintStamina += sprintStaminaRegenSpeed * Time.deltaTime;
+            if (sprintStamina > 1f) sprintStamina = 1f;
         }
 
         // Mode - Air
@@ -172,6 +185,9 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.Air;
 
+            // Regen sprint stamina
+            sprintStamina += sprintStaminaRegenSpeed * Time.deltaTime;
+            if (sprintStamina > 1f) sprintStamina = 1f;
         }
 
         // Check if desiredMoveSpeed has changed drastically
@@ -228,7 +244,8 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(moveDir.normalized * moveSpeed * airMultiplier * 10f, ForceMode.Force);
 
         // Turn gravity off while on slope
-        rb.useGravity = !OnSlope();
+        if (!wallrunning)
+            rb.useGravity = !OnSlope();
     }
 
     private void SpeedControl()

@@ -10,9 +10,16 @@ public class PlayerCam : MonoBehaviour
 
     [Header("Drag the player's \"Orientation\" onto this")]
     public Transform orientation;
+    public Transform camHolder;
 
     float rotX;
     float rotY;
+    float zTilt;
+
+    // Camera lerping
+    Camera cam;
+    float targetFov;
+    float targetZTilt;
 
 
 
@@ -21,6 +28,11 @@ public class PlayerCam : MonoBehaviour
         // Start the mouse off as invisible and locked on the screen
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        // Get the camera's default state
+        cam = GetComponent<Camera>();
+        targetFov = cam.fieldOfView;
+        targetZTilt = transform.localEulerAngles.z;
     }
 
     void Update()
@@ -34,7 +46,29 @@ public class PlayerCam : MonoBehaviour
         rotX = Mathf.Clamp(rotX, -90f, 90f);
 
         // Rotate cam and orientation
-        transform.rotation = Quaternion.Euler(rotX, rotY, 0);
+        camHolder.rotation = Quaternion.Euler(rotX, rotY, zTilt);
         orientation.rotation = Quaternion.Euler(0, rotY, 0);
+
+        // Lerp cam values
+        LerpCamValues();
+    }
+
+    public void DoFov(float endValue)
+    {
+        targetFov = endValue;
+    }
+
+    public void DoTilt(float endZTilt)
+    {
+        targetZTilt = endZTilt;
+    }
+
+    private void LerpCamValues()
+    {
+        cam.fieldOfView = Mathf.MoveTowards(cam.fieldOfView, targetFov, 50f * Time.deltaTime);
+        zTilt = Mathf.MoveTowards(zTilt, targetZTilt, 20f * Time.deltaTime);
+        //transform.rotation = Quaternion.Euler(0, 0, zTilt);
+        //transform.rotation = Quaternion.Euler(0, 0, Mathf.MoveTowardsAngle(transform.rotation.z, targetZTilt, 20f * Time.deltaTime));
+        //transform.rotation = Mathf.MoveTowardsAngle(transform.rotation, Quaternion.Euler(0, 0, targetZTilt), 20f * Time.deltaTime);
     }
 }
