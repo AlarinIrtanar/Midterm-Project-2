@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: f8ec5b79e79a30948b8bf37482bbb0c1
+  - enabled: 1
+    path: Assets/Scenes/DJ-Level.unity
+    guid: cac96bd70f43dbe40b8ee5385a81ca06
+  - enabled: 1
+    path: Assets/Scenes/Tower-Level.unity
+    guid: b252b4e78984de64090e679228e9b191
   m_configObjects: {}

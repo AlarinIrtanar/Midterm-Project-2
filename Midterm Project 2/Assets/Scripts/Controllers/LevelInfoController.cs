@@ -50,9 +50,9 @@ public class LevelInfoController : MonoBehaviour
         if (isUnlocked)
         {
             Debug.Log("Attempting to go to: " +  levelNameText.text); // Comment when levels are created
-/*            PlayerPrefs.SetString("SelectedWorld", parent.fileName);
-            PlayerPrefs.SetInt("SelectedLevel", int.Parse(levelNumText.text));*/
-            //SceneManager.LoadScene(levelNameText.text); // Uncomment when levels are created
+            PlayerPrefs.SetString("SelectedWorld", parent.fileName);
+            PlayerPrefs.SetInt("SelectedLevel", int.Parse(levelNumText.text));
+            SceneManager.LoadScene(levelNameText.text); // Uncomment when levels are created
         }
     }
 }
