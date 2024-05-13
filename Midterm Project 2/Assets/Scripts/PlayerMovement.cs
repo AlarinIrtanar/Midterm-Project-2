@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour 
 {
     [Header("Movement")]
     private float moveSpeed;
@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     RaycastHit slopeHit;
     bool exitingSlope;
 
+
     public Transform orientation;
 
     float horizontalInput;
@@ -74,12 +75,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+       
+        
+
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
         readyToJump = true;
 
         startYScale = transform.localScale.y;
+        
+        //SpawnPlayer();
     }
 
     private void Update()
@@ -303,4 +309,9 @@ public class PlayerMovement : MonoBehaviour
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
     }
+
+
+   
+
+    
 }

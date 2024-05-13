@@ -8,65 +8,26 @@ public class PlayerController : MonoBehaviour, IDamage
 
 
     [Header("----player--------")]
-    public CharacterController controller;
-    [SerializeField] int speed;
-    [SerializeField] int jumpSpeed;
-    [SerializeField] int maxJumps;
-    [SerializeField] int gravity;
+  
     [SerializeField] int Hp;
 
-    [Header("-----Shooting-----")]
-    [SerializeField] int shootDamage;
-    [SerializeField] int shootDist;
-    [SerializeField] float shootRate;
 
-
-    Vector3 movedir;
-    Vector3 playerVel;
-    bool isShooting;
-    int jumpedTimes;
-
+   
+    int HpOrig;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        HpOrig = Hp;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
-        Movement();
+        
     }
 
-    void Movement()
-    {
-        if (controller.isGrounded)
-        {
-            jumpedTimes = 0;
-            playerVel = Vector3.zero;   
-        }
-
-        movedir = (Input.GetAxis ("Horizontal") * transform.right) +
-                   (Input.GetAxis("Vertical") * transform.forward );
-        controller.Move(movedir * speed * Time.deltaTime);
-
-        if (Input.GetButton("Shoot")&& !isShooting)
-        {
-            StartCoroutine(shoot());
-        }
-
-
-        if (Input.GetButtonDown("Jump") && jumpedTimes < maxJumps)
-        {
-            jumpedTimes++;
-            playerVel.y = jumpSpeed;
-
-        }
-        playerVel.y -= gravity * Time.deltaTime;
-        controller.Move(playerVel * Time.deltaTime);
-    }
+   
 
     public void TakeDamage(int amount)
     {
@@ -81,28 +42,11 @@ public class PlayerController : MonoBehaviour, IDamage
 
     public void die()
     {
-        Destroy(gameObject);
+        GameManager.Instance.Respawn(gameObject);
     }
 
-    IEnumerator shoot()
-    {
-        isShooting = true;
 
-        RaycastHit hit;
-        if(Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f,0.5f)), out hit,shootDist))
-        {
-            Debug.Log(hit.collider.name);
 
-            IDamage dmg = hit.collider.GetComponent<IDamage>();
-
-            if (hit.transform != transform && dmg != null)
-            {
-               dmg.TakeDamage(shootDamage);
-            }
-        }
-        
-        yield return new WaitForSeconds(shootRate);
-        isShooting = false;
-    }
+   
 
 }
