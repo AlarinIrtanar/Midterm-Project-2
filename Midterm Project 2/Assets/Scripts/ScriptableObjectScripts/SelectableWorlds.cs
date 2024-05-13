@@ -22,12 +22,11 @@ public class SelectableWorlds : ScriptableObject
     GameObject parent;
     float instantX;
     string fileName;
+    bool firstLaunch = true;
 
     void Awake()
     {
-        fileName = ("/" + this.name.ToString() + ".dat");
-        levelImages = new List<Image>();
-        FileManager.instance.LoadLevelUnlocks(fileName);
+/*        FileManager.instance.LoadLevelUnlocks(fileName);
         levelUnlocks = FileManager.instance.GetLevelUnlocks();
 
         while(levelUnlocks.Count < levelName.Count)
@@ -49,18 +48,55 @@ public class SelectableWorlds : ScriptableObject
             levelInfoController.SetNumber(i + 1);
             levelInfoController.SetUnlocked(levelUnlocks[i]);
             levelImages.Add(currentImage);
-        }
+        }*/
     }
     public void SetEnabled(bool isEnabled)
     {
+        if (firstLaunch)
+        {
+            firstLaunch = false;
+            fileName = ("/" + this.name.ToString() + ".dat");
+            levelImages = new List<Image>();
+            FileManager.instance.LoadLevelUnlocks(fileName);
+            levelUnlocks = FileManager.instance.GetLevelUnlocks();
+
+            while (levelUnlocks.Count < levelName.Count)
+            {
+                levelUnlocks.Add(false);
+            }
+            FileManager.instance.SaveLevelUnlocks(fileName);
+
+            parent = GameObject.FindGameObjectWithTag("LevelSelect");
+            instantX = -((levelName.Count * levelImagePrefab.rectTransform.sizeDelta.x) / 2 - (levelImagePrefab.rectTransform.sizeDelta.x / 2)) * spacing;
+            for (int i = 0; i < levelName.Count; i++)
+            {
+                currentImage = Instantiate(levelImagePrefab, parent.transform);
+                currentImage.transform.SetLocalPositionAndRotation(new Vector3(instantX, 0, 0), new Quaternion(0, 0, 0, 0));
+                instantX += levelImagePrefab.rectTransform.sizeDelta.x * spacing;
+                levelInfoController = currentImage.GetComponent<LevelInfoController>();
+                levelInfoController.SetName(levelName[i]);
+                levelInfoController.SetNumber(i + 1);
+                levelInfoController.SetUnlocked(levelUnlocks[i]);
+                levelImages.Add(currentImage);
+            }
+        }
         for (int i = 0; i < levelImages.Count; i++)
         {
             //Debug.Log("Disabling Level " + (i + 1).ToString());
             levelImages[i].gameObject.SetActive(isEnabled);
             //Debug.Log("Level " + (i + 1).ToString() + " Disabled");
         }
+
     }
-    public void SaveLevelUnlocks()
+/*    public void SetDisabled(bool isEnabled)
+    {
+        for (int i = 0; i < levelImages.Count; i++)
+        {
+            Destroy(levelImages[i]);
+        }
+    }*/
+
+        public void SaveLevelUnlocks()
     {
         for (int i = 0; i < levelImages.Count; i++)
         {
