@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -54,6 +55,20 @@ public class MenuManager : MonoBehaviour
     {
         audioSource.Play();
         Unpause(); // Temp
+
+        if (PlayerPrefs.HasKey("SelectedWorld") && PlayerPrefs.HasKey("SelectedLevel"))
+        {
+            string world = PlayerPrefs.GetString("SelectedWorld");
+            int level = PlayerPrefs.GetInt("SelectedLevel");
+            FileManager.instance.LoadLevelUnlocks(world);
+            List<bool> unlocks = FileManager.instance.GetLevelUnlocks();
+            if (unlocks.Count > level)
+            {
+                unlocks[level] = true;
+                FileManager.instance.SetLevelUnlocks(unlocks);
+                FileManager.instance.SaveLevelUnlocks(world);
+            }
+        }
     }
     public void PressRestart()
     {
