@@ -59,7 +59,7 @@ public class GrapplingHookPull : MonoBehaviour
     //throws grappling hook but doesn't start pulling yet
     private void StartGrappling()
     {
-        if (grapplingCooldownTimer > 0)
+        if (grapplingCooldown > 0)
         {
             return;
         }
