@@ -6,7 +6,10 @@ using UnityEngine;
 
 public class MainMenuController : MonoBehaviour
 {
-
+    public void Start()
+    {
+        FileManager.instance.LoadOptions();
+    }
     public void PressQuit()
     {
 #if UNITY_EDITOR
