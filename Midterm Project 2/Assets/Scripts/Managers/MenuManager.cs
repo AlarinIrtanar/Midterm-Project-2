@@ -72,6 +72,10 @@ public class MenuManager : MonoBehaviour
 
     void Unpause()
     {
+        if (HUDManager.instance != null)
+        {
+            HUDManager.instance.reticle.gameObject.SetActive(false);
+        }
         audioSource.Play();
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
@@ -82,11 +86,21 @@ public class MenuManager : MonoBehaviour
     }
     void Pause()
     {
+        if(HUDManager.instance != null)
+        {
+            HUDManager.instance.reticle.gameObject.SetActive(false);
+        }
         audioSource.Play();
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         isPaused = !isPaused;
+    }
+    public void ShowWin()
+    {
+        Pause();
+        menuActive = menuWin;
+        menuActive.SetActive(isPaused);
     }
 
 

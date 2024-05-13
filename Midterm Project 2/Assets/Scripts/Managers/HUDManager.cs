@@ -11,6 +11,7 @@ public class HUDManager : MonoBehaviour
     public static HUDManager instance;
     [SerializeField] Image painSplash;
     [SerializeField] TMP_Text timerText;
+    public TMP_Text reticle;
 
     // Start is called before the first frame update
     void Awake()
