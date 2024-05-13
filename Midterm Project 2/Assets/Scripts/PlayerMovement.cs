@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IDamage
 {
     [Header("Movement")]
     private float moveSpeed;
@@ -42,6 +42,11 @@ public class PlayerMovement : MonoBehaviour
     RaycastHit slopeHit;
     bool exitingSlope;
 
+
+    [Header("Player")]
+    [SerializeField] int Hp;// dj add
+    int HpOrig;
+
     public Transform orientation;
 
     float horizontalInput;
@@ -69,12 +74,28 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        HpOrig = Hp;
+        
+
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
         readyToJump = true;
 
         startYScale = transform.localScale.y;
+        transform.position = new Vector3(100, 100, 100);
+        Transform t = gameObject.transform;
+
+        for (int i = 0; i < t.childCount; i++)
+        {
+            if (t.GetChild(i).gameObject.tag == "Player")
+            {
+                GameObject xx = t.GetChild(i).gameObject;
+                xx.transform.position = GameManager.Instance.playerSpawnPos.transform.position;
+            }
+
+        }
+        //SpawnPlayer();
     }
 
     private void Update()
@@ -285,5 +306,31 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 GetSlopeMoveDirection(Vector3 direction)
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
+    }
+
+
+    public void TakeDamage(int amount)// dj add
+    {
+        Hp -= amount;
+
+        if (Hp <= 0)
+        {
+            die();
+        }
+
+    }
+
+    public void die()// dj add
+    {
+        Destroy(gameObject);
+    }
+
+
+    public void SpawnPlayer()// dj add
+    {
+        HpOrig = Hp;
+
+        transform.position =  GameManager.Instance.playerSpawnPos.transform.position;
+
     }
 }

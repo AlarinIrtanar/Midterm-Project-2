@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
-
+    public GameObject playerSpawnPos;
     public GameObject player;
    
     public PlayerController playerScript;
@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
+        playerSpawnPos = GameObject.FindWithTag("Player SpawnPos");
         timer = 120f;
 
     }
@@ -30,15 +31,19 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Germ");
 
+
+
     }
 
-    public void YouLose()
+    public void YouLose(Transform playerdeath)
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying =  false;
-#else
-        Application.Quit();
-#endif
+        
+
+//#if UNITY_EDITOR
+       // UnityEditor.EditorApplication.isPlaying =  false;
+//#else
+      //  Application.Quit();
+//#endif
     }
 
     private void FixedUpdate()

@@ -21,16 +21,19 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] float shootRate;
 
 
+
+
     Vector3 movedir;
     Vector3 playerVel;
     bool isShooting;
     int jumpedTimes;
-
+    int HpOrig;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        HpOrig = Hp;
+        SpawnPlayer();
     }
 
     // Update is called once per frame
@@ -82,6 +85,16 @@ public class PlayerController : MonoBehaviour, IDamage
     public void die()
     {
         Destroy(gameObject);
+    }
+
+    public void SpawnPlayer()// dj add
+    {
+        HpOrig =  Hp;
+
+        controller.enabled = false;
+        transform.position = GameManager.Instance.playerSpawnPos.transform.position;
+        controller.enabled = true;
+       
     }
 
     IEnumerator shoot()
