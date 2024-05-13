@@ -12,6 +12,7 @@ public class Target : MonoBehaviour, IDamage
         Health -= damage;   
         if(Health <= 0)
         {
+            GameManager.Instance.score += 10;
             Destroy(gameObject);
         }
     }

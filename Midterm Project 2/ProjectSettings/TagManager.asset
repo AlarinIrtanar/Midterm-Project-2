@@ -5,12 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - LevelSelect
-  - Player SpawnPos
+  - Test
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Test
   - Water
   - UI
   - Ground

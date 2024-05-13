@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour, IDamage
 {
 
 
-    [Header("----palyer--------")]
-    [SerializeField] CharacterController controller;
+    [Header("----player--------")]
+    public CharacterController controller;
     [SerializeField] int speed;
     [SerializeField] int jumpSpeed;
     [SerializeField] int maxJumps;

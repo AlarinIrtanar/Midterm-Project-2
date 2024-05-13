@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
-    public GameObject playerSpawnPos;
+
     public GameObject player;
    
     public PlayerController playerScript;
@@ -17,39 +17,41 @@ public class GameManager : MonoBehaviour
     public float timer;
 
     public AudioSource timeLow;
+
+    public int score;
     // Start is called before the first frame update
     private void Awake()
     {
         Instance = this;
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
-        playerSpawnPos = GameObject.FindWithTag("Player SpawnPos");
         timer = 120f;
 
     }
     public void YouWin()
     {
-        Debug.Log("Germ");
+        score += (int)timer;
+        //Debug.Log("Germ");
 
-
+        if (MenuManager.instance != null)
+        {
+            MenuManager.instance.ShowWin();
+        }
 
     }
 
-    public void YouLose(Transform playerdeath)
+    public void YouLose()
     {
-        
-
-//#if UNITY_EDITOR
-       // UnityEditor.EditorApplication.isPlaying =  false;
-//#else
-      //  Application.Quit();
-//#endif
+        if (MenuManager.instance != null)
+        {
+            MenuManager.instance.ShowLose();
+        }
     }
 
     private void FixedUpdate()
     {
         timer -= Time.deltaTime;
-        Debug.Log(timer);
+        //Debug.Log(timer);
         if (timer < 30)
         {
             if (!timeLow.isPlaying)
@@ -73,4 +75,6 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+
 }

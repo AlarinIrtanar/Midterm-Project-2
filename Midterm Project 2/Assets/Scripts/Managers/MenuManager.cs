@@ -1,21 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
     [Header("----- Components -----")]
     public static MenuManager instance;
-    //[SerializeField] Player player;
+    [SerializeField] TMP_Text scoreText;
 
     [Header("----- Menus -----")]
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
+    [SerializeField] GameObject menuLose;
     [SerializeField] string mainMenuName;
 
     [Header("----- Audio -----")]
@@ -72,6 +69,10 @@ public class MenuManager : MonoBehaviour
 
     void Unpause()
     {
+        if (HUDManager.instance != null)
+        {
+            HUDManager.instance.reticle.gameObject.SetActive(false);
+        }
         audioSource.Play();
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
@@ -82,11 +83,34 @@ public class MenuManager : MonoBehaviour
     }
     void Pause()
     {
+        if(HUDManager.instance != null)
+        {
+            HUDManager.instance.reticle.gameObject.SetActive(false);
+        }
         audioSource.Play();
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         isPaused = !isPaused;
+    }
+    public void ShowWin()
+    {
+        Pause();
+
+        if (GameManager.Instance != null)
+        {
+            scoreText.text = "Score: " + GameManager.Instance.score.ToString();
+        }
+
+        menuActive = menuWin;
+        menuActive.SetActive(isPaused);
+    }
+    public void ShowLose()
+    {
+        Pause();
+
+        menuActive = menuLose;
+        menuActive.SetActive(isPaused);
     }
 
 
