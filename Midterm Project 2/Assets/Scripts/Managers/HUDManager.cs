@@ -22,7 +22,7 @@ public class HUDManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var ts = TimeSpan.FromSeconds(GameManager.Instance.timer);
+        var ts = TimeSpan.FromSeconds(GameManager.Instance.timer + 1);
         timerText.text = string.Format("{0:00}:{1:00}", ts.Minutes, ts.Seconds);
     }
     IEnumerator TakeDamage()

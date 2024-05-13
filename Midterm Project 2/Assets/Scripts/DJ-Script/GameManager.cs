@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
-        timer = 120f;
+        timer = 5f;
 
     }
     public void YouWin()
@@ -42,11 +42,10 @@ public class GameManager : MonoBehaviour
 
     public void YouLose()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying =  false;
-#else
-        Application.Quit();
-#endif
+        if (MenuManager.instance != null)
+        {
+            MenuManager.instance.ShowLose();
+        }
     }
 
     private void FixedUpdate()
