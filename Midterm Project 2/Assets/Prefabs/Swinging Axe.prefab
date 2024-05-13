@@ -165,14 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2c9ea1118450740ba3c93973f8fb13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRotation: 0
-  isSwingingForward: 1
-  elapsedTime: 0
-  from: 0
-  to: 0
-  targetRotationHeight: 90
-  roatationSpeed: 3
-  rotationDuration: 3
+  amplitude: 90
+  frequency: 1.5
+  offset: 0
 --- !u!1 &4195078181219539648
 GameObject:
   m_ObjectHideFlags: 0
