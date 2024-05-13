@@ -5268,18 +5268,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: gameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2308976595508529957, guid: 9126d2f5f3b16084892d5c3f0f2a4613, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2308976595508529957, guid: 9126d2f5f3b16084892d5c3f0f2a4613, type: 3}
-      propertyPath: m_Volume
-      value: 0.506
-      objectReference: {fileID: 0}
-    - target: {fileID: 2308976595508529957, guid: 9126d2f5f3b16084892d5c3f0f2a4613, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3718697288269161152, guid: 9126d2f5f3b16084892d5c3f0f2a4613, type: 3}
       propertyPath: m_LocalPosition.x
       value: 111.26725
@@ -5318,10 +5306,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3718697288269161152, guid: 9126d2f5f3b16084892d5c3f0f2a4613, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5105882843684753854, guid: 9126d2f5f3b16084892d5c3f0f2a4613, type: 3}
-      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
