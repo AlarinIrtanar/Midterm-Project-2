@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public float timer;
 
     public AudioSource timeLow;
+
+    public int score;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
     }
     public void YouWin()
     {
+        score += (int)timer;
         Debug.Log("Germ");
 
     }
@@ -68,4 +71,6 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+
 }
