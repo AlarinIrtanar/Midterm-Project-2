@@ -35,12 +35,12 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if(Hp <= 0)
         {
-            die();
+            Die();
         }
 
     }
 
-    public void die()
+    public void Die()
     {
         GameManager.Instance.Respawn(gameObject);
     }

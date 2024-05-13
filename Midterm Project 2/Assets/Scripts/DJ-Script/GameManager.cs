@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject player;
    
-    public PlayerController playerScript;
+   // public PlayerController playerScript;
 
     public float timer;
 
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         player = GameObject.FindWithTag("Player");
-        playerScript = player.GetComponent<PlayerController>();
+        //playerScript = player.GetComponent<PlayerController>();
         timer = 120f;
 
     }
@@ -55,7 +55,8 @@ public class GameManager : MonoBehaviour
             Destroy(death.transform.parent.transform.parent.gameObject);
         //if (player == null)
         //{
-            player = Instantiate(PlayerPreFab, playerSpawnPos.transform.position, Quaternion.identity);
+        player = Instantiate(PlayerPreFab, playerSpawnPos.transform.position, Quaternion.identity);
+        player.transform.position = playerSpawnPos.transform.position;
         //}
     }
 
