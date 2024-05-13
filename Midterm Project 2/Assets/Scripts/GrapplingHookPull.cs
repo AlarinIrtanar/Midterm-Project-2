@@ -27,6 +27,8 @@ public class GrapplingHookPull : MonoBehaviour
 
     private bool isGrappling;
 
+    LineRenderer lineRenderer;
+
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
@@ -43,6 +45,14 @@ public class GrapplingHookPull : MonoBehaviour
         if(grapplingCooldown > 0)
         {
             grapplingCooldown -= Time.deltaTime;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if(isGrappling)
+        {
+            lineRenderer.SetPosition(0, gunTip.position);
         }
     }
 
@@ -70,6 +80,9 @@ public class GrapplingHookPull : MonoBehaviour
 
             Invoke(nameof(StopGrappling), grappleDelay);
         }
+
+        lineRenderer.enabled = true;
+        lineRenderer.SetPosition(1, grapplePoint);
     }
 
     //start pulling towards target
@@ -83,5 +96,7 @@ public class GrapplingHookPull : MonoBehaviour
         isGrappling = false;
 
         grapplingCooldownTimer = grapplingCooldown;
+
+        lineRenderer.enabled = false;
     }
 } 
