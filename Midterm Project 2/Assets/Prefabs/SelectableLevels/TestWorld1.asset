@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelImagePrefab: {fileID: 1249369623761289563, guid: 00536049e3f8cba48b2b1f7d77eae6cc, type: 3}
   levelName:
-  - Level 1 - The OG
-  - Level 2 - Electric Boogaloo
+  - DJ-Level
+  - Tower-Level
   - Level 3 - The Trio
   - Level 4 - The Quad
   - Level 5 - 5 Star Pizza
+  fileName: 
   spacing: 2
+  levelImages: []

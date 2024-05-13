@@ -69,4 +69,28 @@ public class FileManager : MonoBehaviour
             SaveOptions();
         }
     }
+
+
+    public void SaveWorldUnlocks(string fileName)
+    {
+        BinaryFormatter bout = new BinaryFormatter();
+        FileStream fout = File.Open(filePath + fileName, FileMode.OpenOrCreate);
+
+        fout.Close();
+    }
+    public void LoadWorldUnlocks(string fileName)
+    {
+        if (File.Exists(filePath + fileName))
+        {
+            BinaryFormatter bin = new BinaryFormatter();
+            FileStream fin = File.Open(filePath + fileName, FileMode.Open);
+
+            fin.Close();
+        }
+        else
+        {
+            SaveWorldUnlocks(fileName);
+        }
+    }
+
 }
