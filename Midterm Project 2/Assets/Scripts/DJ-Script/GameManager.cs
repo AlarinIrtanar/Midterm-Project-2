@@ -31,7 +31,12 @@ public class GameManager : MonoBehaviour
     public void YouWin()
     {
         score += (int)timer;
-        Debug.Log("Germ");
+        //Debug.Log("Germ");
+
+        if (MenuManager.instance != null)
+        {
+            MenuManager.instance.ShowWin();
+        }
 
     }
 

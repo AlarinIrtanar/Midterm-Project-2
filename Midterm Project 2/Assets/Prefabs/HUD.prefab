@@ -360,6 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   painSplash: {fileID: 7414727347119475508}
   timerText: {fileID: 1877507890662170657}
+  reticle: {fileID: 1539013415573113593}
 --- !u!1 &8864832271398328757
 GameObject:
   m_ObjectHideFlags: 0
