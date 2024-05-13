@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour, IDamage
+public class PlayerMovement : MonoBehaviour 
 {
     [Header("Movement")]
     private float moveSpeed;
@@ -43,10 +43,6 @@ public class PlayerMovement : MonoBehaviour, IDamage
     bool exitingSlope;
 
 
-    [Header("Player")]
-    [SerializeField] int Hp;// dj add
-    int HpOrig;
-
     public Transform orientation;
 
     float horizontalInput;
@@ -74,7 +70,7 @@ public class PlayerMovement : MonoBehaviour, IDamage
 
     private void Start()
     {
-        HpOrig = Hp;
+       
         
 
         rb = GetComponent<Rigidbody>();
@@ -83,18 +79,7 @@ public class PlayerMovement : MonoBehaviour, IDamage
         readyToJump = true;
 
         startYScale = transform.localScale.y;
-        transform.position = new Vector3(100, 100, 100);
-        Transform t = gameObject.transform;
-
-        for (int i = 0; i < t.childCount; i++)
-        {
-            if (t.GetChild(i).gameObject.tag == "Player")
-            {
-                GameObject xx = t.GetChild(i).gameObject;
-                xx.transform.position = GameManager.Instance.playerSpawnPos.transform.position;
-            }
-
-        }
+        
         //SpawnPlayer();
     }
 
@@ -309,28 +294,7 @@ public class PlayerMovement : MonoBehaviour, IDamage
     }
 
 
-    public void TakeDamage(int amount)// dj add
-    {
-        Hp -= amount;
+   
 
-        if (Hp <= 0)
-        {
-            die();
-        }
-
-    }
-
-    public void die()// dj add
-    {
-        Destroy(gameObject);
-    }
-
-
-    public void SpawnPlayer()// dj add
-    {
-        HpOrig = Hp;
-
-        transform.position =  GameManager.Instance.playerSpawnPos.transform.position;
-
-    }
+    
 }

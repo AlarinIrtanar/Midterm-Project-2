@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-   
+    [SerializeField] GameObject PlayerPreFab;
+    [SerializeField] GameObject playerSpawnPos;
 
     public static GameManager Instance;
 
@@ -47,6 +48,18 @@ public class GameManager : MonoBehaviour
             MenuManager.instance.ShowLose();
         }
     }
+
+    public void Respawn(GameObject death)
+    {
+        if (death != null)
+            Destroy(death.transform.parent.transform.parent.gameObject);
+        //if (player == null)
+        //{
+            player = Instantiate(PlayerPreFab, playerSpawnPos.transform.position, Quaternion.identity);
+        //}
+    }
+
+
 
     private void FixedUpdate()
     {
