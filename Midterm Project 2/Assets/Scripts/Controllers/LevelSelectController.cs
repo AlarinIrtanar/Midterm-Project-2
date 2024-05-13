@@ -14,6 +14,12 @@ public class LevelSelectController : MonoBehaviour
     SelectableWorlds currentWorld;
     List<SelectableWorlds> newWorldsList;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip buttonPress;
+    [SerializeField] AudioClip buttonPressNextPage;
+    [SerializeField] AudioSource audioSource;
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -45,6 +51,7 @@ public class LevelSelectController : MonoBehaviour
     }
     public void PressMainMenu()
     {
+        audioSource.PlayOneShot(buttonPress);
         for (int i = 0; i < worldsList.Count; ++i)
         {
             newWorldsList[i].SaveLevelUnlocks();
@@ -52,7 +59,8 @@ public class LevelSelectController : MonoBehaviour
     }
     public void PressNext()
     {
-        if(worldSelectCount < worldsList.Count - 1)
+        audioSource.PlayOneShot(buttonPressNextPage);
+        if (worldSelectCount < worldsList.Count - 1)
         {
             newWorldsList[worldSelectCount].SetEnabled(false);
             worldSelectCount++;
@@ -67,6 +75,7 @@ public class LevelSelectController : MonoBehaviour
     }
     public void PressPrev()
     {
+        audioSource.PlayOneShot(buttonPressNextPage);
         if (worldSelectCount > 0)
         {
             newWorldsList[worldSelectCount].SetEnabled(false);
@@ -80,4 +89,10 @@ public class LevelSelectController : MonoBehaviour
             newWorldsList[worldSelectCount].SetEnabled(true);
         }
     }
+
+    public void PlayButtonPress()
+    {
+        audioSource.PlayOneShot(buttonPress);
+    }
+
 }

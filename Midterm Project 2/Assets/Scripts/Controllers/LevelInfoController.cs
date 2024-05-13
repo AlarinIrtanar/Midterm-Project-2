@@ -12,6 +12,8 @@ public class LevelInfoController : MonoBehaviour
     [SerializeField] TMP_Text levelNameText;
     [SerializeField] Image lockedImage;
 
+
+    [SerializeField] AudioSource audioSource;
     bool isUnlocked;
 
     public void SetNumber(int levelNumber)
@@ -40,6 +42,7 @@ public class LevelInfoController : MonoBehaviour
     }
     public void levelSelected()
     {
+        audioSource.Play();
         if (isUnlocked)
         {
             Debug.Log("Attempting to go to: " +  levelNameText.text); // Comment when levels are created

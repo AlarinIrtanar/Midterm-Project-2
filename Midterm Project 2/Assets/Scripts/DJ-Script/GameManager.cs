@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+   
+
     public static GameManager Instance;
 
 
@@ -12,12 +14,16 @@ public class GameManager : MonoBehaviour
    
     public PlayerController playerScript;
 
+    public float timer;
+
+    public AudioSource timeLow;
     // Start is called before the first frame update
     private void Awake()
     {
         Instance = this;
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
+        timer = 120f;
 
     }
     public void YouWin()
@@ -33,6 +39,23 @@ public class GameManager : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    private void FixedUpdate()
+    {
+        timer -= Time.deltaTime;
+        Debug.Log(timer);
+        if (timer < 30)
+        {
+            if (!timeLow.isPlaying)
+            {
+                timeLow.Play();
+            }
+            if (timer < 0)
+            {
+                YouLose();
+            }
+        }
     }
 
     void Start()
