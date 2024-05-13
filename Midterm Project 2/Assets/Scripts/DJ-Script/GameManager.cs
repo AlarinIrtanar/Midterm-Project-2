@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         timer -= Time.deltaTime;
-        Debug.Log(timer);
+        //Debug.Log(timer);
         if (timer < 30)
         {
             if (!timeLow.isPlaying)
