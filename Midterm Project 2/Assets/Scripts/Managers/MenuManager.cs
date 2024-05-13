@@ -54,7 +54,7 @@ public class MenuManager : MonoBehaviour
     public void PressNextLevel()
     {
         audioSource.Play();
-        Unpause(); // Temp
+        //Unpause(); // Temp
 
         if (PlayerPrefs.HasKey("SelectedWorld") && PlayerPrefs.HasKey("SelectedLevel"))
         {
@@ -68,6 +68,7 @@ public class MenuManager : MonoBehaviour
                 FileManager.instance.SetLevelUnlocks(unlocks);
                 FileManager.instance.SaveLevelUnlocks(world);
             }
+            SceneManager.LoadScene(mainMenuName); // temp
         }
     }
     public void PressRestart()
