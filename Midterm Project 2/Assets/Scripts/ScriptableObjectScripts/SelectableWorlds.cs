@@ -12,6 +12,7 @@ public class SelectableWorlds : ScriptableObject
 {
     [SerializeField] Image levelImagePrefab;
     public List<string> levelName;
+    public string fileName;
 
     [Range(1,2)][SerializeField] float spacing;
 
@@ -21,35 +22,8 @@ public class SelectableWorlds : ScriptableObject
     LevelInfoController levelInfoController;
     GameObject parent;
     float instantX;
-    string fileName;
     bool firstLaunch = true;
 
-    void Awake()
-    {
-/*        FileManager.instance.LoadLevelUnlocks(fileName);
-        levelUnlocks = FileManager.instance.GetLevelUnlocks();
-
-        while(levelUnlocks.Count < levelName.Count)
-        {
-            levelUnlocks.Add(false);
-        }
-        FileManager.instance.SaveLevelUnlocks(fileName);
-        
-        parent = GameObject.FindGameObjectWithTag("LevelSelect");
-        instantX = -((levelName.Count * levelImagePrefab.rectTransform.sizeDelta.x) / 2 - (levelImagePrefab.rectTransform.sizeDelta.x / 2)) * spacing;
-        
-        for (int i = 0; i < levelName.Count; i++)
-        {
-            currentImage = Instantiate(levelImagePrefab, parent.transform);
-            currentImage.transform.SetLocalPositionAndRotation(new Vector3(instantX, 0, 0), new Quaternion(0, 0, 0, 0));
-            instantX += levelImagePrefab.rectTransform.sizeDelta.x * spacing;
-            levelInfoController = currentImage.GetComponent<LevelInfoController>();
-            levelInfoController.SetName(levelName[i]);
-            levelInfoController.SetNumber(i + 1);
-            levelInfoController.SetUnlocked(levelUnlocks[i]);
-            levelImages.Add(currentImage);
-        }*/
-    }
     public void SetEnabled(bool isEnabled)
     {
         if (firstLaunch)
@@ -74,6 +48,7 @@ public class SelectableWorlds : ScriptableObject
                 currentImage.transform.SetLocalPositionAndRotation(new Vector3(instantX, 0, 0), new Quaternion(0, 0, 0, 0));
                 instantX += levelImagePrefab.rectTransform.sizeDelta.x * spacing;
                 levelInfoController = currentImage.GetComponent<LevelInfoController>();
+                levelInfoController.SetParent(this);
                 levelInfoController.SetName(levelName[i]);
                 levelInfoController.SetNumber(i + 1);
                 levelInfoController.SetUnlocked(levelUnlocks[i]);
