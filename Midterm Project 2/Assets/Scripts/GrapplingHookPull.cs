@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GrapplingHookPull : MonoBehaviour
 {
-    /*[Header("References")]
+    /*
+    [Header("References")]
     //private PlayerMovementGrappling playerMovement;
     public Transform camera;
     public Transform gunTip;
@@ -45,6 +46,7 @@ public class GrapplingHookPull : MonoBehaviour
         }
     }
 
+    //throws grappling hook but doesn't start pulling yet
     private void StartGrappling()
     {
         if (grapplingCooldownTimer > 0)
@@ -60,7 +62,7 @@ public class GrapplingHookPull : MonoBehaviour
         {
             grapplePoint = hit.point;
 
-            Invoke(nameof(StartGrappling), grappleDelay);
+            Invoke(nameof(ExecuteGrappling), grappleDelay);
         }
         else
         {
@@ -68,6 +70,12 @@ public class GrapplingHookPull : MonoBehaviour
 
             Invoke(nameof(StopGrappling), grappleDelay);
         }
+    }
+
+    //start pulling towards target
+    private void ExecuteGrappling()
+    {
+        
     }
 
     private void StopGrappling()
