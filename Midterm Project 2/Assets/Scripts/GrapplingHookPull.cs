@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GrapplingHookPull : MonoBehaviour
@@ -9,11 +10,13 @@ public class GrapplingHookPull : MonoBehaviour
     private PlayerMovement playerMovement;
     public Transform camera;
     public Transform gunTip;
+    public LineRenderer lineRenderer;
     public LayerMask whatIsGrappleable;
 
     [Header("Grappling")]
     public float grappleRange;
     public float grappleDelay;
+    public float overshootYAxis;
 
     public Vector3 grapplePoint;
 
@@ -27,7 +30,6 @@ public class GrapplingHookPull : MonoBehaviour
 
     private bool isGrappling;
 
-    LineRenderer lineRenderer;
 
     void Start()
     {
@@ -88,10 +90,22 @@ public class GrapplingHookPull : MonoBehaviour
     //start pulling towards target
     private void ExecuteGrappling()
     {
-        
+        Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y -1f, transform.position.z);
+
+
+        float grapplePointRealativeYPosition = grapplePoint.y - lowestPoint.y;
+        float highestPointOnArc = grapplePointRealativeYPosition + overshootYAxis;
+
+        if (grapplePointRealativeYPosition < 0)
+        {
+            highestPointOnArc = overshootYAxis;
+        }
+        playerMovement.JumpToPosition(grapplePoint, highestPointOnArc);
+
+        Invoke(nameof(StopGrappling), 1f);
     }
 
-    private void StopGrappling()
+    public void StopGrappling()
     {
         isGrappling = false;
 
@@ -99,4 +113,6 @@ public class GrapplingHookPull : MonoBehaviour
 
         lineRenderer.enabled = false;
     }
+
+    
 } 

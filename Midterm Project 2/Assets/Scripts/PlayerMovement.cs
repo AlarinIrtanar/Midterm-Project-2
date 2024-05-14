@@ -57,6 +57,13 @@ public class PlayerMovement : MonoBehaviour
         Air
     }
 
+<<<<<<< Updated upstream
+=======
+    public bool sliding;
+    public bool wallrunning;
+    public bool activeGrappling;
+
+>>>>>>> Stashed changes
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -65,6 +72,22 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
 
         startYScale = transform.localScale.y;
+    }
+
+    public void RestRestrictions()
+    {
+        activeGrappling = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(enableMovementOnNextTouch)
+        {
+            enableMovementOnNextTouch = false;
+            RestRestrictions();
+            //activeGrappling = false;
+            GetComponent<GrapplingHookPull>().StopGrappling();
+        }
     }
 
     private void Update()
@@ -77,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         StateHandler();
 
         // handle drag
-        if (grounded)
+        if (grounded && !activeGrappling)
             rb.drag = groundDrag;
         else
             rb.drag = 0;
@@ -148,6 +171,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
+        //To stop player from moving while grappling
+        if (activeGrappling)
+        {
+            return;
+        }
+
         // Calculate movement direction
         moveDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
@@ -174,6 +203,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void SpeedControl()
     {
+        if(activeGrappling)
+        {
+            return;
+        }
+
         // Limiting speed on slope
         if (OnSlope() && !exitingSlope)
         {
@@ -212,7 +246,31 @@ public class PlayerMovement : MonoBehaviour
         exitingSlope = false;
     }
 
+<<<<<<< Updated upstream
     private bool OnSlope()
+=======
+    private bool enableMovementOnNextTouch;
+    public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)
+    {
+        activeGrappling = true;
+
+        velocityToSet = DeterminePullVelocity(transform.position, targetPosition, trajectoryHeight);
+        //Player will get pulled after 0.1 seconds
+        Invoke(nameof(SetVelocity), 0.1f);
+
+        Invoke(nameof(RestRestrictions), 3f);
+    }
+
+    private Vector3 velocityToSet;
+    private void SetVelocity()
+    {
+        enableMovementOnNextTouch = true;
+        rb.velocity = velocityToSet;
+        //activeGrappling = false;
+    }
+
+    public bool OnSlope()
+>>>>>>> Stashed changes
     {
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
         {
@@ -227,4 +285,24 @@ public class PlayerMovement : MonoBehaviour
     {
         return Vector3.ProjectOnPlane(moveDir, slopeHit.normal).normalized;
     }
+<<<<<<< Updated upstream
+=======
+
+
+    public Vector3 DeterminePullVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
+    {
+        float gravity = Physics.gravity.y;
+        float yDisplacement = endPoint.y - startPoint.y;
+        Vector3 xzDisplacement = new Vector3(endPoint.x - startPoint.x, 0f, endPoint.z - startPoint.z);
+
+        //Vector3 yVelocity = new Vector3(0f, yDisplacement, 0f);
+        Vector3 yVelocity = Vector3.up * Mathf.Sqrt(-2 * gravity * trajectoryHeight);
+        //Vector3 xzVelocity = new Vector3(xzDisplacement.x, 0f, xzDisplacement.z);
+        Vector3 xzVelocity = xzDisplacement / (Mathf.Sqrt(-2 * trajectoryHeight / gravity) + Mathf.Sqrt(2 * (yDisplacement - trajectoryHeight) / gravity));
+
+        return xzVelocity + yVelocity;
+    }
+
+
+>>>>>>> Stashed changes
 }
