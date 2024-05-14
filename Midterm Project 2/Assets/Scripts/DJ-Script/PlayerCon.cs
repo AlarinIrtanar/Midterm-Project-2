@@ -20,11 +20,13 @@ public class PlayerCon : MonoBehaviour
     [SerializeField] int maxJumps;
     [SerializeField] int gravity;
 
+
     [Header("----Shooting--------")]
 
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
+    
 
 
     Vector3 moveDir;    
@@ -101,6 +103,8 @@ public class PlayerCon : MonoBehaviour
                 dmg.TakeDamage(shootDamage);
             }
         }
+
+       
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
 

@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour, IDamage
 
     public void die()
     {
-        GameManager.Instance.Respawn(gameObject);
+        GameManager.Instance.YouLose();
     }
 
     IEnumerator shoot()
