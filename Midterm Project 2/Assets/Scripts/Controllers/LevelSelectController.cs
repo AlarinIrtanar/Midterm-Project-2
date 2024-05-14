@@ -26,6 +26,7 @@ public class LevelSelectController : MonoBehaviour
         newWorldsList = new List<SelectableWorlds>();
         if (worldsList.Count == FileManager.instance.worlds.Count)
         {
+            //Debug.Log("World List and File World Matched");
             for (int i = 0; i < worldsList.Count; ++i)
             {
                 currentWorld = Instantiate(worldsList[i], this.transform);
@@ -35,6 +36,7 @@ public class LevelSelectController : MonoBehaviour
         }
         else
         {
+            //Debug.Log("World List and File World Matched");
             FileManager.instance.ClearWorlds();
             for (int i = 0; i < worldsList.Count; ++i)
             {
