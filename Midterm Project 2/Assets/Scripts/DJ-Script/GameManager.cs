@@ -34,6 +34,15 @@ public class GameManager : MonoBehaviour
         score += (int)timer;
         //Debug.Log("Germ");
 
+        if (PlayerPrefs.HasKey("SelectedWorld") && PlayerPrefs.HasKey("SelectedLevel"))
+        {
+            int world = PlayerPrefs.GetInt("SelectedWorld");
+            int level = PlayerPrefs.GetInt("SelectedLevel");
+
+            FileManager.instance.UnlockLevel(world, level);
+
+        }
+
         if (MenuManager.instance != null)
         {
             MenuManager.instance.ShowWin();

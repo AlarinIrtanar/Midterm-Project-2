@@ -71,15 +71,7 @@ public class MenuManager : MonoBehaviour
         audioSource.Play();
         //Unpause(); // Temp
 
-        if (PlayerPrefs.HasKey("SelectedWorld") && PlayerPrefs.HasKey("SelectedLevel"))
-        {
-            int world = PlayerPrefs.GetInt("SelectedWorld");
-            int level = PlayerPrefs.GetInt("SelectedLevel");
-
-            FileManager.instance.UnlockLevel(world, level);
-
             SceneManager.LoadScene(mainMenuName); // temp
-        }
     }
     public void PressRestart()
     {
