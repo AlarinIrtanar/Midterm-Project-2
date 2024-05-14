@@ -28,6 +28,11 @@ public class GrapplingHookPull : MonoBehaviour
     [Header("Input")]
     public KeyCode grappleKey = KeyCode.Mouse1;
 
+    [Header("Audio")]
+    public AudioSource grappleShootAudio;
+    public AudioSource grapplePullAudio;
+
+
     private bool isGrappling;
 
 
@@ -65,7 +70,7 @@ public class GrapplingHookPull : MonoBehaviour
         {
             return;
         }
-
+        grappleShootAudio.Play();
         isGrappling = true;
 
         RaycastHit hit;
@@ -90,6 +95,7 @@ public class GrapplingHookPull : MonoBehaviour
     //start pulling towards target
     private void ExecuteGrappling()
     {
+        grapplePullAudio.Play();
         Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y -1f, transform.position.z);
 
 
@@ -108,6 +114,7 @@ public class GrapplingHookPull : MonoBehaviour
     public void StopGrappling()
     {
         isGrappling = false;
+        grapplePullAudio.Stop();
 
         grapplingCooldownTimer = grapplingCooldown;
 
