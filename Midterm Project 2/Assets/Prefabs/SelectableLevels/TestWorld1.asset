@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelImagePrefab: {fileID: 1249369623761289563, guid: 00536049e3f8cba48b2b1f7d77eae6cc, type: 3}
   levelName:
-  - DJ-Level
-  - Tower-Level
+  - Burglary
+  - The Tower
   worldId: 0
   spacing: 2
   levelImages: []
