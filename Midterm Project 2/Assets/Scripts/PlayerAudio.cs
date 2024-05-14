@@ -8,6 +8,7 @@ public class PlayerAudio : MonoBehaviour
 
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] AudioSource FootstepSource;
+    [SerializeField] AudioSource SlideSource;
 
     Rigidbody rb;
     bool playingFootsteps;
@@ -31,6 +32,14 @@ public class PlayerAudio : MonoBehaviour
         else if (!playingFootsteps && playerMovement.state == PlayerMovement.MovementState.Crouching && rb.velocity.magnitude > 0)
         {
             StartCoroutine(PlayFootseps(.75f));
+        }
+        else if (playerMovement.state == PlayerMovement.MovementState.Sliding && rb.velocity.magnitude > 0 && !SlideSource.isPlaying)
+        {
+            SlideSource.Play();
+        }
+        else if (SlideSource.isPlaying && !playerMovement.sliding)
+        {
+            SlideSource.Stop();
         }
     }
 
