@@ -12,7 +12,7 @@ public class LaserDamage : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerController>().TakeDamage(damageAmount);
+            other.GetComponent<PlayerCon>().TakeDamage(damageAmount);
         }
     }
 

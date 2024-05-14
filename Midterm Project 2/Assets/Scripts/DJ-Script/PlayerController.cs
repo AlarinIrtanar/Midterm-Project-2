@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour, IDamage
     void Start()
     {
         HpOrig = Hp;
-        SpawnPlayer();
+        
     }
 
     // Update is called once per frame
@@ -43,14 +43,11 @@ public class PlayerController : MonoBehaviour, IDamage
 
     public void Die()
     {
-        SpawnPlayer();
+       return;
     }
 
 
-    public void SpawnPlayer()
-    {
-        GameManager.Instance.RespawnPlayer();
-    }
+   
 
    
 
