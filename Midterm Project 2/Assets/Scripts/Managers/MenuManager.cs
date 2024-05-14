@@ -23,7 +23,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioMixer mixer;
 
-    bool isPaused;
+    public bool isPaused;
     // Start is called before the first frame update
     void Awake()
     {
