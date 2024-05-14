@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
@@ -14,17 +15,29 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject menuOptions;
     [SerializeField] string mainMenuName;
 
     [Header("----- Audio -----")]
     //[SerializeField] AudioClip buttonPressSound;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioMixer mixer;
 
     bool isPaused;
     // Start is called before the first frame update
     void Awake()
     {
         instance = this;
+
+        float temp;
+        mixer.GetFloat("MasterVolume", out temp);
+        PlayerPrefs.SetFloat("MasterVolume", temp);
+
+        mixer.GetFloat("MusicVolume", out temp);
+        PlayerPrefs.SetFloat("MusicVolume", temp);
+
+        mixer.GetFloat("SFXVolume", out temp);
+        PlayerPrefs.SetFloat("SFXVolume", temp);
     }
 
     // Update is called once per frame
@@ -34,6 +47,8 @@ public class MenuManager : MonoBehaviour
         {
             if (isPaused && menuActive == menuPause)
             {
+                PressCancel();
+                menuOptions.SetActive(false);
                 Unpause();
             }
             else if (!isPaused && menuActive == null)
@@ -76,6 +91,33 @@ public class MenuManager : MonoBehaviour
     {
         audioSource.Play();
         SceneManager.LoadScene(mainMenuName);
+    }
+    public void PressApply()
+    {
+        float temp;
+        mixer.GetFloat("MasterVolume", out temp);
+        PlayerPrefs.SetFloat("MasterVolume", temp);
+
+        mixer.GetFloat("MusicVolume", out temp);
+        PlayerPrefs.SetFloat("MusicVolume", temp);
+
+        mixer.GetFloat("SFXVolume", out temp);
+        PlayerPrefs.SetFloat("SFXVolume", temp);
+    }
+    public void PressCancel()
+    {
+        if (PlayerPrefs.HasKey("MasterVolume"))
+        {
+            mixer.SetFloat("MasterVolume", PlayerPrefs.GetFloat("MasterVolume") / 20);
+        }
+        if (PlayerPrefs.HasKey("MusicVolume"))
+        {
+            mixer.SetFloat("MusicVolume", PlayerPrefs.GetFloat("MusicVolume") /20);
+        }
+        if (PlayerPrefs.HasKey("SFXVolume"))
+        {
+            mixer.SetFloat("SFXVolume", PlayerPrefs.GetFloat("SFXVolume") / 20);
+        }
     }
 
     void Unpause()

@@ -46,10 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ee83130cc94414ab90a604755f0c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerPreFab: {fileID: 0}
+  playerSpawnPos: {fileID: 0}
   player: {fileID: 0}
   playerScript: {fileID: 0}
   timer: 0
   timeLow: {fileID: 2308976595508529957}
+  score: 0
 --- !u!82 &2308976595508529957
 AudioSource:
   m_ObjectHideFlags: 0
@@ -59,7 +62,7 @@ AudioSource:
   m_GameObject: {fileID: 171697454835181047}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 594398737546384054, guid: aef2720eaf5305e499a2e20d1fd481ae, type: 2}
   m_audioClip: {fileID: 8300000, guid: c5762a91c9777af49a98ffb0dc1bfd67, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.506
