@@ -10,10 +10,13 @@ public class PlayerController : MonoBehaviour, IDamage
     [Header("----player--------")]
   
     [SerializeField] int Hp;
+    [SerializeField] AudioSource gunshotAS;
 
 
-   
+
     int HpOrig;
+    bool isShooting;
+    float shootRate = .5f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +27,10 @@ public class PlayerController : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButton("Shoot") && !isShooting)
+        {
+            StartCoroutine(shoot());
+        }
     }
 
    
@@ -45,8 +51,17 @@ public class PlayerController : MonoBehaviour, IDamage
         GameManager.Instance.Respawn(gameObject);
     }
 
+    IEnumerator shoot()
+    {
+        isShooting = true;
+
+        gunshotAS.Play();
+        yield return new WaitForSeconds(shootRate);
+        isShooting = false;
+    }
 
 
-   
+
+
 
 }
