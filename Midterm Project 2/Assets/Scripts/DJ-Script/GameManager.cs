@@ -5,16 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject PlayerPreFab;
-    [SerializeField] GameObject playerSpawnPos;
+  
 
     public static GameManager Instance;
 
 
     public GameObject player;
-   
-   // public PlayerController playerScript;
-
+ 
     public float timer;
 
     public AudioSource timeLow;
@@ -25,7 +22,6 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         player = GameObject.FindWithTag("Player");
-        playerSpawnPos = GameObject.FindWithTag("Player SpawnPos");
         //playerScript = player.GetComponent<PlayerController>();
         timer = 120f;
 

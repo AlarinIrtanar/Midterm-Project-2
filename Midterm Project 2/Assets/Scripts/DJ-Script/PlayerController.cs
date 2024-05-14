@@ -11,8 +11,9 @@ public class PlayerController : MonoBehaviour, IDamage
   
     [SerializeField] int Hp;
 
-
    
+
+
     int HpOrig;
 
     // Start is called before the first frame update
@@ -36,19 +37,12 @@ public class PlayerController : MonoBehaviour, IDamage
 
         if(Hp <= 0)
         {
-            Die();
+            GameManager.Instance.YouLose();
         }
 
     }
 
-    public void Die()
-    {
-       return;
-    }
-
-
-   
-
+    
    
 
 }
