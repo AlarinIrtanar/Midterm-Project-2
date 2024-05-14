@@ -49,8 +49,7 @@ public class LevelInfoController : MonoBehaviour
         audioSource.Play();
         if (isUnlocked)
         {
-            Debug.Log("Attempting to go to: " +  levelNameText.text); // Comment when levels are created
-            PlayerPrefs.SetString("SelectedWorld", parent.fileName);
+            //Debug.Log("Attempting to go to: " +  levelNameText.text); // Comment when levels are created
             PlayerPrefs.SetInt("SelectedLevel", int.Parse(levelNumText.text));
             SceneManager.LoadScene(levelNameText.text); // Uncomment when levels are created
         }

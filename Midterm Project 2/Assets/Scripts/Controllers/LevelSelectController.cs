@@ -14,32 +14,57 @@ public class LevelSelectController : MonoBehaviour
     SelectableWorlds currentWorld;
     List<SelectableWorlds> newWorldsList;
 
+
     [Header("Audio")]
     [SerializeField] AudioClip buttonPress;
     [SerializeField] AudioClip buttonPressNextPage;
     [SerializeField] AudioSource audioSource;
 
-    string fileName;
     // Start is called before the first frame update
     void Awake()
     {
-        fileName = ("/WorldUnlocks.dat");
         newWorldsList = new List<SelectableWorlds>();
-        for (int i = 0; i < worldsList.Count; ++i)
+        if (worldsList.Count == FileManager.instance.worlds.Count)
         {
-            currentWorld = Instantiate(worldsList[i], this.transform);
-            newWorldsList.Add(currentWorld);
-            //Debug.Log("Disabling New World " + (i + 1).ToString());
-            newWorldsList[i].SetEnabled(false);
-            //Debug.Log("New World " + (i + 1).ToString() + " Disabled");
+            for (int i = 0; i < worldsList.Count; ++i)
+            {
+                currentWorld = Instantiate(worldsList[i], this.transform);
+                newWorldsList.Add(currentWorld);
+                newWorldsList[i].SetEnabled(false);
+            }
         }
-        newWorldsList[0].levelImages[0].GetComponent<LevelInfoController>().SetUnlocked(true);
+        else
+        {
+            FileManager.instance.ClearWorlds();
+            for (int i = 0; i < worldsList.Count; ++i)
+            {
+                currentWorld = Instantiate(worldsList[i], this.transform);
+                newWorldsList.Add(currentWorld);
+                newWorldsList[i].SetEnabled(false);
+
+                FileManager.instance.AddWorld(newWorldsList[i].levelName.Count);
+            }
+            newWorldsList[0].levelImages[0].GetComponent<LevelInfoController>().SetUnlocked(true);
+            FileManager.instance.UnlockLevel(0, 0);
+            FileManager.instance.SaveWorldUnlocks();
+        }
+        FileManager.instance.LoadWorldUnlocks();
     }
 
     private void OnEnable()
     {
         //Debug.Log("Enabling World 1");
         newWorldsList[worldSelectCount].SetEnabled(true);
+        FileManager.instance.LoadWorldUnlocks();
+
+        for (int i = 0; i < newWorldsList.Count; i++) 
+        {
+            for (int j = 0; j < newWorldsList[i].levelImages.Count; j++) 
+            {
+                newWorldsList[i].levelImages[j].GetComponent<LevelInfoController>().SetUnlocked(FileManager.instance.GetUnlock(i, j));
+            }
+        }
+
         //Debug.Log("World 1 Enabled");
     }
     public void OnDisable()
@@ -54,10 +79,7 @@ public class LevelSelectController : MonoBehaviour
     public void PressMainMenu()
     {
         audioSource.PlayOneShot(buttonPress);
-        for (int i = 0; i < worldsList.Count; ++i)
-        {
-            newWorldsList[i].SaveLevelUnlocks();
-        }
+        FileManager.instance.SaveWorldUnlocks();
     }
     public void PressNext()
     {
@@ -74,6 +96,7 @@ public class LevelSelectController : MonoBehaviour
             worldSelectCount = 0;
             newWorldsList[worldSelectCount].SetEnabled(true);
         }
+        PlayerPrefs.SetInt("SelectedWorld", worldSelectCount);
     }
     public void PressPrev()
     {
@@ -90,6 +113,7 @@ public class LevelSelectController : MonoBehaviour
             worldSelectCount = worldsList.Count - 1;
             newWorldsList[worldSelectCount].SetEnabled(true);
         }
+        PlayerPrefs.SetInt("SelectedWorld", worldSelectCount);
     }
 
     public void PlayButtonPress()

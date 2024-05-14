@@ -58,16 +58,11 @@ public class MenuManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey("SelectedWorld") && PlayerPrefs.HasKey("SelectedLevel"))
         {
-            string world = PlayerPrefs.GetString("SelectedWorld");
+            int world = PlayerPrefs.GetInt("SelectedWorld");
             int level = PlayerPrefs.GetInt("SelectedLevel");
-            FileManager.instance.LoadLevelUnlocks(world);
-            List<bool> unlocks = FileManager.instance.GetLevelUnlocks();
-            if (unlocks.Count > level)
-            {
-                unlocks[level] = true;
-                FileManager.instance.SetLevelUnlocks(unlocks);
-                FileManager.instance.SaveLevelUnlocks(world);
-            }
+
+            FileManager.instance.UnlockLevel(world, level);
+
             SceneManager.LoadScene(mainMenuName); // temp
         }
     }
@@ -87,7 +82,7 @@ public class MenuManager : MonoBehaviour
     {
         if (HUDManager.instance != null)
         {
-            HUDManager.instance.reticle.gameObject.SetActive(false);
+            HUDManager.instance.reticle.gameObject.SetActive(true);
         }
         audioSource.Play();
         Time.timeScale = 1;
