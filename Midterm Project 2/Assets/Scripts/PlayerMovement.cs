@@ -75,9 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-       
-        
-
+      
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
@@ -85,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
         startYScale = transform.localScale.y;
         
-        //SpawnPlayer();
+       
     }
 
     private void Update()
