@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour 
+public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     private float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
-    public float slideSpeed;
-    public float wallrunSpeed;
-
-    float desiredMoveSpeed;
-    float lastDesiredMoveSpeed;
 
     public float groundDrag;
 
@@ -22,17 +17,12 @@ public class PlayerMovement : MonoBehaviour
     public float airMultiplier;
     bool readyToJump;
 
-    [Header("Sprinting")]
-    public float sprintStaminaRegenSpeed;
-    public float sprintStaminaDrainSpeed;
-    float sprintStamina = 1f;
-
     [Header("Crouching")]
     public float crouchSpeed;
     public float crouchYScale;
     float startYScale;
 
-    [Header("Keybinds")]
+    [Header("Keybinds (WILL CHANGE LATER)")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
     public KeyCode crouchKey = KeyCode.LeftControl;
@@ -40,13 +30,12 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
-    public bool grounded;
+    bool grounded;
 
     [Header("Slope Handling")]
     public float maxSlopeAngle;
     RaycastHit slopeHit;
     bool exitingSlope;
-
 
     public Transform orientation;
 
@@ -64,28 +53,41 @@ public class PlayerMovement : MonoBehaviour
     {
         Walking, 
         Sprinting, 
-        Wallrunning,
         Crouching,
-        Sliding,
         Air
     }
 
+<<<<<<< Updated upstream
+=======
     public bool sliding;
     public bool wallrunning;
+    public bool activeGrappling;
 
+>>>>>>> Stashed changes
     private void Start()
     {
-       
-        
-
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
         readyToJump = true;
 
         startYScale = transform.localScale.y;
-        
-        //SpawnPlayer();
+    }
+
+    public void RestRestrictions()
+    {
+        activeGrappling = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(enableMovementOnNextTouch)
+        {
+            enableMovementOnNextTouch = false;
+            RestRestrictions();
+            //activeGrappling = false;
+            GetComponent<GrapplingHookPull>().StopGrappling();
+        }
     }
 
     private void Update()
@@ -98,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         StateHandler();
 
         // handle drag
-        if (grounded)
+        if (grounded && !activeGrappling)
             rb.drag = groundDrag;
         else
             rb.drag = 0;
@@ -115,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // When to jump
-        if (Input.GetKey(jumpKey) && readyToJump && (grounded || OnSlope()))
+        if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
             Jump();
@@ -138,52 +140,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateHandler()
     {
-        // Mode - Wallrunning
-        if (wallrunning)
-        {
-            state = MovementState.Wallrunning;
-            desiredMoveSpeed = wallrunSpeed;
-        }
-
-        // Move - Sliding
-        else if (sliding)
-        {
-            state = MovementState.Sliding;
-
-            if (OnSlope() && rb.velocity.y < 0.1f)
-                desiredMoveSpeed = slideSpeed;
-
-            else
-                desiredMoveSpeed = sprintSpeed;
-        }
-
         // Mode - Crouching
-        else if (Input.GetKey(crouchKey))
+        if (Input.GetKey(crouchKey))
         {
             state = MovementState.Crouching;
-            desiredMoveSpeed = crouchSpeed;
+            moveSpeed = crouchSpeed;
         }
 
         // Mode - Sprinting
-        else if (grounded && Input.GetKey(sprintKey) && sprintStamina > 0f)
+        else if (grounded && Input.GetKey(sprintKey))
         {
             state = MovementState.Sprinting;
-            desiredMoveSpeed = sprintSpeed;
-
-            // Drain sprint stamina
-            sprintStamina -= sprintStaminaDrainSpeed * Time.deltaTime;
-            if (sprintStamina < 0f) sprintStamina = 0f;
+            moveSpeed = sprintSpeed;
         }
 
         // Mode - Walking
         else if (grounded)
         {
             state = MovementState.Walking;
-            desiredMoveSpeed = walkSpeed;
-
-            // Regen sprint stamina
-            sprintStamina += sprintStaminaRegenSpeed * Time.deltaTime;
-            if (sprintStamina > 1f) sprintStamina = 1f;
+            moveSpeed = walkSpeed;
         }
 
         // Mode - Air
@@ -191,51 +166,24 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.Air;
 
-            // Regen sprint stamina
-            sprintStamina += sprintStaminaRegenSpeed * Time.deltaTime;
-            if (sprintStamina > 1f) sprintStamina = 1f;
         }
-
-        // Check if desiredMoveSpeed has changed drastically
-        if (Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 8f && moveSpeed != 0)
-        {
-            StopAllCoroutines();
-            StartCoroutine(SmoothlyLerpMoveSpeed());
-        }
-        else
-        {
-            moveSpeed = desiredMoveSpeed;
-        }
-
-        lastDesiredMoveSpeed = desiredMoveSpeed;
-    }
-
-    private IEnumerator SmoothlyLerpMoveSpeed()
-    {
-        // Smoothly lerp movementSpeed to desired value
-        float time = 0;
-        float difference  = Mathf.Abs(desiredMoveSpeed - moveSpeed);
-        float startValue = moveSpeed;
-
-        while (time < difference)
-        {
-            moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, 3f * time / difference);
-            time += Time.deltaTime;
-            yield return null;
-        }
-
-        moveSpeed = desiredMoveSpeed;
     }
 
     private void MovePlayer()
     {
+        //To stop player from moving while grappling
+        if (activeGrappling)
+        {
+            return;
+        }
+
         // Calculate movement direction
         moveDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         // On slope
         if (OnSlope())
         {
-            rb.AddForce(GetSlopeMoveDirection(moveDir) * moveSpeed * 20f, ForceMode.Force);
+            rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 20f, ForceMode.Force);
 
             if (rb.velocity.y > 0)
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
@@ -249,13 +197,17 @@ public class PlayerMovement : MonoBehaviour
         else
             rb.AddForce(moveDir.normalized * moveSpeed * airMultiplier * 10f, ForceMode.Force);
 
-        // Turn gravity off while on slope
-        if (!wallrunning)
-            rb.useGravity = !OnSlope();
+        // Turn gravoty off while on slope
+        rb.useGravity = !OnSlope();
     }
 
     private void SpeedControl()
     {
+        if(activeGrappling)
+        {
+            return;
+        }
+
         // Limiting speed on slope
         if (OnSlope() && !exitingSlope)
         {
@@ -294,7 +246,31 @@ public class PlayerMovement : MonoBehaviour
         exitingSlope = false;
     }
 
+<<<<<<< Updated upstream
+    private bool OnSlope()
+=======
+    private bool enableMovementOnNextTouch;
+    public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)
+    {
+        activeGrappling = true;
+
+        velocityToSet = DeterminePullVelocity(transform.position, targetPosition, trajectoryHeight);
+        //Player will get pulled after 0.1 seconds
+        Invoke(nameof(SetVelocity), 0.1f);
+
+        Invoke(nameof(RestRestrictions), 3f);
+    }
+
+    private Vector3 velocityToSet;
+    private void SetVelocity()
+    {
+        enableMovementOnNextTouch = true;
+        rb.velocity = velocityToSet;
+        //activeGrappling = false;
+    }
+
     public bool OnSlope()
+>>>>>>> Stashed changes
     {
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
         {
@@ -305,13 +281,28 @@ public class PlayerMovement : MonoBehaviour
         return false;
     }
 
-    public Vector3 GetSlopeMoveDirection(Vector3 direction)
+    private Vector3 GetSlopeMoveDirection()
     {
-        return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
+        return Vector3.ProjectOnPlane(moveDir, slopeHit.normal).normalized;
+    }
+<<<<<<< Updated upstream
+=======
+
+
+    public Vector3 DeterminePullVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
+    {
+        float gravity = Physics.gravity.y;
+        float yDisplacement = endPoint.y - startPoint.y;
+        Vector3 xzDisplacement = new Vector3(endPoint.x - startPoint.x, 0f, endPoint.z - startPoint.z);
+
+        //Vector3 yVelocity = new Vector3(0f, yDisplacement, 0f);
+        Vector3 yVelocity = Vector3.up * Mathf.Sqrt(-2 * gravity * trajectoryHeight);
+        //Vector3 xzVelocity = new Vector3(xzDisplacement.x, 0f, xzDisplacement.z);
+        Vector3 xzVelocity = xzDisplacement / (Mathf.Sqrt(-2 * trajectoryHeight / gravity) + Mathf.Sqrt(2 * (yDisplacement - trajectoryHeight) / gravity));
+
+        return xzVelocity + yVelocity;
     }
 
 
-   
-
-    
+>>>>>>> Stashed changes
 }
