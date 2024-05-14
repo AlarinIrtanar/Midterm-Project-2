@@ -519,7 +519,7 @@ Transform:
   m_GameObject: {fileID: 7045759686235038636}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1932, y: 0.07, z: 0}
+  m_LocalPosition: {x: -0.227, y: 0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -568,7 +568,6 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   m_Parameters:
@@ -791,14 +790,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 1553652585311788807}
   gunTip: {fileID: 6014838749811166842}
+  lineRenderer: {fileID: 5345160153506106364}
   whatIsGrappleable:
     serializedVersion: 2
-    m_Bits: 8
-  grappleRange: 300
-  grappleDelay: 0
+    m_Bits: 72
+  grappleRange: 50
+  grappleDelay: 0.1
+  overshootYAxis: 0
   grapplePoint: {x: 0, y: 0, z: 0}
   grapplingCooldown: 0
-  grapplingCooldownTimer: 0
+  grapplingCooldownTimer: 1
   grappleKey: 324
 --- !u!4 &7510006827404879071 stripped
 Transform:
