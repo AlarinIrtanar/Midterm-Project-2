@@ -11,6 +11,7 @@ public class JumpPad : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.attachedRigidbody.AddForce(transform.up * launchSpeed);
+            Debug.Log("TEST");
         }
     }
 }
