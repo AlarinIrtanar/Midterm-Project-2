@@ -80,7 +80,7 @@ public class FileManager : MonoBehaviour
         {
             worlds[worldId].levels[levelId].isUnlocked = true;
         }
-        else if(worldId < worlds.Count)
+        else if(worldId < worlds.Count - 1)
         {
             worlds[worldId + 1].levels[0].isUnlocked = true;
         }

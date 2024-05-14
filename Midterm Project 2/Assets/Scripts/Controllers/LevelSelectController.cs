@@ -57,6 +57,7 @@ public class LevelSelectController : MonoBehaviour
     {
         //Debug.Log("Enabling World 1");
         newWorldsList[worldSelectCount].SetEnabled(true);
+        PlayerPrefs.SetInt("SelectedWorld", worldSelectCount);
         FileManager.instance.LoadWorldUnlocks();
 
         for (int i = 0; i < newWorldsList.Count; i++) 

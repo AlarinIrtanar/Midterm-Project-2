@@ -69,9 +69,9 @@ public class MenuManager : MonoBehaviour
     public void PressNextLevel()
     {
         audioSource.Play();
-        //Unpause(); // Temp
+        Time.timeScale = 1;
 
-            SceneManager.LoadScene(mainMenuName); // temp
+        SceneManager.LoadScene(mainMenuName); // temp
     }
     public void PressRestart()
     {
