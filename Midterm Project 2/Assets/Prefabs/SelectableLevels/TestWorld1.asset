@@ -16,9 +16,6 @@ MonoBehaviour:
   levelName:
   - DJ-Level
   - Tower-Level
-  - Level 3 - The Trio
-  - Level 4 - The Quad
-  - Level 5 - 5 Star Pizza
-  fileName: 
+  worldId: 0
   spacing: 2
   levelImages: []

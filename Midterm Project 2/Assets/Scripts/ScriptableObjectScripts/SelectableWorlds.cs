@@ -12,12 +12,11 @@ public class SelectableWorlds : ScriptableObject
 {
     [SerializeField] Image levelImagePrefab;
     public List<string> levelName;
-    public string fileName;
+    public int worldId;
 
     [Range(1,2)][SerializeField] float spacing;
 
     public List<Image> levelImages;
-    List<bool> levelUnlocks;
     Image currentImage;
     LevelInfoController levelInfoController;
     GameObject parent;
@@ -29,18 +28,10 @@ public class SelectableWorlds : ScriptableObject
         if (firstLaunch)
         {
             firstLaunch = false;
-            fileName = ("/" + this.name.ToString() + ".dat");
             levelImages = new List<Image>();
-            FileManager.instance.LoadLevelUnlocks(fileName);
-            levelUnlocks = FileManager.instance.GetLevelUnlocks();
-
-            while (levelUnlocks.Count < levelName.Count)
-            {
-                levelUnlocks.Add(false);
-            }
-            FileManager.instance.SaveLevelUnlocks(fileName);
 
             parent = GameObject.FindGameObjectWithTag("LevelSelect");
+
             instantX = -((levelName.Count * levelImagePrefab.rectTransform.sizeDelta.x) / 2 - (levelImagePrefab.rectTransform.sizeDelta.x / 2)) * spacing;
             for (int i = 0; i < levelName.Count; i++)
             {
@@ -51,7 +42,7 @@ public class SelectableWorlds : ScriptableObject
                 levelInfoController.SetParent(this);
                 levelInfoController.SetName(levelName[i]);
                 levelInfoController.SetNumber(i + 1);
-                levelInfoController.SetUnlocked(levelUnlocks[i]);
+                //levelInfoController.SetUnlocked(FileManager.instance.worlds[worldId].levels[i].isUnlocked);
                 levelImages.Add(currentImage);
             }
         }
@@ -63,23 +54,5 @@ public class SelectableWorlds : ScriptableObject
         }
 
     }
-/*    public void SetDisabled(bool isEnabled)
-    {
-        for (int i = 0; i < levelImages.Count; i++)
-        {
-            Destroy(levelImages[i]);
-        }
-    }*/
 
-        public void SaveLevelUnlocks()
-    {
-        for (int i = 0; i < levelImages.Count; i++)
-        {
-            //Debug.Log("Checking Level " + (i + 1).ToString());
-            levelUnlocks[i] = levelImages[i].GetComponent<LevelInfoController>().GetUnlocked();
-            //Debug.Log("Level " + (i + 1).ToString() + " Checked");
-        }
-        FileManager.instance.SetLevelUnlocks(levelUnlocks);
-        FileManager.instance.SaveLevelUnlocks(fileName);
-    }
 }

@@ -9,6 +9,7 @@ public class MainMenuController : MonoBehaviour
     public void Start()
     {
         FileManager.instance.LoadOptions();
+        FileManager.instance.LoadWorldUnlocks();
     }
     public void PressQuit()
     {
