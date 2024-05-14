@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerRailGrinding : MonoBehaviour
 {
+<<<<<<< Updated upstream
+=======
+    private PlayerMovement playerMovement;
+
+>>>>>>> Stashed changes
     [Header("Inputs")]
     [SerializeField] bool jump;
     [SerializeField] Vector3 input;
@@ -23,10 +28,24 @@ public class PlayerRailGrinding : MonoBehaviour
 
     void Start()
     {
+<<<<<<< Updated upstream
         
     }
 
     void Update()
+=======
+        rb = GetComponent<Rigidbody>();
+    }
+
+    //jump off rails here
+
+    private void FixedUpdate()
+    {
+
+    }
+
+    private void Update()
+>>>>>>> Stashed changes
     {
         
     }
