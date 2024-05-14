@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 329640843}
   m_Layer: 0
   m_Name: Sphere (5)
-  m_TagString: Test
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 440599818}
   m_Layer: 0
   m_Name: Sphere (4)
-  m_TagString: Test
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -635,7 +635,7 @@ Transform:
   m_GameObject: {fileID: 440599817}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.75, y: 1, z: 0.5}
+  m_LocalPosition: {x: 0.5, y: 1, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -651,7 +651,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2444593144436036986, guid: 98546e0977572b846bfbdfa9f553d6cb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.63
       objectReference: {fileID: 0}
     - target: {fileID: 2444593144436036986, guid: 98546e0977572b846bfbdfa9f553d6cb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -659,7 +659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2444593144436036986, guid: 98546e0977572b846bfbdfa9f553d6cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.51
       objectReference: {fileID: 0}
     - target: {fileID: 2444593144436036986, guid: 98546e0977572b846bfbdfa9f553d6cb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -689,13 +689,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5345160153506106364, guid: 98546e0977572b846bfbdfa9f553d6cb, type: 3}
+      propertyPath: m_Positions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6014838749811166842, guid: 98546e0977572b846bfbdfa9f553d6cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.227
       objectReference: {fileID: 0}
     - target: {fileID: 6081961242809291696, guid: 98546e0977572b846bfbdfa9f553d6cb, type: 3}
       propertyPath: grappleDelay
-      value: 2
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081961242809291696, guid: 98546e0977572b846bfbdfa9f553d6cb, type: 3}
+      propertyPath: grappleRange
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081961242809291696, guid: 98546e0977572b846bfbdfa9f553d6cb, type: 3}
+      propertyPath: lineRenderer
+      value: 
+      objectReference: {fileID: 1313346222}
+    - target: {fileID: 6081961242809291696, guid: 98546e0977572b846bfbdfa9f553d6cb, type: 3}
+      propertyPath: overshootYAxis
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6081961242809291696, guid: 98546e0977572b846bfbdfa9f553d6cb, type: 3}
       propertyPath: grapplingCooldown
@@ -707,7 +723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6081961242809291696, guid: 98546e0977572b846bfbdfa9f553d6cb, type: 3}
       propertyPath: whatIsGrappleable.m_Bits
-      value: 8
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 6848938411405654777, guid: 98546e0977572b846bfbdfa9f553d6cb, type: 3}
       propertyPath: m_Name
@@ -839,7 +855,7 @@ GameObject:
   - component: {fileID: 730529065}
   m_Layer: 0
   m_Name: Sphere (1)
-  m_TagString: Test
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -969,9 +985,9 @@ GameObject:
   - component: {fileID: 755624783}
   - component: {fileID: 755624782}
   - component: {fileID: 755624781}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
-  m_TagString: Test
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1077,7 +1093,7 @@ GameObject:
   - component: {fileID: 1013180953}
   m_Layer: 0
   m_Name: Sphere (2)
-  m_TagString: Test
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1307,7 +1323,7 @@ GameObject:
   - component: {fileID: 1092677534}
   m_Layer: 0
   m_Name: Sphere (3)
-  m_TagString: Test
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1561,6 +1577,11 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!120 &1313346222 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 5345160153506106364, guid: 98546e0977572b846bfbdfa9f553d6cb, type: 3}
+  m_PrefabInstance: {fileID: 442352354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1426792922
 GameObject:
   m_ObjectHideFlags: 0
@@ -2633,6 +2654,7 @@ MonoBehaviour:
   state: 0
   sliding: 0
   wallrunning: 0
+  activeGrappling: 0
 --- !u!4 &7510006827464124893
 Transform:
   m_ObjectHideFlags: 0
@@ -2820,11 +2842,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 1553652585248346629}
   gunTip: {fileID: 1195948019}
+  lineRenderer: {fileID: 0}
   whatIsGrappleable:
     serializedVersion: 2
     m_Bits: 8
   grappleRange: 300
   grappleDelay: 0
+  overshootYAxis: 0
   grapplePoint: {x: 0, y: 0, z: 0}
   grapplingCooldown: 0
   grapplingCooldownTimer: 1
