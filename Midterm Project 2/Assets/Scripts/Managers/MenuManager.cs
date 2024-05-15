@@ -82,6 +82,7 @@ public class MenuManager : MonoBehaviour
     public void PressQuit()
     {
         audioSource.Play();
+        Time.timeScale = 1;
         SceneManager.LoadScene(mainMenuName);
     }
     public void PressApply()
