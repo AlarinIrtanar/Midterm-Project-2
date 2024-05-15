@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditor.Sprites;
 using UnityEngine;
 using UnityEngine.Splines;
 
@@ -26,7 +27,7 @@ public class RailGrinding : MonoBehaviour
         Vector3 localPos = transform.InverseTransformPoint(worldPoint);
         return localPos;
     }
-    
+
     public float CalculateTargetRailPoint(Vector3 playerPos, out Vector3 worldPosSpline)
     {
         float3 nearestPoint;
@@ -39,7 +40,7 @@ public class RailGrinding : MonoBehaviour
     public void CalculateDirection(float3 railForward, Vector3 playerForward)
     {
         float angle = Vector3.Angle(railForward, playerForward.normalized);
-        if(angle > 90f)
+        if (angle > 90f)
         {
             normalDirection = false;
         }
