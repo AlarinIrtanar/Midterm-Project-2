@@ -16,6 +16,7 @@ MonoBehaviour:
   levelName:
   - Burglary
   - The Tower
+  - The Maze
   worldId: 0
   spacing: 2
   levelImages: []
