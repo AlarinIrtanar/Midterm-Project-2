@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    public bool isPaused;
+
     [Header("----- Components -----")]
-    public static MenuManager instance;
     [SerializeField] TMP_Text scoreText;
+    public static MenuManager instance;
 
     [Header("----- Menus -----")]
     [SerializeField] GameObject menuActive;
@@ -23,7 +25,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioMixer mixer;
 
-    public bool isPaused;
     // Start is called before the first frame update
     void Awake()
     {
