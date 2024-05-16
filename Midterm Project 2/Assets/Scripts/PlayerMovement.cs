@@ -32,10 +32,13 @@ public class PlayerMovement : MonoBehaviour
     public float crouchYScale;
     float startYScale;
 
-    [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode sprintKey = KeyCode.LeftShift;
-    public KeyCode crouchKey = KeyCode.LeftControl;
+    //[Header("Keybinds")]
+    //public KeyCode jumpKey = KeyCode.Space;
+    string jumpButton; // Replacement by Matthew
+    //public KeyCode sprintKey = KeyCode.LeftShift;
+    string sprintButton; // Replacement by Matthew
+    //public KeyCode crouchKey = KeyCode.LeftControl;
+    string crouchButton; // Replacement by Matthew
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -76,8 +79,33 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-
-
+        // Jump Button
+        if(PlayerPrefs.HasKey("Jump Button"))
+        {
+            jumpButton = PlayerPrefs.GetString("Jump Button");
+        }
+        else
+        {
+            jumpButton = "space";
+        }
+        // Sprint Button
+        if (PlayerPrefs.HasKey("Sprint Button"))
+        {
+            sprintButton = PlayerPrefs.GetString("Sprint Button");
+        }
+        else
+        {
+            sprintButton = "left shift";
+        }
+        // Crouch Button
+        if (PlayerPrefs.HasKey("Crouch Button"))
+        {
+            crouchButton = PlayerPrefs.GetString("Crouch Button");
+        }
+        else
+        {
+            crouchButton = "left ctrl";
+        }
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -133,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // When to jump
-        if (Input.GetKey(jumpKey) && readyToJump && (grounded || OnSlope()))
+        if (Input.GetKey(jumpButton) && readyToJump && (grounded || OnSlope()))
         {
             readyToJump = false;
             Jump();
@@ -141,14 +169,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Start crouch
-        if (Input.GetKeyDown(crouchKey))
+        if (Input.GetKeyDown(crouchButton))
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
             rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
         }
 
         // Stop crouch
-        if (Input.GetKeyUp(crouchKey))
+        if (Input.GetKeyUp(crouchButton))
         {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
         }
@@ -176,14 +204,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Mode - Crouching
-        else if (Input.GetKey(crouchKey))
+        else if (Input.GetKey(crouchButton))
         {
             state = MovementState.Crouching;
             desiredMoveSpeed = crouchSpeed;
         }
 
         // Mode - Sprinting
-        else if (grounded && Input.GetKey(sprintKey) && sprintStamina > 0f)
+        else if (grounded && Input.GetKey(sprintButton) && sprintStamina > 0f)
         {
             state = MovementState.Sprinting;
             desiredMoveSpeed = sprintSpeed;
@@ -191,6 +219,11 @@ public class PlayerMovement : MonoBehaviour
             // Drain sprint stamina
             sprintStamina -= sprintStaminaDrainSpeed * Time.deltaTime;
             if (sprintStamina < 0f) sprintStamina = 0f;
+
+            if (HUDManager.instance != null)
+            {
+                HUDManager.instance.SetStamina(sprintStamina, 1);
+            }
         }
 
         // Mode - Walking
@@ -202,6 +235,11 @@ public class PlayerMovement : MonoBehaviour
             // Regen sprint stamina
             sprintStamina += sprintStaminaRegenSpeed * Time.deltaTime;
             if (sprintStamina > 1f) sprintStamina = 1f;
+
+            if (HUDManager.instance != null)
+            {
+                HUDManager.instance.SetStamina(sprintStamina, 1);
+            }
         }
 
         // Mode - Air

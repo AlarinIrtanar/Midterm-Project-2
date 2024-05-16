@@ -10,6 +10,35 @@ public class MainMenuController : MonoBehaviour
     {
         FileManager.instance.LoadOptions();
         FileManager.instance.LoadWorldUnlocks();
+        // Shoot Button
+        if (!PlayerPrefs.HasKey("Shoot Button"))
+        {
+            PlayerPrefs.SetString("Shoot Button", "mouse 0");
+        }
+
+        // Grapple Button
+        if (!PlayerPrefs.HasKey("Grapple Button"))
+        {
+            PlayerPrefs.SetString("Grapple Button", "mouse 1");
+        }
+
+        // Crouch Button
+        if (!PlayerPrefs.HasKey("Crouch Button"))
+        {
+            PlayerPrefs.SetString("Crouch Button", "left ctrl");
+        }
+
+        // Sprint Button
+        if (!PlayerPrefs.HasKey("Sprint Button"))
+        {
+            PlayerPrefs.SetString("Sprint Button", "left shift");
+        }
+
+        // Jump Button
+        if (!PlayerPrefs.HasKey("Jump Button"))
+        {
+            PlayerPrefs.SetString("Jump Button", "space");
+        }
     }
     public void PressQuit()
     {
