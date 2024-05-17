@@ -25,8 +25,9 @@ public class GrapplingHookPull : MonoBehaviour
     public float grapplingCooldown;
     public float grapplingCooldownTimer;
 
-    [Header("Input")]
-    public KeyCode grappleKey = KeyCode.Mouse1;
+    //[Header("Input")]
+    //public KeyCode grappleKey = KeyCode.Mouse1;
+    string grappleButton; // Replacement by Matthew
 
     [Header("Audio")]
     public AudioSource grappleShootAudio;
@@ -39,12 +40,21 @@ public class GrapplingHookPull : MonoBehaviour
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        if (PlayerPrefs.HasKey("Grapple Button"))
+        {
+            grappleButton = PlayerPrefs.GetString("Grapple Button");
+        }
+        else
+        {
+            grappleButton = "mouse 1";
+            PlayerPrefs.SetString("Grapple Button", "mouse 1");
+        }
     }
 
 
     private void Update()
     {
-        if (Input.GetKeyDown(grappleKey))
+        if (Input.GetKeyDown(grappleButton))
         {
             StartGrappling();
         }

@@ -7,11 +7,16 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
+
     [Header("----- Components -----")]
-    public static HUDManager instance;
     [SerializeField] Image painSplash;
     [SerializeField] TMP_Text timerText;
+    [SerializeField] Image staminaBar;
     public TMP_Text reticle;
+    public static HUDManager instance;
+
+
+
 
     // Start is called before the first frame update
     void Awake()
@@ -30,5 +35,10 @@ public class HUDManager : MonoBehaviour
         painSplash.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         painSplash.gameObject.SetActive(false);
+    }
+
+    public void SetStamina(float current, float max)
+    {
+        staminaBar.fillAmount = current/max;
     }
 }

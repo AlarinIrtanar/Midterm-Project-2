@@ -128,6 +128,10 @@ public class FileManager : MonoBehaviour
             SaveWorldUnlocks();
         }
     }
+    public void DeleteWorldUnlocks()
+    {
+        File.Delete(filePath + worldUnlocksFileName);
+    }
 
 }
 [Serializable]

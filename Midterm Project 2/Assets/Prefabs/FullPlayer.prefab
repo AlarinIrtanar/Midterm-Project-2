@@ -135,6 +135,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2607661574675201726}
     - target: {fileID: 1819691899899977048, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
+      propertyPath: cameraLoc
+      value: 
+      objectReference: {fileID: 1553652585311788807}
+    - target: {fileID: 1819691899899977048, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
       propertyPath: lineRenderer
       value: 
       objectReference: {fileID: 6765558210557041356}
