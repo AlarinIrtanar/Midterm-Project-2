@@ -172,18 +172,4 @@ public class MenuManager : MonoBehaviour
         menuActive = menuLose;
         menuActive.SetActive(isPaused);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

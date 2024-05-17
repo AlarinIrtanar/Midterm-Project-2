@@ -57,6 +57,10 @@ public class MainMenuController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
+    public void PressCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
     public void PressQuit()
     {
 #if UNITY_EDITOR
