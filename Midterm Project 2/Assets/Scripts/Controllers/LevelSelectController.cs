@@ -16,9 +16,9 @@ public class LevelSelectController : MonoBehaviour
 
 
     [Header("Audio")]
-    [SerializeField] AudioClip buttonPress;
-    [SerializeField] AudioClip buttonPressNextPage;
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource buttonAud;
+    [SerializeField] AudioSource pageAud;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -46,7 +46,7 @@ public class LevelSelectController : MonoBehaviour
 
                 FileManager.instance.AddWorld(newWorldsList[i].levelName.Count);
             }
-            newWorldsList[0].levelImages[0].GetComponent<LevelInfoController>().SetUnlocked(true);
+            //newWorldsList[0].levelImages[0].GetComponent<LevelInfoController>().SetUnlocked(true);
             FileManager.instance.UnlockLevel(0, 0);
             FileManager.instance.SaveWorldUnlocks();
         }
@@ -64,11 +64,21 @@ public class LevelSelectController : MonoBehaviour
         {
             for (int j = 0; j < newWorldsList[i].levelImages.Count; j++) 
             {
-                newWorldsList[i].levelImages[j].GetComponent<LevelInfoController>().SetUnlocked(FileManager.instance.GetUnlock(i, j));
+                bool temp = FileManager.instance.GetUnlock(i, j);
+                StartCoroutine(DisplayUnlock(i, j, temp));
             }
         }
 
         //Debug.Log("World 1 Enabled");
+    }
+    IEnumerator DisplayUnlock(int world, int level, bool isUnlocked)
+    {
+        if(isUnlocked)
+        {
+            newWorldsList[world].levelImages[level].GetComponent<LevelInfoController>().UnlockAnimation();
+        }
+        yield return new WaitForSeconds(0.5f);
+        newWorldsList[world].levelImages[level].GetComponent<LevelInfoController>().SetUnlocked(isUnlocked);
     }
     public void OnDisable()
     {
@@ -81,12 +91,12 @@ public class LevelSelectController : MonoBehaviour
     }
     public void PressMainMenu()
     {
-        audioSource.PlayOneShot(buttonPress);
+        buttonAud.Play();
         FileManager.instance.SaveWorldUnlocks();
     }
     public void PressNext()
     {
-        audioSource.PlayOneShot(buttonPressNextPage);
+        pageAud.Play();
         if (worldSelectCount < worldsList.Count - 1)
         {
             newWorldsList[worldSelectCount].SetEnabled(false);
@@ -103,7 +113,7 @@ public class LevelSelectController : MonoBehaviour
     }
     public void PressPrev()
     {
-        audioSource.PlayOneShot(buttonPressNextPage);
+        pageAud.Play();
         if (worldSelectCount > 0)
         {
             newWorldsList[worldSelectCount].SetEnabled(false);
@@ -121,7 +131,7 @@ public class LevelSelectController : MonoBehaviour
 
     public void PlayButtonPress()
     {
-        audioSource.PlayOneShot(buttonPress);
+        buttonAud.Play();
     }
 
 }

@@ -41,13 +41,14 @@ public class GameManager : MonoBehaviour
             int level = PlayerPrefs.GetInt("SelectedLevel");
 
             FileManager.instance.UnlockLevel(world, level);
-
         }
 
         if (MenuManager.instance != null)
         {
             MenuManager.instance.ShowWin();
         }
+
+        PlayerPrefs.SetInt("NextLevel", 1);
 
     }
 
