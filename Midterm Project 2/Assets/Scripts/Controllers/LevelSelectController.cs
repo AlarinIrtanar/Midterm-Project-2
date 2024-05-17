@@ -10,6 +10,12 @@ public class LevelSelectController : MonoBehaviour
     [Header("Components")]
     [SerializeField] GameObject winScreen;
     public Button nextWorld;
+    [SerializeField] GameObject levelMenu;
+
+    bool levelMenuActive;
+
+    Vector3 levelMenuActiveLoc;
+    Vector3 levelMenuInactiveLoc;
 
     [Header("Levels")]
     [SerializeField] List<SelectableWorlds> worldsList;
@@ -25,8 +31,18 @@ public class LevelSelectController : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Awake()
+    public void Awake()
     {
+        levelMenuActive = false;
+        levelMenuActiveLoc = levelMenuInactiveLoc = levelMenu.transform.position;
+
+        levelMenuActiveLoc.y += 1000;
+
+        if (PlayerPrefs.HasKey("NextLevel") && PlayerPrefs.GetInt("NextLevel") == 1)
+        {
+            levelMenu.transform.position = levelMenuActiveLoc;
+        }
+
         newWorldsList = new List<SelectableWorlds>();
         if (worldsList.Count == FileManager.instance.worlds.Count)
         {
@@ -61,6 +77,17 @@ public class LevelSelectController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (levelMenuActive)
+        {
+            levelMenu.transform.position = Vector3.Lerp(levelMenu.transform.position, levelMenuActiveLoc, Time.deltaTime * 5);
+        }
+        else
+        {
+            levelMenu.transform.position = Vector3.Lerp(levelMenu.transform.position, levelMenuInactiveLoc, Time.deltaTime * 5);
+        }
+    }
     private void OnEnable()
     {
         //Debug.Log("Enabling World 1");
@@ -139,4 +166,8 @@ public class LevelSelectController : MonoBehaviour
         buttonAud.Play();
     }
 
+    public void ToggleLevelMenuActive()
+    {
+        levelMenuActive = !levelMenuActive;
+    }
 }

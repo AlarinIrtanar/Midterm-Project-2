@@ -7,17 +7,20 @@ using UnityEngine.UI;
 
 public class OptionsMenuController : MonoBehaviour
 {
+    [Header("----- Components -----")]
+    [SerializeField] GameObject optionsMenu;
+
+    bool optionsMenuActive;
+
+    Vector3 optionsMenuActiveLoc;
+    Vector3 optionsMenuInactiveLoc;
+
     [Header("----- Text -----")]
     [SerializeField] TMP_Text shootText;
     [SerializeField] TMP_Text grappleText;
     [SerializeField] TMP_Text crouchText;
     [SerializeField] TMP_Text sprintText;
     [SerializeField] TMP_Text jumpText;
-    //[SerializeField] TMP_Text shootText;
-    //[SerializeField] TMP_Text shootText;
-    //[SerializeField] TMP_Text shootText;
-    //[SerializeField] TMP_Text shootText;
-    //[SerializeField] TMP_Text shootText;
 
     [Header("----- Sliders -----")]
     [SerializeField] Slider sensiSlider;
@@ -28,12 +31,14 @@ public class OptionsMenuController : MonoBehaviour
     bool crouchPressed;
     bool sprintPressed;
     bool jumpPressed;
-    //bool shootPressed;
-    //bool shootPressed;
-    //bool shootPressed;
-    //bool shootPressed;
 
+    private void Start()
+    {
+        optionsMenuActive = false;
+        optionsMenuActiveLoc = optionsMenuInactiveLoc = optionsMenu.transform.position;
 
+        optionsMenuActiveLoc.y -= 1000;
+    }
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -112,6 +117,15 @@ public class OptionsMenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (optionsMenuActive)
+        {
+            optionsMenu.transform.position = Vector3.Lerp(optionsMenu.transform.position, optionsMenuActiveLoc, Time.deltaTime * 5);
+        }
+        else
+        {
+            optionsMenu.transform.position = Vector3.Lerp(optionsMenu.transform.position, optionsMenuInactiveLoc, Time.deltaTime * 5);
+        }
+
         if (shootPressed && Input.anyKeyDown)
         {
             string inputString = CheckInput(shootText.text);
@@ -285,5 +299,10 @@ public class OptionsMenuController : MonoBehaviour
 
 
         return result;
+    }
+
+    public void ToggleOptionsMenuActive()
+    {
+        optionsMenuActive = !optionsMenuActive;
     }
 }
