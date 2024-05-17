@@ -49,6 +49,12 @@ public class MainMenuController : MonoBehaviour
             PlayerPrefs.SetFloat("Sensitivity", 1f);
         }
 
+        // Game Speed
+        if (!PlayerPrefs.HasKey("GameSpeed"))
+        {
+            PlayerPrefs.SetFloat("GameSpeed", 1f);
+        }
+
         if (PlayerPrefs.HasKey("NextLevel"))
         {
             if(PlayerPrefs.GetInt("NextLevel") == 1)

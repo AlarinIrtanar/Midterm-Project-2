@@ -21,6 +21,7 @@ public class OptionsMenuController : MonoBehaviour
 
     [Header("----- Sliders -----")]
     [SerializeField] Slider sensiSlider;
+    [SerializeField] Slider speedSlider;
 
     bool shootPressed;
     bool grapplePressed;
@@ -96,6 +97,16 @@ public class OptionsMenuController : MonoBehaviour
         {
             PlayerPrefs.SetFloat("Sensitivity", sensiSlider.value);
         }
+
+        // Game Speed
+        if (PlayerPrefs.HasKey("GameSpeed"))
+        {
+            speedSlider.value = PlayerPrefs.GetFloat("GameSpeed");
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("GameSpeed", speedSlider.value);
+        }
     }
 
     // Update is called once per frame
@@ -150,6 +161,8 @@ public class OptionsMenuController : MonoBehaviour
         PlayerPrefs.SetString("Jump Button", jumpText.text);
 
         PlayerPrefs.SetFloat("Sensitivity", sensiSlider.value);
+        PlayerPrefs.SetFloat("GameSpeed", speedSlider.value);
+        Time.timeScale = speedSlider.value;
     }
     public void ResetControls()
     {
@@ -165,6 +178,7 @@ public class OptionsMenuController : MonoBehaviour
         jumpText.text = "space";
 
         sensiSlider.value = 1f;
+        speedSlider.value = 1f;
 
         Apply();
     }

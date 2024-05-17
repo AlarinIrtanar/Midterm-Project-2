@@ -580,6 +580,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1534083457952343159, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1534083457952343159, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2630135928835792830, guid: 785964410db76734db17ec9ce9797c42, type: 3}
       propertyPath: levelSelect
       value: 
@@ -652,6 +660,18 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 594398737546384054, guid: aef2720eaf5305e499a2e20d1fd481ae, type: 2}
+    - target: {fileID: 6312363686450746690, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6312363686450746690, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6312363686450746690, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6364293438137072010, guid: 785964410db76734db17ec9ce9797c42, type: 3}
       propertyPath: m_Pivot.x
       value: 0
