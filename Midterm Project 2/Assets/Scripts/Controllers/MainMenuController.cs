@@ -40,6 +40,12 @@ public class MainMenuController : MonoBehaviour
         {
             PlayerPrefs.SetString("Jump Button", "space");
         }
+
+        // Sensitivity
+        if (!PlayerPrefs.HasKey("Sensitivity"))
+        {
+            PlayerPrefs.SetFloat("Sensitivity", 1f);
+        }
     }
     public void PressNewGame()
     {

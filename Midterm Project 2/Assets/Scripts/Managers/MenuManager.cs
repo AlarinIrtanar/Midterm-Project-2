@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class MenuManager : MonoBehaviour
     [Header("----- Components -----")]
     [SerializeField] TMP_Text scoreText;
     public static MenuManager instance;
+    [SerializeField] Slider sensiSlider;
 
     [Header("----- Menus -----")]
     [SerializeField] GameObject menuActive;
@@ -39,6 +41,11 @@ public class MenuManager : MonoBehaviour
 
         mixer.GetFloat("SFXVolume", out temp);
         PlayerPrefs.SetFloat("SFXVolume", temp);
+
+        if (PlayerPrefs.HasKey("Sensitivity"))
+        {
+            sensiSlider.value = PlayerPrefs.GetFloat("Sensitivity");
+        }
     }
 
     // Update is called once per frame
@@ -97,6 +104,8 @@ public class MenuManager : MonoBehaviour
 
         mixer.GetFloat("SFXVolume", out temp);
         PlayerPrefs.SetFloat("SFXVolume", temp);
+
+        PlayerPrefs.SetFloat("Sensitivity", sensiSlider.value);
     }
     public void PressCancel()
     {
@@ -111,6 +120,10 @@ public class MenuManager : MonoBehaviour
         if (PlayerPrefs.HasKey("SFXVolume"))
         {
             mixer.SetFloat("SFXVolume", PlayerPrefs.GetFloat("SFXVolume") / 20);
+        }
+        if (PlayerPrefs.HasKey("Sensitivity"))
+        {
+            sensiSlider.value = PlayerPrefs.GetFloat("Sensitivity");
         }
     }
 

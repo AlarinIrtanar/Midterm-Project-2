@@ -19,7 +19,8 @@ public class OptionsMenuController : MonoBehaviour
     //[SerializeField] TMP_Text shootText;
     //[SerializeField] TMP_Text shootText;
 
-    //[Header("----- Controls -----")]
+    [Header("----- Sliders -----")]
+    [SerializeField] Slider sensiSlider;
 
     bool shootPressed;
     bool grapplePressed;
@@ -85,6 +86,16 @@ public class OptionsMenuController : MonoBehaviour
         {
             PlayerPrefs.SetString("Jump Button", jumpText.text);
         }
+
+        // Sensitivity
+        if (PlayerPrefs.HasKey("Sensitivity"))
+        {
+           sensiSlider.value = PlayerPrefs.GetFloat("Sensitivity");
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("Sensitivity", sensiSlider.value);
+        }
     }
 
     // Update is called once per frame
@@ -137,6 +148,8 @@ public class OptionsMenuController : MonoBehaviour
         PlayerPrefs.SetString("Crouch Button", crouchText.text);
         PlayerPrefs.SetString("Sprint Button", sprintText.text);
         PlayerPrefs.SetString("Jump Button", jumpText.text);
+
+        PlayerPrefs.SetFloat("Sensitivity", sensiSlider.value);
     }
     public void ResetControls()
     {
@@ -150,6 +163,9 @@ public class OptionsMenuController : MonoBehaviour
         crouchText.text = "left ctrl";
         sprintText.text = "left shift";
         jumpText.text = "space";
+
+        sensiSlider.value = 1f;
+
         Apply();
     }
 

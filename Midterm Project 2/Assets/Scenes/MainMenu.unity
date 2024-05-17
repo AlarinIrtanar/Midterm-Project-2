@@ -442,6 +442,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1182158643549710676, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182158643549710676, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182158643549710676, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265895310816255098, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265895310816255098, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6106124782111415140, guid: 785964410db76734db17ec9ce9797c42, type: 3}
       propertyPath: m_Name
       value: MainMenu
