@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -38,6 +39,16 @@ public class MainMenuController : MonoBehaviour
         if (!PlayerPrefs.HasKey("Jump Button"))
         {
             PlayerPrefs.SetString("Jump Button", "space");
+        }
+    }
+    public void PressNewGame()
+    {
+        if (FileManager.instance != null) 
+        {
+            FileManager.instance.DeleteWorldUnlocks();
+            FileManager.instance.ClearWorlds();
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
     public void PressQuit()
