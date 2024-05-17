@@ -46,19 +46,32 @@ public class LevelInfoController : MonoBehaviour
     {
         levelNameText.text = levelName;
     }
-    public void UnlockAnimation()
+    IEnumerator UnlockAnimation()
     {
         unlockedEffect.gameObject.SetActive(true);
         unlockAnim.enabled = true;
         unlockedEffect.Play();
         unlockAud.Play();
+        yield return new WaitForSeconds(0.5f);
+        lockedImage.gameObject.SetActive(false);
     }
     public void SetUnlocked(bool isUnlocked)
     {
         this.isUnlocked = isUnlocked;
         if (isUnlocked)
         {
-            lockedImage.gameObject.SetActive(false);
+            if (this.isActiveAndEnabled)
+            {
+                StartCoroutine(UnlockAnimation());
+            }
+            while (!this.isActiveAndEnabled)
+            {
+                parent.parentController.nextWorld.onClick.Invoke();
+                if (this.isActiveAndEnabled)
+                {
+                    StartCoroutine(UnlockAnimation());
+                }
+            }
         }
         else
         {

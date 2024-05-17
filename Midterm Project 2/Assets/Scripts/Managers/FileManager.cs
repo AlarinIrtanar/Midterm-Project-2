@@ -84,7 +84,12 @@ public class FileManager : MonoBehaviour
         {
             worlds[worldId + 1].levels[0].isUnlocked = true;
         }
+        else
+        {
+            PlayerPrefs.SetInt("AllLevelsCompleted", 1);
+        }
         SaveWorldUnlocks();
+
     }
     public bool GetUnlock(int worldId, int levelId)
     {

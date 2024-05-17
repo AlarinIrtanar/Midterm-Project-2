@@ -34,14 +34,38 @@ public class MenuManager : MonoBehaviour
         instance = this;
 
         float temp;
-        mixer.GetFloat("MasterVolume", out temp);
-        PlayerPrefs.SetFloat("MasterVolume", temp);
+        // Master Volume
+        if (PlayerPrefs.HasKey("MasterVolume"))
+        {
+            mixer.SetFloat("MasterVolume", PlayerPrefs.GetFloat("MasterVolume"));
+        }
+        else
+        {
+            mixer.GetFloat("MasterVolume", out temp);
+            PlayerPrefs.SetFloat("MasterVolume", temp);
+        }
 
-        mixer.GetFloat("MusicVolume", out temp);
-        PlayerPrefs.SetFloat("MusicVolume", temp);
+        // Music Volume
+        if (PlayerPrefs.HasKey("MusicVolume"))
+        {
+            mixer.SetFloat("MusicVolume", PlayerPrefs.GetFloat("MusicVolume"));
+        }
+        else
+        {
+            mixer.GetFloat("MusicVolume", out temp);
+            PlayerPrefs.SetFloat("MusicVolume", temp);
+        }
 
-        mixer.GetFloat("SFXVolume", out temp);
-        PlayerPrefs.SetFloat("SFXVolume", temp);
+        // SFX Volume
+        if (PlayerPrefs.HasKey("SFXVolume"))
+        {
+            mixer.SetFloat("SFXVolume", PlayerPrefs.GetFloat("SFXVolume"));
+        }
+        else
+        {
+            mixer.GetFloat("SFXVolume", out temp);
+            PlayerPrefs.SetFloat("SFXVolume", temp);
+        }
 
         // Sensitivity
         if (PlayerPrefs.HasKey("Sensitivity"))

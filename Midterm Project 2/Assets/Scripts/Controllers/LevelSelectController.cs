@@ -7,6 +7,10 @@ using UnityEngine.UI;
 
 public class LevelSelectController : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField] GameObject winScreen;
+    public Button nextWorld;
+
     [Header("Levels")]
     [SerializeField] List<SelectableWorlds> worldsList;
 
@@ -51,6 +55,10 @@ public class LevelSelectController : MonoBehaviour
             FileManager.instance.SaveWorldUnlocks();
         }
         FileManager.instance.LoadWorldUnlocks();
+        if (PlayerPrefs.HasKey("AllLevelsCompleted") && PlayerPrefs.GetInt("AllLevelsCompleted") == 1)
+        {
+            winScreen.SetActive(true);
+        }
     }
 
     private void OnEnable()
@@ -64,21 +72,11 @@ public class LevelSelectController : MonoBehaviour
         {
             for (int j = 0; j < newWorldsList[i].levelImages.Count; j++) 
             {
-                bool temp = FileManager.instance.GetUnlock(i, j);
-                StartCoroutine(DisplayUnlock(i, j, temp));
+                newWorldsList[i].levelImages[j].GetComponent<LevelInfoController>().SetUnlocked(FileManager.instance.GetUnlock(i, j));
             }
         }
 
         //Debug.Log("World 1 Enabled");
-    }
-    IEnumerator DisplayUnlock(int world, int level, bool isUnlocked)
-    {
-        if(isUnlocked)
-        {
-            newWorldsList[world].levelImages[level].GetComponent<LevelInfoController>().UnlockAnimation();
-        }
-        yield return new WaitForSeconds(0.5f);
-        newWorldsList[world].levelImages[level].GetComponent<LevelInfoController>().SetUnlocked(isUnlocked);
     }
     public void OnDisable()
     {
@@ -128,7 +126,14 @@ public class LevelSelectController : MonoBehaviour
         }
         PlayerPrefs.SetInt("SelectedWorld", worldSelectCount);
     }
-
+    public void PressContinue()
+    {
+        if (PlayerPrefs.HasKey("AllLevelsCompleted"))
+        {
+            winScreen.SetActive(false);
+            PlayerPrefs.SetInt("AllLevelsCompleted", 0);
+        }
+    }
     public void PlayButtonPress()
     {
         buttonAud.Play();

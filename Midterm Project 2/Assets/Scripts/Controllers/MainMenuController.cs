@@ -3,16 +3,55 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
     [SerializeField] Button levelSelect;
+    [SerializeField] AudioMixer mixer;
     public void Start()
     {
         FileManager.instance.LoadOptions();
         FileManager.instance.LoadWorldUnlocks();
+
+        float temp;
+        // Master Volume
+        if (PlayerPrefs.HasKey("MasterVolume"))
+        {
+            mixer.SetFloat("MasterVolume", PlayerPrefs.GetFloat("MasterVolume"));
+        }
+        else
+        {
+            mixer.GetFloat("MasterVolume", out temp);
+            PlayerPrefs.SetFloat("MasterVolume", temp);
+        }
+
+        // Music Volume
+        if (PlayerPrefs.HasKey("MusicVolume"))
+        {
+            mixer.SetFloat("MusicVolume", PlayerPrefs.GetFloat("MusicVolume"));
+        }
+        else
+        {
+            mixer.GetFloat("MusicVolume", out temp);
+            PlayerPrefs.SetFloat("MusicVolume", temp);
+        }
+
+        // SFX Volume
+        if (PlayerPrefs.HasKey("SFXVolume"))
+        {
+            mixer.SetFloat("SFXVolume", PlayerPrefs.GetFloat("SFXVolume"));
+        }
+        else
+        {
+            mixer.GetFloat("SFXVolume", out temp);
+            PlayerPrefs.SetFloat("SFXVolume", temp);
+        }
+
+
+
         // Shoot Button
         if (!PlayerPrefs.HasKey("Shoot Button"))
         {
@@ -68,8 +107,9 @@ public class MainMenuController : MonoBehaviour
     
     public void PressNewGame()
     {
-        if (FileManager.instance != null) 
+        if (FileManager.instance != null)
         {
+            PlayerPrefs.SetInt("AllLevelsCompleted", 0);
             FileManager.instance.DeleteWorldUnlocks();
             FileManager.instance.ClearWorlds();
 
