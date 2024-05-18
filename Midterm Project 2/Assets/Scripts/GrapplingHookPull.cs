@@ -108,6 +108,7 @@ public class GrapplingHookPull : MonoBehaviour
         }
         playerMovement.JumpToPosition(grapplePoint, highestPointOnArc);
 
+        grapplingCooldown = grapplingCooldownTimer;
         Invoke(nameof(StopGrappling), 1f);
     }
 
@@ -116,7 +117,7 @@ public class GrapplingHookPull : MonoBehaviour
         isGrappling = false;
         grapplePullAudio.Stop();
 
-        grapplingCooldownTimer = grapplingCooldown;
+        grapplingCooldown = grapplingCooldownTimer;
 
         lineRenderer.enabled = false;
     }
