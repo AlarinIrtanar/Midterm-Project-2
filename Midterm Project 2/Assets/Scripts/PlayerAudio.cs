@@ -46,7 +46,7 @@ public class PlayerAudio : MonoBehaviour
     IEnumerator PlayFootseps(float delay)
     {
         playingFootsteps = true;
-        Debug.Log(rb.velocity.magnitude);
+        //Debug.Log(rb.velocity.magnitude);
         FootstepSource.Play();
         yield return new WaitForSeconds(delay);
         playingFootsteps = false;
