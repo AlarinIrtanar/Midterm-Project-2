@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -50,6 +51,27 @@ public class PlayerMovement : MonoBehaviour
     RaycastHit slopeHit;
     bool exitingSlope;
 
+    [Header("Camera")]
+    [SerializeField] GameObject cam; // player camera
+    public bool viewBobbing;
+    public float viewBobbingIntensityMultiplierVert;
+    public float viewBobbingIntensityMultiplierHoriz;
+    public float viewBobbingSpeed;
+    float viewBobbingIntensity;
+    float viewBobbingTargetIntensity;
+    float viewBobbingProgress;
+    bool doingViewBobbing;
+
+    [Header("Audio")]
+    [SerializeField] AudioSource audioSource;
+    
+    // Steps
+    [SerializeField] AudioClip[] audSteps;
+    [SerializeField] float2 audStepVolRange;
+    [SerializeField] float stepSize;
+    float curDistStepped;
+
+
 
     public Transform orientation;
 
@@ -80,32 +102,22 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         // Jump Button
-        if(PlayerPrefs.HasKey("Jump Button"))
-        {
+        if (PlayerPrefs.HasKey("Jump Button"))
             jumpButton = PlayerPrefs.GetString("Jump Button");
-        }
         else
-        {
             jumpButton = "space";
-        }
+
         // Sprint Button
         if (PlayerPrefs.HasKey("Sprint Button"))
-        {
             sprintButton = PlayerPrefs.GetString("Sprint Button");
-        }
         else
-        {
             sprintButton = "left shift";
-        }
+
         // Crouch Button
         if (PlayerPrefs.HasKey("Crouch Button"))
-        {
             crouchButton = PlayerPrefs.GetString("Crouch Button");
-        }
         else
-        {
             crouchButton = "left ctrl";
-        }
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -125,6 +137,7 @@ public class PlayerMovement : MonoBehaviour
         MyInput();
         SpeedControl();
         StateHandler();
+        DoViewBobbing();
 
         // handle drag
         if (grounded && !activeGrappling)
@@ -189,6 +202,9 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.Wallrunning;
             desiredMoveSpeed = wallrunSpeed;
+            DoStepping();
+
+            viewBobbingTargetIntensity = 0.5f;
         }
 
         // Move - Sliding
@@ -201,6 +217,8 @@ public class PlayerMovement : MonoBehaviour
 
             else
                 desiredMoveSpeed = sprintSpeed;
+
+            viewBobbingTargetIntensity = 0f;
         }
 
         // Mode - Crouching
@@ -208,6 +226,8 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.Crouching;
             desiredMoveSpeed = crouchSpeed;
+
+            viewBobbingTargetIntensity = 0.7f;
         }
 
         // Mode - Sprinting
@@ -224,6 +244,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 HUDManager.instance.SetStamina(sprintStamina, 1);
             }
+
+            DoStepping();
+
+            viewBobbingTargetIntensity = 0.5f;
         }
 
         // Mode - Walking
@@ -240,6 +264,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 HUDManager.instance.SetStamina(sprintStamina, 1);
             }
+
+            DoStepping();
+
+            viewBobbingTargetIntensity = 1f;
         }
 
         // Mode - Air
@@ -250,6 +278,13 @@ public class PlayerMovement : MonoBehaviour
             // Regen sprint stamina
             sprintStamina += sprintStaminaRegenSpeed * Time.deltaTime;
             if (sprintStamina > 1f) sprintStamina = 1f;
+
+            if (HUDManager.instance != null)
+            {
+                HUDManager.instance.SetStamina(sprintStamina, 1);
+            }
+
+            viewBobbingTargetIntensity = 0f;
         }
 
         // Check if desiredMoveSpeed has changed drastically
@@ -361,6 +396,23 @@ public class PlayerMovement : MonoBehaviour
         exitingSlope = false;
     }
 
+    private void PlayRandFromList(AudioClip[] auds, float2 volRange)
+    {
+        audioSource.PlayOneShot(auds[UnityEngine.Random.Range(0, auds.Length)], UnityEngine.Random.Range(volRange.x, volRange.y));
+    }
+    
+    private void DoStepping()
+    {
+        Vector3 horizontalMovement = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        viewBobbingProgress += horizontalMovement.magnitude * viewBobbingSpeed * Time.deltaTime;
+        curDistStepped += horizontalMovement.magnitude * Time.deltaTime;
+        if (curDistStepped >= stepSize)
+        {
+            curDistStepped %= stepSize;
+            PlayRandFromList(audSteps, audStepVolRange);
+        }
+    }
+
     private bool enableMovementOnNextTouch;
     public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)
     {
@@ -390,6 +442,20 @@ public class PlayerMovement : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void DoViewBobbing()
+    {
+        if (viewBobbing)
+        {
+            viewBobbingIntensity = Mathf.MoveTowards(viewBobbingIntensity, viewBobbingTargetIntensity, 0.5f * Time.deltaTime); // gradually change intensity
+            float horizontalBobPos = Mathf.Sin(Mathf.PI * viewBobbingProgress / 2f);
+            float verticalBobPos = horizontalBobPos * horizontalBobPos * viewBobbingIntensity * viewBobbingIntensityMultiplierVert;
+            horizontalBobPos *= viewBobbingIntensity * viewBobbingIntensityMultiplierHoriz;
+            cam.transform.localPosition = new Vector3(horizontalBobPos, verticalBobPos, cam.transform.localPosition.z);
+        }
+        else
+            cam.transform.localPosition = new Vector3(0f, 0f, cam.transform.localPosition.z);
     }
 
     public Vector3 GetSlopeMoveDirection(Vector3 direction)
