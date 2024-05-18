@@ -94,6 +94,7 @@ public class LevelSelectController : MonoBehaviour
         newWorldsList[worldSelectCount].SetEnabled(true);
         PlayerPrefs.SetInt("SelectedWorld", worldSelectCount);
         FileManager.instance.LoadWorldUnlocks();
+        FileManager.instance.UnlockLevel(0, 0);
 
         for (int i = 0; i < newWorldsList.Count; i++) 
         {
@@ -102,6 +103,8 @@ public class LevelSelectController : MonoBehaviour
                 newWorldsList[i].levelImages[j].GetComponent<LevelInfoController>().SetUnlocked(FileManager.instance.GetUnlock(i, j));
             }
         }
+        FileManager.instance.SaveWorldUnlocks();
+
 
         //Debug.Log("World 1 Enabled");
     }
