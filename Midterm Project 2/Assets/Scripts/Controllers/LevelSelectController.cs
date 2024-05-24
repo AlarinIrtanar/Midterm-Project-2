@@ -13,6 +13,7 @@ public class LevelSelectController : MonoBehaviour
     [SerializeField] GameObject levelMenu;
 
     bool levelMenuActive;
+    public bool inPlace;
 
     Vector3 levelMenuActiveLoc;
     Vector3 levelMenuInactiveLoc;
@@ -36,7 +37,8 @@ public class LevelSelectController : MonoBehaviour
         levelMenuActive = false;
         levelMenuActiveLoc = levelMenuInactiveLoc = levelMenu.transform.position;
 
-        levelMenuActiveLoc.y += 1000;
+        levelMenuInactiveLoc.y -= Screen.height;
+        levelMenu.transform.position = levelMenuInactiveLoc;
 
         if (PlayerPrefs.HasKey("NextLevel") && PlayerPrefs.GetInt("NextLevel") == 1)
         {
@@ -82,10 +84,26 @@ public class LevelSelectController : MonoBehaviour
         if (levelMenuActive)
         {
             levelMenu.transform.position = Vector3.Lerp(levelMenu.transform.position, levelMenuActiveLoc, Time.deltaTime * 5);
+            if (Mathf.Abs(levelMenu.transform.position.y - levelMenuActiveLoc.y) < 0.1f)
+            {
+                levelMenu.transform.position = levelMenuActiveLoc;
+                if (inPlace == false)
+                {
+                    inPlace = true;
+                }
+            }
         }
         else
         {
             levelMenu.transform.position = Vector3.Lerp(levelMenu.transform.position, levelMenuInactiveLoc, Time.deltaTime * 5);
+            if (Mathf.Abs(levelMenu.transform.position.y - levelMenuInactiveLoc.y) < 0.1f)
+            {
+                levelMenu.transform.position = levelMenuInactiveLoc;
+                if(this.gameObject.activeSelf == true)
+                {
+                    this.gameObject.SetActive(false);
+                }
+            }
         }
     }
     private void OnEnable()
@@ -172,5 +190,9 @@ public class LevelSelectController : MonoBehaviour
     public void ToggleLevelMenuActive()
     {
         levelMenuActive = !levelMenuActive;
+        if (levelMenuActive )
+        {
+            this.gameObject.SetActive(true);
+        }
     }
 }
