@@ -223,7 +223,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Do shooting
-        if (!isShooting && Input.GetButtonDown("Shoot"))
+        if (!MenuManager.instance.isPaused && !isShooting && Input.GetButtonDown("Shoot"))
             StartCoroutine(Shoot());
     }
 
