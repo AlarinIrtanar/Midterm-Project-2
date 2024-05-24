@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -10,6 +11,7 @@ using UnityEngine.UI;
 public class MainMenuController : MonoBehaviour
 {
     [SerializeField] Button levelSelect;
+    [SerializeField] Button btnNewGameNo;
     [SerializeField] AudioMixer mixer;
     [SerializeField] GameObject mainMenu;
     [SerializeField] LevelSelectController levelSelectMenu;
@@ -27,6 +29,8 @@ public class MainMenuController : MonoBehaviour
     {
         FileManager.instance.LoadOptions();
         FileManager.instance.LoadWorldUnlocks();
+
+        levelSelect.Select();
 
         mainMenuActive = true;
         mainMenuActiveLoc = mainMenuInactiveLoc = mainMenu.transform.position;
@@ -132,19 +136,43 @@ public class MainMenuController : MonoBehaviour
         if (mainMenuActive)
         {
             mainMenu.transform.position = Vector3.Lerp(mainMenu.transform.position, mainMenuActiveLoc, Time.deltaTime * 5);
+            if (Mathf.Abs(mainMenu.transform.position.x - mainMenuActiveLoc.x) < 0.1f)
+            {
+                mainMenu.transform.position = mainMenuActiveLoc;
+            }
         }
         else
         {
             mainMenu.transform.position = Vector3.Lerp(mainMenu.transform.position, mainMenuInactiveLoc, Time.deltaTime * 5);
+            if (Mathf.Abs(mainMenu.transform.position.x - mainMenuInactiveLoc.x) < 0.1f)
+            {
+                mainMenu.transform.position = mainMenuInactiveLoc;
+                if (mainMenu.activeSelf == true)
+                {
+                    mainMenu.SetActive(false);
+                }
+            }
         }
 
         if (newGameMenuActive)
         {
             newGameMenu.transform.position = Vector3.Lerp(newGameMenu.transform.position, newGameMenuActiveLoc, Time.deltaTime * 5);
+            if (Mathf.Abs(newGameMenu.transform.position.x - newGameMenuActiveLoc.x) < 0.1f)
+            {
+                newGameMenu.transform.position = newGameMenuActiveLoc;
+            }
         }
         else
         {
             newGameMenu.transform.position = Vector3.Lerp(newGameMenu.transform.position, newGameMenuInactiveLoc, Time.deltaTime * 5);
+            if (Mathf.Abs(newGameMenu.transform.position.y - newGameMenuInactiveLoc.y) < 0.1f)
+            {
+                newGameMenu.transform.position = newGameMenuInactiveLoc;
+                if (newGameMenu.activeSelf == true)
+                {
+                    newGameMenu.SetActive(false);
+                }
+            }
         }
     }
     public void PressNewGame()
@@ -174,9 +202,19 @@ public class MainMenuController : MonoBehaviour
     public void ToggleMainMenuActive()
     {
         mainMenuActive = !mainMenuActive;
+        if (mainMenuActive)
+        {
+            mainMenu.SetActive(true);
+            levelSelect.Select();
+        }
     }
     public void ToggleNewGameMenuActive()
     {
         newGameMenuActive = !newGameMenuActive;
+        if (newGameMenuActive)
+        {
+            newGameMenu.SetActive(true);
+            btnNewGameNo.Select();
+        }
     }
 }
