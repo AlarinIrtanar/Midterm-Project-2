@@ -31,13 +31,14 @@ public class MainMenuController : MonoBehaviour
         mainMenuActive = true;
         mainMenuActiveLoc = mainMenuInactiveLoc = mainMenu.transform.position;
 
-        mainMenuInactiveLoc.x -= 1000;
+        mainMenuInactiveLoc.x -= Screen.width;
 
 
         newGameMenuActive = false;
         newGameMenuActiveLoc = newGameMenuInactiveLoc = newGameMenu.transform.position;
 
-        newGameMenuActiveLoc.x -= 1500;
+        newGameMenuInactiveLoc.x += Screen.width;
+        newGameMenu.transform.position = newGameMenuInactiveLoc;
 
         float temp;
         // Master Volume

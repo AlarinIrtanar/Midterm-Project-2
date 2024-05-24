@@ -42,7 +42,7 @@ public class CreditsController : MonoBehaviour
                 //credit.transform.position = new Vector3(credit.transform.position.x, Mathf.Lerp(credit.transform.position.y, credit.transform.position.y + 10, Time.deltaTime * 10), credit.transform.position.z);
             }*/
 
-            if (credits[0].transform.position.y > 1500)
+            if (credits[0].transform.position.y > this.GetComponent<RectTransform>().rect.height + Screen.height)
             {
                 creditsActive = false;
                 creditsObject.transform.position = creditsInactiveLoc;

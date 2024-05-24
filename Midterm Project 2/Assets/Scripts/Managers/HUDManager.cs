@@ -12,6 +12,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] Image painSplash;
     [SerializeField] TMP_Text timerText;
     [SerializeField] Image staminaBar;
+    public Image grappleIcon;
     public TMP_Text reticle;
     public static HUDManager instance;
 
@@ -40,5 +41,9 @@ public class HUDManager : MonoBehaviour
     public void SetStamina(float current, float max)
     {
         staminaBar.fillAmount = current/max;
+    }
+    public void SetGrapple(float current, float max)
+    {
+        grappleIcon.fillAmount = current / max;
     }
 }

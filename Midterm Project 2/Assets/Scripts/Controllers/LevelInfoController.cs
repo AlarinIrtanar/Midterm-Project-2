@@ -48,6 +48,11 @@ public class LevelInfoController : MonoBehaviour
     }
     IEnumerator UnlockAnimation()
     {
+        while (!parent.parentController.inPlace)
+        {
+            yield return null;
+        }
+
         unlockedEffect.gameObject.SetActive(true);
         unlockAnim.enabled = true;
         unlockAnim.speed = 1;
