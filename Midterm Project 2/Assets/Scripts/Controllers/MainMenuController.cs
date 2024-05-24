@@ -152,12 +152,12 @@ public class MainMenuController : MonoBehaviour
         {
             PlayerPrefs.SetInt("AllLevelsCompleted", 0);
             FileManager.instance.DeleteWorldUnlocks();
-            FileManager.instance.ClearWorlds();
+            FileManager.instance.ResetUnlocks();
 
-            levelSelectMenu.Awake();
+            //levelSelectMenu.Awake();
 
-            levelSelectMenu.gameObject.SetActive(false);
-            levelSelectMenu.gameObject.SetActive(true);
+            //levelSelectMenu.gameObject.SetActive(false);
+            //levelSelectMenu.gameObject.SetActive(true);
             //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }

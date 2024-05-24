@@ -28,7 +28,7 @@ public class PlayerRailGrinding : MonoBehaviour
 
     void Start()
     {
-
+        //timeForFullSpline = currentRailScript.totalSplineLength / grindingSpeed;
     }
 
     void Update()
@@ -57,6 +57,7 @@ public class PlayerRailGrinding : MonoBehaviour
 
     void MovePlayerAlongRail()
     {
+        //Time.timeScale = .1f;
         if (currentRailScript != null && onRail)
         {
             float progress = elapsedTime / timeForFullSpline;
@@ -101,11 +102,12 @@ public class PlayerRailGrinding : MonoBehaviour
         }
     }
 
-    private void OnColliderHit(Collider other)
+    public void OnColliderHit(Collider other)
     {
         //if(other.gameObject.tag == "Rail")
         if (other.gameObject.CompareTag("Rail"))
         {
+            Debug.Log("RAAAAAAAAAAIL!");
             onRail = true;
             currentRailScript = other.gameObject.GetComponent<RailGrinding>();
             CalculateAndSetRailPosition();

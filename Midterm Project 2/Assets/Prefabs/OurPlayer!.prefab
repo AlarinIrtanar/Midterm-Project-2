@@ -223,6 +223,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9187275283544095468, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1965032128974651729}
+    - targetCorrespondingSourceObject: {fileID: 9187275283544095468, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8378968832825721775}
     - targetCorrespondingSourceObject: {fileID: 9187275283544095468, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
@@ -234,6 +237,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9187275283544095468, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
   m_PrefabInstance: {fileID: 3003871161678743750}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1965032128974651729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6255542598949794346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2770519ad7fe9ef43a8bedec62a2bcc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: 0
+  input: {x: 0, y: 0, z: 0}
+  onRail: 0
+  grindingSpeed: 10
+  heightOffset: 1
+  lerpSpeed: 10
+  currentRailScript: {fileID: 0}
 --- !u!82 &8378968832825721775
 AudioSource:
   m_ObjectHideFlags: 0
