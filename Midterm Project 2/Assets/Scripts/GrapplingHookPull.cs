@@ -41,7 +41,10 @@ public class GrapplingHookPull : MonoBehaviour
     {
         playerMovement = GetComponent<PlayerMovement>();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
         playerRailGrinding = GetComponent<PlayerRailGrinding>();
         if (PlayerPrefs.HasKey("Grapple Button"))
         {
