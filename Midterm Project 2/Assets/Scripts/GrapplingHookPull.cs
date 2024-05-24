@@ -51,6 +51,7 @@ public class GrapplingHookPull : MonoBehaviour
             grappleButton = "mouse 1";
             PlayerPrefs.SetString("Grapple Button", "mouse 1");
         }
+        HUDManager.instance.SetGrapple(grapplingCooldownTimer - grapplingCooldown, grapplingCooldownTimer);
     }
 
 
@@ -64,6 +65,7 @@ public class GrapplingHookPull : MonoBehaviour
         if (grapplingCooldown > 0)
         {
             grapplingCooldown -= Time.deltaTime;
+            HUDManager.instance.SetGrapple(grapplingCooldownTimer - grapplingCooldown, grapplingCooldownTimer);
         }
     }
 
@@ -78,30 +80,33 @@ public class GrapplingHookPull : MonoBehaviour
     //throws grappling hook but doesn't start pulling yet
     private void StartGrappling()
     {
-        if (grapplingCooldown > 0)
+        if (!MenuManager.instance.isPaused)
         {
-            return;
+            if (grapplingCooldown > 0)
+            {
+                return;
+            }
+            grappleShootAudio.Play();
+            isGrappling = true;
+
+            RaycastHit hit;
+
+            if (Physics.Raycast(camera.position, camera.forward, out hit, grappleRange, whatIsGrappleable))
+            {
+                grapplePoint = hit.point;
+
+                Invoke(nameof(ExecuteGrappling), grappleDelay);
+            }
+            else
+            {
+                grapplePoint = camera.position + camera.forward * grappleRange;
+
+                Invoke(nameof(StopGrappling), grappleDelay);
+            }
+
+            lineRenderer.enabled = true;
+            lineRenderer.SetPosition(1, grapplePoint);
         }
-        grappleShootAudio.Play();
-        isGrappling = true;
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(camera.position, camera.forward, out hit, grappleRange, whatIsGrappleable))
-        {
-            grapplePoint = hit.point;
-
-            Invoke(nameof(ExecuteGrappling), grappleDelay);
-        }
-        else
-        {
-            grapplePoint = camera.position + camera.forward * grappleRange;
-
-            Invoke(nameof(StopGrappling), grappleDelay);
-        }
-
-        lineRenderer.enabled = true;
-        lineRenderer.SetPosition(1, grapplePoint);
     }
 
     //start pulling towards target
@@ -123,6 +128,7 @@ public class GrapplingHookPull : MonoBehaviour
         playerMovement.JumpToPosition(grapplePoint, highestPointOnArc);
 
         grapplingCooldown = grapplingCooldownTimer;
+
         Invoke(nameof(StopGrappling), 1f);
     }
 
@@ -131,7 +137,7 @@ public class GrapplingHookPull : MonoBehaviour
         isGrappling = false;
         grapplePullAudio.Stop();
 
-        grapplingCooldown = grapplingCooldownTimer;
+        //grapplingCooldown = grapplingCooldownTimer;
 
         lineRenderer.enabled = false;
     }
