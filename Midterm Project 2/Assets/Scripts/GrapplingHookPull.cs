@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class GrapplingHookPull : MonoBehaviour
 {
-    
+
     [Header("References")]
     private PlayerMovement playerMovement;
+    private PlayerRailGrinding playerRailGrinding;
     public Transform camera;
     public Transform gunTip;
     public LineRenderer lineRenderer;
@@ -39,6 +40,19 @@ public class GrapplingHookPull : MonoBehaviour
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+<<<<<<< Updated upstream
+=======
+        playerRailGrinding = GetComponent<PlayerRailGrinding>();
+        if (PlayerPrefs.HasKey("Grapple Button"))
+        {
+            grappleButton = PlayerPrefs.GetString("Grapple Button");
+        }
+        else
+        {
+            grappleButton = "mouse 1";
+            PlayerPrefs.SetString("Grapple Button", "mouse 1");
+        }
+>>>>>>> Stashed changes
     }
 
 
@@ -49,7 +63,7 @@ public class GrapplingHookPull : MonoBehaviour
             StartGrappling();
         }
 
-        if(grapplingCooldown > 0)
+        if (grapplingCooldown > 0)
         {
             grapplingCooldown -= Time.deltaTime;
         }
@@ -57,7 +71,7 @@ public class GrapplingHookPull : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(isGrappling)
+        if (isGrappling)
         {
             lineRenderer.SetPosition(0, gunTip.position);
         }
@@ -70,12 +84,13 @@ public class GrapplingHookPull : MonoBehaviour
         {
             return;
         }
+        
         grappleShootAudio.Play();
         isGrappling = true;
 
         RaycastHit hit;
-        
-        if(Physics.Raycast(camera.position, camera.forward, out hit, grappleRange, whatIsGrappleable))
+
+        if (Physics.Raycast(camera.position, camera.forward, out hit, grappleRange, whatIsGrappleable))
         {
             grapplePoint = hit.point;
 
@@ -95,8 +110,10 @@ public class GrapplingHookPull : MonoBehaviour
     //start pulling towards target
     private void ExecuteGrappling()
     {
+        playerRailGrinding.ExitRailGrind();
+
         grapplePullAudio.Play();
-        Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y -1f, transform.position.z);
+        Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
 
 
         float grapplePointRealativeYPosition = grapplePoint.y - lowestPoint.y;
@@ -107,6 +124,7 @@ public class GrapplingHookPull : MonoBehaviour
             highestPointOnArc = overshootYAxis;
         }
         playerMovement.JumpToPosition(grapplePoint, highestPointOnArc);
+
 
         grapplingCooldown = grapplingCooldownTimer;
         Invoke(nameof(StopGrappling), 1f);
@@ -122,5 +140,5 @@ public class GrapplingHookPull : MonoBehaviour
         lineRenderer.enabled = false;
     }
 
-    
-} 
+
+}

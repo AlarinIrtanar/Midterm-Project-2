@@ -10,7 +10,7 @@ public class BoostPad : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.attachedRigidbody.AddForce(transform.forward * boostSpeed);
+            other.attachedRigidbody.AddForce(transform.forward * boostSpeed, ForceMode.Impulse);
         }
     }
 }
