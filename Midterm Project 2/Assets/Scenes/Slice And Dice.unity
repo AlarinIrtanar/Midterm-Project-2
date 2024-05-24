@@ -442,6 +442,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swinging Axe
       objectReference: {fileID: 0}
+    - target: {fileID: 3939858049080410867, guid: 142479d2c1d611c47a6fb9b6869cf2ed, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4600627016814735384, guid: 142479d2c1d611c47a6fb9b6869cf2ed, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -1242,11 +1246,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3226046074735237214, guid: 6cfbaaa10e53fd54696af7b1295ccb23, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3226046074735237214, guid: 6cfbaaa10e53fd54696af7b1295ccb23, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3226046074735237214, guid: 6cfbaaa10e53fd54696af7b1295ccb23, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1568,11 +1572,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -30.027082
+      value: -29.25
       objectReference: {fileID: 0}
     - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.1000004
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
       propertyPath: m_LocalPosition.z
