@@ -37,7 +37,8 @@ public class OptionsMenuController : MonoBehaviour
         optionsMenuActive = false;
         optionsMenuActiveLoc = optionsMenuInactiveLoc = optionsMenu.transform.position;
 
-        optionsMenuActiveLoc.y -= 1000;
+        optionsMenuInactiveLoc.y += Screen.height;
+        optionsMenu.transform.position = optionsMenuInactiveLoc;
     }
     // Start is called before the first frame update
     void OnEnable()
