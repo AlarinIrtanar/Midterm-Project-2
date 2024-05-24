@@ -11,6 +11,7 @@ public class LevelSelectController : MonoBehaviour
     [SerializeField] GameObject winScreen;
     public Button nextWorld;
     [SerializeField] GameObject levelMenu;
+    [SerializeField] Button btnMainMenu;
 
     bool levelMenuActive;
     public bool inPlace;
@@ -193,6 +194,7 @@ public class LevelSelectController : MonoBehaviour
         if (levelMenuActive )
         {
             this.gameObject.SetActive(true);
+            btnMainMenu.Select();
         }
     }
 }

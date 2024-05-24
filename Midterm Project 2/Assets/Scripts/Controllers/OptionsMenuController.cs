@@ -9,6 +9,7 @@ public class OptionsMenuController : MonoBehaviour
 {
     [Header("----- Components -----")]
     [SerializeField] GameObject optionsMenu;
+    [SerializeField] Button btnMainMenu;
 
     bool optionsMenuActive;
 
@@ -44,8 +45,9 @@ public class OptionsMenuController : MonoBehaviour
     void OnEnable()
     {
 
+
         // Shoot Button
-        if(PlayerPrefs.HasKey("Shoot Button"))
+        if (PlayerPrefs.HasKey("Shoot Button"))
         {
             shootText.text = PlayerPrefs.GetString("Shoot Button");
         }
@@ -121,10 +123,22 @@ public class OptionsMenuController : MonoBehaviour
         if (optionsMenuActive)
         {
             optionsMenu.transform.position = Vector3.Lerp(optionsMenu.transform.position, optionsMenuActiveLoc, Time.deltaTime * 5);
+            if (Mathf.Abs(optionsMenu.transform.position.y - optionsMenuActiveLoc.y) < 0.1f)
+            {
+                optionsMenu.transform.position = optionsMenuActiveLoc;
+            }
         }
         else
         {
             optionsMenu.transform.position = Vector3.Lerp(optionsMenu.transform.position, optionsMenuInactiveLoc, Time.deltaTime * 5);
+            if (Mathf.Abs(optionsMenu.transform.position.y - optionsMenuInactiveLoc.y) < 0.1f)
+            {
+                optionsMenu.transform.position = optionsMenuInactiveLoc;
+                if (optionsMenu.activeSelf == true)
+                {
+                    optionsMenu.SetActive(false);
+                }
+            }
         }
 
         if (shootPressed && Input.anyKeyDown)
@@ -305,5 +319,10 @@ public class OptionsMenuController : MonoBehaviour
     public void ToggleOptionsMenuActive()
     {
         optionsMenuActive = !optionsMenuActive;
+        if (optionsMenuActive)
+        {
+            optionsMenu.SetActive(true);
+            btnMainMenu.Select();
+        }
     }
 }
