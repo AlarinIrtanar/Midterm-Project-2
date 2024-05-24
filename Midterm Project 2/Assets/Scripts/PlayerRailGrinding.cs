@@ -84,14 +84,14 @@ public class PlayerRailGrinding : MonoBehaviour
             }
             float nextTimeNormalized;
             //if (currentRailScript.normalDirection)
-            if (isFacingForward)
-            {
+            /*if (isFacingForward)
+            {*/
                 nextTimeNormalized = (elapsedTime + Time.deltaTime) / timeForFullSpline;
-            }
-            else
+            //}
+            /*else
             {
                 nextTimeNormalized = (elapsedTime - Time.deltaTime) / timeForFullSpline;
-            }
+            }*/
 
             float3 pos, tangent, up;
             float3 nextPosFloat, nextTan, nextUp;
@@ -107,14 +107,14 @@ public class PlayerRailGrinding : MonoBehaviour
             //
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(transform.up, up) * transform.rotation, lerpSpeed * Time.deltaTime);
 
-            if (currentRailScript.normalDirection)
-            {
+            //if (currentRailScript.normalDirection)
+            //{
                 elapsedTime += Time.deltaTime;
-            }
-            else
+            //}
+            /*else
             {
                 elapsedTime -= Time.deltaTime;
-            }
+            }*/
         }
     }
 
@@ -157,7 +157,7 @@ public class PlayerRailGrinding : MonoBehaviour
         transform.position += transform.forward * 1; //+1
 
     }
-
+    
     public void ExitRailGrind()
     {
         onRail = false;
