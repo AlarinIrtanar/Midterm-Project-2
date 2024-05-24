@@ -9,8 +9,20 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: f8ec5b79e79a30948b8bf37482bbb0c1
   - enabled: 1
-    path: Assets/Scenes/Credits.unity
-    guid: 655c642d988e9c74e8e3f12c25ca8c42
+    path: Assets/Scenes/DJ-Scenes/Neighborhood.unity
+    guid: c861fd4b03cc0614380850e24f338106
+  - enabled: 1
+    path: Assets/Scenes/DJ-Scenes/Town Market.unity
+    guid: a8d0238f31046d540840caed011883d3
+  - enabled: 1
+    path: Assets/Scenes/DJ-Scenes/Tripping Hazard.unity
+    guid: 93c939a819f475e4aa23da2c8a33b0dd
+  - enabled: 1
+    path: Assets/Scenes/DJ-Scenes/Town Square.unity
+    guid: 85aaf769d5fda2349af787db495dff63
+  - enabled: 1
+    path: Assets/Scenes/DJ-Scenes/Town Wonder.unity
+    guid: 85ff3ba938d649d4293f216f373daf10
   - enabled: 1
     path: Assets/Scenes/Burglary.unity
     guid: cac96bd70f43dbe40b8ee5385a81ca06

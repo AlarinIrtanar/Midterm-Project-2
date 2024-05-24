@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class SelectableWorlds : ScriptableObject
 {
     [SerializeField] Image levelImagePrefab;
+    public string worldName;
     public List<string> levelName;
     public int worldId;
 

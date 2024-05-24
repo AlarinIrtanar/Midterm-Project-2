@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,8 +13,10 @@ public class LevelSelectController : MonoBehaviour
     public Button nextWorld;
     [SerializeField] GameObject levelMenu;
     [SerializeField] Button btnMainMenu;
+    [SerializeField] TMP_Text worldName;
 
     bool levelMenuActive;
+    bool notFirstTime;
     public bool inPlace;
 
     Vector3 levelMenuActiveLoc;
@@ -33,8 +36,9 @@ public class LevelSelectController : MonoBehaviour
 
 
     // Start is called before the first frame update
-    public void Awake()
+    public void Start()
     {
+        notFirstTime = false;
         levelMenuActive = false;
         levelMenuActiveLoc = levelMenuInactiveLoc = levelMenu.transform.position;
 
@@ -52,7 +56,7 @@ public class LevelSelectController : MonoBehaviour
             //Debug.Log("World List and File World Matched");
             for (int i = 0; i < worldsList.Count; ++i)
             {
-                currentWorld = Instantiate(worldsList[i], this.transform);
+                currentWorld = Instantiate(worldsList[i], this.gameObject.transform);
                 newWorldsList.Add(currentWorld);
                 newWorldsList[i].SetEnabled(false);
             }
@@ -63,7 +67,7 @@ public class LevelSelectController : MonoBehaviour
             FileManager.instance.ClearWorlds();
             for (int i = 0; i < worldsList.Count; ++i)
             {
-                currentWorld = Instantiate(worldsList[i], this.transform);
+                currentWorld = Instantiate(worldsList[i], this.gameObject.transform);
                 newWorldsList.Add(currentWorld);
                 newWorldsList[i].SetEnabled(false);
 
@@ -78,6 +82,18 @@ public class LevelSelectController : MonoBehaviour
         {
             winScreen.SetActive(true);
         }
+        if (PlayerPrefs.HasKey("SelectedWorld"))
+        {
+            worldSelectCount = PlayerPrefs.GetInt("SelectedWorld");
+        }
+        else
+        {
+            worldSelectCount = 0;
+        }
+        newWorldsList[worldSelectCount].SetEnabled(true);
+        worldName.text = newWorldsList[worldSelectCount].worldName;
+        notFirstTime = true;
+        OnEnable();
     }
 
     private void Update()
@@ -91,6 +107,8 @@ public class LevelSelectController : MonoBehaviour
                 if (inPlace == false)
                 {
                     inPlace = true;
+                    newWorldsList[0].levelImages[0].GetComponent<LevelInfoController>().SetUnlocked(true);
+                    FileManager.instance.UnlockLevel(0, 0);
                 }
             }
         }
@@ -109,20 +127,32 @@ public class LevelSelectController : MonoBehaviour
     }
     private void OnEnable()
     {
-        //Debug.Log("Enabling World 1");
-        newWorldsList[worldSelectCount].SetEnabled(true);
-        PlayerPrefs.SetInt("SelectedWorld", worldSelectCount);
-        FileManager.instance.LoadWorldUnlocks();
-        FileManager.instance.UnlockLevel(0, 0);
-
-        for (int i = 0; i < newWorldsList.Count; i++) 
+        if (notFirstTime)
         {
-            for (int j = 0; j < newWorldsList[i].levelImages.Count; j++) 
+            //Debug.Log("Enabling World 1");
+            if (PlayerPrefs.HasKey("SelectedWorld"))
             {
-                newWorldsList[i].levelImages[j].GetComponent<LevelInfoController>().SetUnlocked(FileManager.instance.GetUnlock(i, j));
+                worldSelectCount = PlayerPrefs.GetInt("SelectedWorld");
             }
+            else
+            {
+                worldSelectCount = 0;
+            }
+            newWorldsList[worldSelectCount].SetEnabled(true);
+            worldName.text = newWorldsList[worldSelectCount].worldName;
+            PlayerPrefs.SetInt("SelectedWorld", worldSelectCount);
+            FileManager.instance.LoadWorldUnlocks();
+            FileManager.instance.UnlockLevel(0, 0);
+
+            for (int i = 0; i < newWorldsList.Count; i++)
+            {
+                for (int j = 0; j < newWorldsList[i].levelImages.Count; j++)
+                {
+                    newWorldsList[i].levelImages[j].GetComponent<LevelInfoController>().SetUnlocked(FileManager.instance.GetUnlock(i, j));
+                }
+            }
+            FileManager.instance.SaveWorldUnlocks();
         }
-        FileManager.instance.SaveWorldUnlocks();
 
 
         //Debug.Log("World 1 Enabled");
@@ -157,6 +187,7 @@ public class LevelSelectController : MonoBehaviour
             newWorldsList[worldSelectCount].SetEnabled(true);
         }
         PlayerPrefs.SetInt("SelectedWorld", worldSelectCount);
+        worldName.text = newWorldsList[worldSelectCount].worldName;
     }
     public void PressPrev()
     {
@@ -174,6 +205,7 @@ public class LevelSelectController : MonoBehaviour
             newWorldsList[worldSelectCount].SetEnabled(true);
         }
         PlayerPrefs.SetInt("SelectedWorld", worldSelectCount);
+        worldName.text = newWorldsList[worldSelectCount].worldName;
     }
     public void PressContinue()
     {
