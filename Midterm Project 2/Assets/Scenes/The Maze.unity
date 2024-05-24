@@ -680,6 +680,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02b3cb4e255b90b4881d5e0cdadc1018, type: 3}
+--- !u!1001 &309908959
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 49.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534392346345170504, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_Name
+      value: Swinging Axe Sound Trigger (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
 --- !u!1001 &336122883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -753,6 +810,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b09da06b9b7c5984db05834d20b47353, type: 3}
+--- !u!1001 &359162559
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 45.4503
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 107.54628
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534392346345170504, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_Name
+      value: AxeSoundHelper (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
 --- !u!1001 &360383041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1291,6 +1405,120 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1001 &494616134
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.3343687
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20.094893
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534392346345170504, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_Name
+      value: Swinging Axe Sound Trigger (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+--- !u!1001 &498208371
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 26.153675
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 65.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534392346345170504, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_Name
+      value: Swinging Axe Sound Trigger (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
 --- !u!1 &582411960
 GameObject:
   m_ObjectHideFlags: 0
@@ -2263,6 +2491,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 88.747, y: -92.17, z: 0.935}
+--- !u!1001 &954659951
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.04092264
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0000009536743
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 37.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534392346345170504, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_Name
+      value: Swinging Axe Sound Trigger (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
 --- !u!1 &1030508695
 GameObject:
   m_ObjectHideFlags: 0
@@ -3366,6 +3651,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1369833411
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 32.89078
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0000009536743
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 94.8192
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534392346345170504, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_Name
+      value: Swinging Axe Sound Trigger
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
 --- !u!1001 &1397247299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3996,6 +4338,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1582453039
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1785202
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 52.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534392346345170504, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_Name
+      value: Swinging Axe Sound Trigger (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
 --- !u!1 &1603770322
 GameObject:
   m_ObjectHideFlags: 0
@@ -5140,6 +5539,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02b3cb4e255b90b4881d5e0cdadc1018, type: 3}
+--- !u!1001 &3324653426485706491
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 90.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813001815962423890, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534392346345170504, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
+      propertyPath: m_Name
+      value: AxeSoundHelper
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6535b82343af9de4e88ef9487bfb984a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -5208,8 +5664,16 @@ SceneRoots:
   - {fileID: 1861404774}
   - {fileID: 792562166}
   - {fileID: 1634164384}
-  - {fileID: 365264370}
   - {fileID: 1740899884}
   - {fileID: 2088581112}
   - {fileID: 360383041}
   - {fileID: 1180079266}
+  - {fileID: 365264370}
+  - {fileID: 3324653426485706491}
+  - {fileID: 359162559}
+  - {fileID: 1369833411}
+  - {fileID: 498208371}
+  - {fileID: 309908959}
+  - {fileID: 494616134}
+  - {fileID: 1582453039}
+  - {fileID: 954659951}

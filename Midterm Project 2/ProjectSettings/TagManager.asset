@@ -7,6 +7,7 @@ TagManager:
   - LevelSelect
   - Test
   - Rail
+  - Axe
   layers:
   - Default
   - TransparentFX
