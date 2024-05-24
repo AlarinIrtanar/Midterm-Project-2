@@ -5,18 +5,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamage
 {
-
-
-    [Header("----player--------")]
+    [Header("Health")]
   
     [SerializeField] int Hp;
-    [SerializeField] AudioSource gunshotAS;
-
-
-
     int HpOrig;
-    bool isShooting;
-    float shootRate = .5f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,44 +16,15 @@ public class PlayerController : MonoBehaviour, IDamage
         HpOrig = Hp;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButton("Shoot") && !isShooting && !MenuManager.instance.isPaused)
-        {
-            StartCoroutine(shoot());
-        }
-    }
-
-   
-
     public void TakeDamage(int amount)
     {
         Hp -= amount;
-
-        if(Hp <= 0)
-        {
+        if (Hp <= 0)
             Die();
-        }
-
     }
 
     public void Die()
     {
         GameManager.Instance.YouLose();
     }
-
-    IEnumerator shoot()
-    {
-        isShooting = true;
-
-        gunshotAS.Play();
-        yield return new WaitForSeconds(shootRate);
-        isShooting = false;
-    }
-
-
-
-
-
 }

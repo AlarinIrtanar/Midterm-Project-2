@@ -62,8 +62,18 @@ public class PlayerMovement : MonoBehaviour
     float viewBobbingProgress;
     bool doingViewBobbing;
 
+    [Header("Shooting")]
+    [SerializeField] int shootDamage;
+    [SerializeField] float shootCooldown;
+    [SerializeField] float shootDistance;
+    bool isShooting;
+
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
+
+    // Shooting
+    [SerializeField] AudioClip[] audShoots;
+    [SerializeField] float2 audShootVolRange;
     
     // Steps
     [SerializeField] AudioClip[] audSteps;
@@ -204,6 +214,10 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
         }
+
+        // Do shooting
+        if (!isShooting && Input.GetButtonDown("Shoot"))
+            StartCoroutine(Shoot());
     }
 
     private void StateHandler()
@@ -495,5 +509,23 @@ public class PlayerMovement : MonoBehaviour
         Vector3 xzVelocity = xzDisplacement / (Mathf.Sqrt(-2 * trajectoryHeight / gravity) + Mathf.Sqrt(2 * (yDisplacement - trajectoryHeight) / gravity));
 
         return xzVelocity + yVelocity;
+    }
+
+    IEnumerator Shoot()
+    {
+        isShooting = true;
+        PlayRandFromList(audShoots, audShootVolRange);
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
+        {
+            IDamage dmg = hit.collider.GetComponent<IDamage>();
+            if (dmg != null)
+            {
+                // Shot something!!!
+                dmg.TakeDamage(shootDamage);
+            }
+        }
+        yield return new WaitForSeconds(shootCooldown);
+        isShooting = false;
     }
 }

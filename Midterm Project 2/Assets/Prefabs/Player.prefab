@@ -130,7 +130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 5
-  gunshotAS: {fileID: 5020293712960553317}
 --- !u!136 &2778815848957563902
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -412,7 +411,15 @@ MonoBehaviour:
   viewBobbingIntensityMultiplierVert: 0.13
   viewBobbingIntensityMultiplierHoriz: 0.09
   viewBobbingSpeed: 0.5
+  shootDamage: 5
+  shootCooldown: 0.1
+  shootDistance: 100
   audioSource: {fileID: 1020873463462963792}
+  audShoots:
+  - {fileID: 8300000, guid: 469aaab432f7b9749894442b3460ce88, type: 3}
+  audShootVolRange:
+    x: 0.2
+    y: 0.4
   audSteps:
   - {fileID: 8300000, guid: 5fdb63ac93ba88a40864154373c6075d, type: 3}
   - {fileID: 8300000, guid: f472781630197404ea41550ac4ac1d85, type: 3}
