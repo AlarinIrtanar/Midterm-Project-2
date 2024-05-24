@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7104644441942548258}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -49.22241, y: -4.8217115, z: -31.642246}
   m_LocalScale: {x: 3, y: 0.10000001, z: 3}
   m_ConstrainProportionsScale: 0
@@ -47,6 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bff95cd350b8aa4b95deb7f3be1524f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 5
+  shatterSound: {fileID: 8300000, guid: 641e33d745d30e847bcbff63d06c9657, type: 3}
+  sfxMixer: {fileID: 594398737546384054, guid: aef2720eaf5305e499a2e20d1fd481ae, type: 2}
+  cubesPerAxis: 8
+  force: 300
+  radius: 2
 --- !u!33 &3259680362739955150
 MeshFilter:
   m_ObjectHideFlags: 0
