@@ -97,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
     bool isLanded;
     float prevYVel;
 
+    private PlayerRailGrinding playerRailGrinding;
 
 
     public Transform orientation;
@@ -127,6 +128,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        playerRailGrinding = GetComponent<PlayerRailGrinding>();
+
         // Jump Button
         if (PlayerPrefs.HasKey("Jump Button"))
             jumpButton = PlayerPrefs.GetString("Jump Button");
@@ -423,6 +426,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        playerRailGrinding.ExitRailGrind();
         exitingSlope = true;
 
         // Reset y velocity
