@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Camera")]
     [SerializeField] GameObject cam; // player camera
+    private PlayerCam playerCamScript; // PlayerCam script
     public bool viewBobbing;
     public float viewBobbingIntensityMultiplierVert;
     public float viewBobbingIntensityMultiplierHoriz;
@@ -61,6 +62,10 @@ public class PlayerMovement : MonoBehaviour
     float viewBobbingTargetIntensity;
     float viewBobbingProgress;
     bool doingViewBobbing;
+
+    // Speed-based fov shifting
+    [SerializeField] float fovShiftIntensity;
+    [SerializeField] float fovShiftFalloffIntensity;
 
     [Header("Shooting")]
     [SerializeField] int shootDamage;
@@ -146,6 +151,8 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
 
         startYScale = transform.localScale.y;
+
+        playerCamScript = cam.GetComponent<PlayerCam>();
 
         //SpawnPlayer();
     }
@@ -330,6 +337,10 @@ public class PlayerMovement : MonoBehaviour
         if (isLanded && !prevLanded)
             PlayRandFromList(audLandings, audLandingVolRange);
         prevLanded = isLanded;
+
+        // Do speed-based fov shifting
+        float camFovShift = fovShiftIntensity * (1f - (fovShiftFalloffIntensity / (rb.velocity.magnitude + fovShiftFalloffIntensity))) * (Vector3.Dot(Camera.main.transform.forward, rb.velocity.normalized));
+        playerCamScript.SetFovShift(camFovShift);
     }
 
     private IEnumerator SmoothlyLerpMoveSpeed()

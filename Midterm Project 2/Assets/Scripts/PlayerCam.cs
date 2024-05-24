@@ -20,6 +20,7 @@ public class PlayerCam : MonoBehaviour
     Camera cam;
     float targetFov;
     float targetZTilt;
+    float targetFovShift = 0f; // extra fov change
 
 
 
@@ -37,26 +38,25 @@ public class PlayerCam : MonoBehaviour
 
     void Update()
     {
+        // Get sensitivity
         float sensiMult;
         if (PlayerPrefs.HasKey("Sensitivity"))
-        {
             sensiMult = PlayerPrefs.GetFloat("Sensitivity");
-        }
         else
-        {
             sensiMult = 1f;
-        }
-        // Get mouse input
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX * sensiMult;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY * sensiMult;
 
+        // Get mouse input
+        float mouseX = Input.GetAxisRaw("Mouse X") * sensX * sensiMult;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * sensY * sensiMult;
+
+        // Get rotation
         rotY += mouseX;
         rotX -= mouseY;
         rotX = Mathf.Clamp(rotX, -90f, 90f);
 
         // Rotate cam and orientation
         camHolder.rotation = Quaternion.Euler(rotX, rotY, zTilt);
-        orientation.rotation = Quaternion.Euler(0, rotY, 0);
+        orientation.rotation = Quaternion.Euler(0f, rotY, 0f);
 
         // Lerp cam values
         LerpCamValues();
@@ -72,9 +72,14 @@ public class PlayerCam : MonoBehaviour
         targetZTilt = endZTilt;
     }
 
+    public void SetFovShift(float amount)
+    {
+        targetFovShift = amount;
+    }
+
     private void LerpCamValues()
     {
-        cam.fieldOfView = Mathf.MoveTowards(cam.fieldOfView, targetFov, 50f * Time.deltaTime);
+        cam.fieldOfView = Mathf.MoveTowards(cam.fieldOfView, targetFov + targetFovShift, 50f * Time.deltaTime);
         zTilt = Mathf.MoveTowards(zTilt, targetZTilt, 20f * Time.deltaTime);
         //transform.rotation = Quaternion.Euler(0, 0, zTilt);
         //transform.rotation = Quaternion.Euler(0, 0, Mathf.MoveTowardsAngle(transform.rotation.z, targetZTilt, 20f * Time.deltaTime));
