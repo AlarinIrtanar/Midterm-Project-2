@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] TMP_Text scoreText;
     public static MenuManager instance;
     [SerializeField] Slider sensiSlider;
+    [SerializeField] Slider speedSlider;
 
     [Header("----- Menus -----")]
     [SerializeField] GameObject menuActive;
@@ -33,18 +34,57 @@ public class MenuManager : MonoBehaviour
         instance = this;
 
         float temp;
-        mixer.GetFloat("MasterVolume", out temp);
-        PlayerPrefs.SetFloat("MasterVolume", temp);
+        // Master Volume
+        if (PlayerPrefs.HasKey("MasterVolume"))
+        {
+            mixer.SetFloat("MasterVolume", PlayerPrefs.GetFloat("MasterVolume"));
+        }
+        else
+        {
+            mixer.GetFloat("MasterVolume", out temp);
+            PlayerPrefs.SetFloat("MasterVolume", temp);
+        }
 
-        mixer.GetFloat("MusicVolume", out temp);
-        PlayerPrefs.SetFloat("MusicVolume", temp);
+        // Music Volume
+        if (PlayerPrefs.HasKey("MusicVolume"))
+        {
+            mixer.SetFloat("MusicVolume", PlayerPrefs.GetFloat("MusicVolume"));
+        }
+        else
+        {
+            mixer.GetFloat("MusicVolume", out temp);
+            PlayerPrefs.SetFloat("MusicVolume", temp);
+        }
 
-        mixer.GetFloat("SFXVolume", out temp);
-        PlayerPrefs.SetFloat("SFXVolume", temp);
+        // SFX Volume
+        if (PlayerPrefs.HasKey("SFXVolume"))
+        {
+            mixer.SetFloat("SFXVolume", PlayerPrefs.GetFloat("SFXVolume"));
+        }
+        else
+        {
+            mixer.GetFloat("SFXVolume", out temp);
+            PlayerPrefs.SetFloat("SFXVolume", temp);
+        }
 
+        // Sensitivity
         if (PlayerPrefs.HasKey("Sensitivity"))
         {
             sensiSlider.value = PlayerPrefs.GetFloat("Sensitivity");
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("Sensitivity", sensiSlider.value);
+        }
+
+        // Game Speed
+        if (PlayerPrefs.HasKey("GameSpeed"))
+        {
+            speedSlider.value = PlayerPrefs.GetFloat("GameSpeed");
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("GameSpeed", speedSlider.value);
         }
     }
 
@@ -77,7 +117,15 @@ public class MenuManager : MonoBehaviour
     public void PressNextLevel()
     {
         audioSource.Play();
-        Time.timeScale = 1;
+
+        if (PlayerPrefs.HasKey("GameSpeed"))
+        {
+            Time.timeScale = PlayerPrefs.GetFloat("GameSpeed");
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
 
         SceneManager.LoadScene(mainMenuName); // temp
     }
@@ -90,7 +138,16 @@ public class MenuManager : MonoBehaviour
     public void PressQuit()
     {
         audioSource.Play();
-        Time.timeScale = 1;
+
+        if (PlayerPrefs.HasKey("GameSpeed"))
+        {
+            Time.timeScale = PlayerPrefs.GetFloat("GameSpeed");
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+
         SceneManager.LoadScene(mainMenuName);
     }
     public void PressApply()
@@ -106,6 +163,8 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetFloat("SFXVolume", temp);
 
         PlayerPrefs.SetFloat("Sensitivity", sensiSlider.value);
+
+        PlayerPrefs.SetFloat("GameSpeed", speedSlider.value);
     }
     public void PressCancel()
     {
@@ -121,9 +180,16 @@ public class MenuManager : MonoBehaviour
         {
             mixer.SetFloat("SFXVolume", PlayerPrefs.GetFloat("SFXVolume") / 20);
         }
+
+        // Sensitivity
         if (PlayerPrefs.HasKey("Sensitivity"))
         {
             sensiSlider.value = PlayerPrefs.GetFloat("Sensitivity");
+        }
+        // Game Speed
+        if (PlayerPrefs.HasKey("GameSpeed"))
+        {
+            speedSlider.value = PlayerPrefs.GetFloat("GameSpeed");
         }
     }
 
@@ -134,7 +200,16 @@ public class MenuManager : MonoBehaviour
             HUDManager.instance.reticle.gameObject.SetActive(true);
         }
         audioSource.Play();
-        Time.timeScale = 1;
+
+        if (PlayerPrefs.HasKey("GameSpeed"))
+        {
+            Time.timeScale = PlayerPrefs.GetFloat("GameSpeed");
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         isPaused = !isPaused;

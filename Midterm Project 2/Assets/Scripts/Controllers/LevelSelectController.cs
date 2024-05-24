@@ -7,6 +7,16 @@ using UnityEngine.UI;
 
 public class LevelSelectController : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField] GameObject winScreen;
+    public Button nextWorld;
+    [SerializeField] GameObject levelMenu;
+
+    bool levelMenuActive;
+
+    Vector3 levelMenuActiveLoc;
+    Vector3 levelMenuInactiveLoc;
+
     [Header("Levels")]
     [SerializeField] List<SelectableWorlds> worldsList;
 
@@ -16,13 +26,23 @@ public class LevelSelectController : MonoBehaviour
 
 
     [Header("Audio")]
-    [SerializeField] AudioClip buttonPress;
-    [SerializeField] AudioClip buttonPressNextPage;
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource buttonAud;
+    [SerializeField] AudioSource pageAud;
+
 
     // Start is called before the first frame update
-    void Awake()
+    public void Awake()
     {
+        levelMenuActive = false;
+        levelMenuActiveLoc = levelMenuInactiveLoc = levelMenu.transform.position;
+
+        levelMenuActiveLoc.y += 1000;
+
+        if (PlayerPrefs.HasKey("NextLevel") && PlayerPrefs.GetInt("NextLevel") == 1)
+        {
+            levelMenu.transform.position = levelMenuActiveLoc;
+        }
+
         newWorldsList = new List<SelectableWorlds>();
         if (worldsList.Count == FileManager.instance.worlds.Count)
         {
@@ -46,19 +66,35 @@ public class LevelSelectController : MonoBehaviour
 
                 FileManager.instance.AddWorld(newWorldsList[i].levelName.Count);
             }
-            newWorldsList[0].levelImages[0].GetComponent<LevelInfoController>().SetUnlocked(true);
+            //newWorldsList[0].levelImages[0].GetComponent<LevelInfoController>().SetUnlocked(true);
             FileManager.instance.UnlockLevel(0, 0);
             FileManager.instance.SaveWorldUnlocks();
         }
         FileManager.instance.LoadWorldUnlocks();
+        if (PlayerPrefs.HasKey("AllLevelsCompleted") && PlayerPrefs.GetInt("AllLevelsCompleted") == 1)
+        {
+            winScreen.SetActive(true);
+        }
     }
 
+    private void Update()
+    {
+        if (levelMenuActive)
+        {
+            levelMenu.transform.position = Vector3.Lerp(levelMenu.transform.position, levelMenuActiveLoc, Time.deltaTime * 5);
+        }
+        else
+        {
+            levelMenu.transform.position = Vector3.Lerp(levelMenu.transform.position, levelMenuInactiveLoc, Time.deltaTime * 5);
+        }
+    }
     private void OnEnable()
     {
         //Debug.Log("Enabling World 1");
         newWorldsList[worldSelectCount].SetEnabled(true);
         PlayerPrefs.SetInt("SelectedWorld", worldSelectCount);
         FileManager.instance.LoadWorldUnlocks();
+        FileManager.instance.UnlockLevel(0, 0);
 
         for (int i = 0; i < newWorldsList.Count; i++) 
         {
@@ -67,6 +103,8 @@ public class LevelSelectController : MonoBehaviour
                 newWorldsList[i].levelImages[j].GetComponent<LevelInfoController>().SetUnlocked(FileManager.instance.GetUnlock(i, j));
             }
         }
+        FileManager.instance.SaveWorldUnlocks();
+
 
         //Debug.Log("World 1 Enabled");
     }
@@ -81,12 +119,12 @@ public class LevelSelectController : MonoBehaviour
     }
     public void PressMainMenu()
     {
-        audioSource.PlayOneShot(buttonPress);
+        buttonAud.Play();
         FileManager.instance.SaveWorldUnlocks();
     }
     public void PressNext()
     {
-        audioSource.PlayOneShot(buttonPressNextPage);
+        pageAud.Play();
         if (worldSelectCount < worldsList.Count - 1)
         {
             newWorldsList[worldSelectCount].SetEnabled(false);
@@ -103,7 +141,7 @@ public class LevelSelectController : MonoBehaviour
     }
     public void PressPrev()
     {
-        audioSource.PlayOneShot(buttonPressNextPage);
+        pageAud.Play();
         if (worldSelectCount > 0)
         {
             newWorldsList[worldSelectCount].SetEnabled(false);
@@ -118,10 +156,21 @@ public class LevelSelectController : MonoBehaviour
         }
         PlayerPrefs.SetInt("SelectedWorld", worldSelectCount);
     }
-
+    public void PressContinue()
+    {
+        if (PlayerPrefs.HasKey("AllLevelsCompleted"))
+        {
+            winScreen.SetActive(false);
+            PlayerPrefs.SetInt("AllLevelsCompleted", 0);
+        }
+    }
     public void PlayButtonPress()
     {
-        audioSource.PlayOneShot(buttonPress);
+        buttonAud.Play();
     }
 
+    public void ToggleLevelMenuActive()
+    {
+        levelMenuActive = !levelMenuActive;
+    }
 }

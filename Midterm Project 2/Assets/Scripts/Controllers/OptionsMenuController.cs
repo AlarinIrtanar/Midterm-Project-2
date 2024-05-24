@@ -7,32 +7,38 @@ using UnityEngine.UI;
 
 public class OptionsMenuController : MonoBehaviour
 {
+    [Header("----- Components -----")]
+    [SerializeField] GameObject optionsMenu;
+
+    bool optionsMenuActive;
+
+    Vector3 optionsMenuActiveLoc;
+    Vector3 optionsMenuInactiveLoc;
+
     [Header("----- Text -----")]
     [SerializeField] TMP_Text shootText;
     [SerializeField] TMP_Text grappleText;
     [SerializeField] TMP_Text crouchText;
     [SerializeField] TMP_Text sprintText;
     [SerializeField] TMP_Text jumpText;
-    //[SerializeField] TMP_Text shootText;
-    //[SerializeField] TMP_Text shootText;
-    //[SerializeField] TMP_Text shootText;
-    //[SerializeField] TMP_Text shootText;
-    //[SerializeField] TMP_Text shootText;
 
     [Header("----- Sliders -----")]
     [SerializeField] Slider sensiSlider;
+    [SerializeField] Slider speedSlider;
 
     bool shootPressed;
     bool grapplePressed;
     bool crouchPressed;
     bool sprintPressed;
     bool jumpPressed;
-    //bool shootPressed;
-    //bool shootPressed;
-    //bool shootPressed;
-    //bool shootPressed;
 
+    private void Start()
+    {
+        optionsMenuActive = false;
+        optionsMenuActiveLoc = optionsMenuInactiveLoc = optionsMenu.transform.position;
 
+        optionsMenuActiveLoc.y -= 1000;
+    }
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -96,11 +102,30 @@ public class OptionsMenuController : MonoBehaviour
         {
             PlayerPrefs.SetFloat("Sensitivity", sensiSlider.value);
         }
+
+        // Game Speed
+        if (PlayerPrefs.HasKey("GameSpeed"))
+        {
+            speedSlider.value = PlayerPrefs.GetFloat("GameSpeed");
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("GameSpeed", speedSlider.value);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (optionsMenuActive)
+        {
+            optionsMenu.transform.position = Vector3.Lerp(optionsMenu.transform.position, optionsMenuActiveLoc, Time.deltaTime * 5);
+        }
+        else
+        {
+            optionsMenu.transform.position = Vector3.Lerp(optionsMenu.transform.position, optionsMenuInactiveLoc, Time.deltaTime * 5);
+        }
+
         if (shootPressed && Input.anyKeyDown)
         {
             string inputString = CheckInput(shootText.text);
@@ -150,6 +175,8 @@ public class OptionsMenuController : MonoBehaviour
         PlayerPrefs.SetString("Jump Button", jumpText.text);
 
         PlayerPrefs.SetFloat("Sensitivity", sensiSlider.value);
+        PlayerPrefs.SetFloat("GameSpeed", speedSlider.value);
+        Time.timeScale = speedSlider.value;
     }
     public void ResetControls()
     {
@@ -165,6 +192,7 @@ public class OptionsMenuController : MonoBehaviour
         jumpText.text = "space";
 
         sensiSlider.value = 1f;
+        speedSlider.value = 1f;
 
         Apply();
     }
@@ -271,5 +299,10 @@ public class OptionsMenuController : MonoBehaviour
 
 
         return result;
+    }
+
+    public void ToggleOptionsMenuActive()
+    {
+        optionsMenuActive = !optionsMenuActive;
     }
 }

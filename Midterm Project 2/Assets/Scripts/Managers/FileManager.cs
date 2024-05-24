@@ -84,6 +84,24 @@ public class FileManager : MonoBehaviour
         {
             worlds[worldId + 1].levels[0].isUnlocked = true;
         }
+        else
+        {
+            PlayerPrefs.SetInt("AllLevelsCompleted", 1);
+        }
+        SaveWorldUnlocks();
+
+    }
+    public void ResetUnlocks()
+    {
+        LoadWorldUnlocks();
+
+        for (int i = 0; i < worlds.Count; i++)
+        {
+            for (int j = 0; j < worlds[i].levels.Count; j++)
+            {
+                worlds[i].levels[j].isUnlocked = false;
+            }
+        }
         SaveWorldUnlocks();
     }
     public bool GetUnlock(int worldId, int levelId)
@@ -94,7 +112,7 @@ public class FileManager : MonoBehaviour
         Debug.Log("World Count: " + worlds.Count);
         Debug.Log("Level Count: " + worlds[worldId].levels.Count);*/
 
-        if (worlds[worldId].levels[levelId] != null)
+        if (worldId < worlds.Count && levelId < worlds[worldId].levels.Count)
         {
             return worlds[worldId].levels[levelId].isUnlocked;
         }

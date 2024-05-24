@@ -20,6 +20,7 @@ public class SelectableWorlds : ScriptableObject
     Image currentImage;
     LevelInfoController levelInfoController;
     GameObject parent;
+    public LevelSelectController parentController;
     float instantX;
     bool firstLaunch = true;
 
@@ -31,6 +32,7 @@ public class SelectableWorlds : ScriptableObject
             levelImages = new List<Image>();
 
             parent = GameObject.FindGameObjectWithTag("LevelSelect");
+            parentController = parent.GetComponent<LevelSelectController>();
 
             instantX = -((levelName.Count * levelImagePrefab.rectTransform.sizeDelta.x) / 2 - (levelImagePrefab.rectTransform.sizeDelta.x / 2)) * spacing;
             for (int i = 0; i < levelName.Count; i++)
