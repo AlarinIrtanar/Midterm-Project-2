@@ -377,17 +377,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1673341852 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1110228985991025332, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-  m_PrefabInstance: {fileID: 1996696173}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1696348191
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,10 +553,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5280450195820381916, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: btnDefault
-      value: 
-      objectReference: {fileID: 1673341852}
     - target: {fileID: 6106124782111415140, guid: 785964410db76734db17ec9ce9797c42, type: 3}
       propertyPath: m_Name
       value: MainMenu

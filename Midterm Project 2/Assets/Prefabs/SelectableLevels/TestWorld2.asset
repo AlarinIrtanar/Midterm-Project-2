@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: TestWorld2
   m_EditorClassIdentifier: 
   levelImagePrefab: {fileID: 1249369623761289563, guid: 00536049e3f8cba48b2b1f7d77eae6cc, type: 3}
+  worldName: Floating Skies
   levelName:
   - Slice And Dice
   - Caltrop
   worldId: 1
   spacing: 1.75
   levelImages: []
+  parentController: {fileID: 0}
