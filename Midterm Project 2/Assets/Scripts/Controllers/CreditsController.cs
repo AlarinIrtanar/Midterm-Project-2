@@ -5,21 +5,25 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CreditsController : MonoBehaviour
 {
     [SerializeField] MainMenuController mainMenu;
     [SerializeField] GameObject creditsObject;
     [SerializeField] List<TMP_Text> credits;
+    [SerializeField] Button btnDefault;
 
 
     bool creditsActive;
+    bool canCancel;
 
     Vector3 creditsInactiveLoc;
     // Start is called before the first frame update
     void Start()
     {
         creditsActive = false;
+        canCancel = false;
         creditsInactiveLoc = creditsObject.transform.position;
     }
 
@@ -28,9 +32,10 @@ public class CreditsController : MonoBehaviour
     {
         if (creditsActive)
         {
-            if (Input.anyKeyDown)
+            if (canCancel == true && Input.anyKeyDown)
             {
                 creditsActive = false;
+                canCancel = false;
                 creditsObject.transform.position = creditsInactiveLoc;
                 mainMenu.ToggleMainMenuActive();
             }
@@ -45,6 +50,7 @@ public class CreditsController : MonoBehaviour
             if (credits[0].transform.position.y > this.GetComponent<RectTransform>().rect.height + Screen.height)
             {
                 creditsActive = false;
+                canCancel = false;
                 creditsObject.transform.position = creditsInactiveLoc;
                 mainMenu.ToggleMainMenuActive();
             }
@@ -52,6 +58,14 @@ public class CreditsController : MonoBehaviour
     }
     public void ToggleCreditsActive()
     {
+        btnDefault.Select();
         creditsActive = !creditsActive;
+        StartCoroutine(creditTimeMin());
+    }
+    IEnumerator creditTimeMin()
+    {
+        canCancel = false;
+        yield return new WaitForSeconds(3f);
+        canCancel = true;
     }
 }

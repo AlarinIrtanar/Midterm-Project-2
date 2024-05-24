@@ -6,25 +6,25 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Prefabs/Scenes/MainMenu.unity
     guid: f8ec5b79e79a30948b8bf37482bbb0c1
   - enabled: 1
-    path: Assets/Scenes/Credits.unity
+    path: Assets/Prefabs/Scenes/Credits.unity
     guid: 655c642d988e9c74e8e3f12c25ca8c42
   - enabled: 1
-    path: Assets/Scenes/Burglary.unity
+    path: Assets/Prefabs/Scenes/Burglary.unity
     guid: cac96bd70f43dbe40b8ee5385a81ca06
   - enabled: 1
-    path: Assets/Scenes/The Tower.unity
+    path: Assets/Prefabs/Scenes/The Tower.unity
     guid: b252b4e78984de64090e679228e9b191
   - enabled: 1
-    path: Assets/Scenes/The Maze.unity
+    path: Assets/Prefabs/Scenes/The Maze.unity
     guid: 8596d95c177d3544ba83ee07577f2234
   - enabled: 1
-    path: Assets/Scenes/Slice And Dice.unity
+    path: Assets/Prefabs/Scenes/Slice And Dice.unity
     guid: 92a594f204fbf3b4ab6ff67a68da3863
   - enabled: 1
-    path: Assets/Scenes/Caltrop.unity
+    path: Assets/Prefabs/Scenes/Caltrop.unity
     guid: e7d8597bf90b51941953b8be41b43443
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a51168f78e93d8c41a5c524b8c4c2881, type: 2}
