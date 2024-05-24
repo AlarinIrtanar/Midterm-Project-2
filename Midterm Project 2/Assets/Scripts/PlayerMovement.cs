@@ -47,6 +47,51 @@ public class PlayerMovement : MonoBehaviour
     RaycastHit slopeHit;
     bool exitingSlope;
 
+<<<<<<< Updated upstream
+=======
+    [Header("Camera")]
+    [SerializeField] GameObject cam; // player camera
+    public bool viewBobbing;
+    public float viewBobbingIntensityMultiplierVert;
+    public float viewBobbingIntensityMultiplierHoriz;
+    public float viewBobbingSpeed;
+    float viewBobbingIntensity;
+    float viewBobbingTargetIntensity;
+    float viewBobbingProgress;
+    bool doingViewBobbing;
+
+    [Header("Shooting")]
+    [SerializeField] int shootDamage;
+    [SerializeField] float shootCooldown;
+    [SerializeField] float shootDistance;
+    bool isShooting;
+
+    [Header("Audio")]
+    [SerializeField] AudioSource audioSource;
+
+    // Shooting
+    [SerializeField] AudioClip[] audShoots;
+    [SerializeField] float2 audShootVolRange;
+    
+    // Steps
+    [SerializeField] AudioClip[] audSteps;
+    [SerializeField] float2 audStepVolRange;
+    [SerializeField] float stepSize;
+    float curDistStepped;
+
+    // Jumps
+    [SerializeField] AudioClip[] audJumps;
+    [SerializeField] float2 audJumpVolRange;
+
+    // Landing
+    [SerializeField] AudioClip[] audLandings;
+    [SerializeField] float2 audLandingVolRange;
+    bool prevLanded;
+    bool isLanded;
+    float prevYVel;
+
+    private PlayerRailGrinding playerRailGrinding;
+>>>>>>> Stashed changes
 
     public Transform orientation;
 
@@ -76,6 +121,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+<<<<<<< Updated upstream
+=======
+        playerRailGrinding = GetComponent<PlayerRailGrinding>();
+        // Jump Button
+        if (PlayerPrefs.HasKey("Jump Button"))
+            jumpButton = PlayerPrefs.GetString("Jump Button");
+        else
+            jumpButton = "space";
+>>>>>>> Stashed changes
 
 
 
@@ -308,6 +362,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        playerRailGrinding.ExitRailGrind();
         exitingSlope = true;
 
         // Reset y velocity
