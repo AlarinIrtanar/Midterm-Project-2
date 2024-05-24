@@ -3148,14 +3148,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 152219164923971589, guid: c2de8b1849d06a446992b9a141ff23dd, type: 3}
-      propertyPath: sensX
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 152219164923971589, guid: c2de8b1849d06a446992b9a141ff23dd, type: 3}
-      propertyPath: sensY
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 1098793245970897720, guid: c2de8b1849d06a446992b9a141ff23dd, type: 3}
       propertyPath: m_Height
       value: 2
