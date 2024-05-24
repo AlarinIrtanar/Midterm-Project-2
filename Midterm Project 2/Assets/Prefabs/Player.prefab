@@ -424,6 +424,19 @@ MonoBehaviour:
     x: 0.7
     y: 1
   stepSize: 2
+  audJumps:
+  - {fileID: 8300000, guid: ece43d35f05de0d45b7ef08fb11f487a, type: 3}
+  - {fileID: 8300000, guid: c45118b983a430240971e3eed8d201d8, type: 3}
+  - {fileID: 8300000, guid: ee58b3ae3f350964f840dc696b2e784f, type: 3}
+  - {fileID: 8300000, guid: d588da0b60ceb534ab7f9aeefa885d38, type: 3}
+  audJumpVolRange:
+    x: 0.7
+    y: 1
+  audLandings:
+  - {fileID: 8300000, guid: 5496ad7951f36fe49a7416a37beab8ec, type: 3}
+  audLandingVolRange:
+    x: 0.2
+    y: 0.4
   orientation: {fileID: 5841555862347710820}
   state: 0
   sliding: 0
@@ -477,6 +490,13 @@ MonoBehaviour:
   gravityCounterForce: 8.5
   orientation: {fileID: 5841555862347710820}
   cam: {fileID: 0}
+  audioSource: {fileID: 1020873463462963792}
+  audWallJumps:
+  - {fileID: 8300000, guid: ece43d35f05de0d45b7ef08fb11f487a, type: 3}
+  - {fileID: 8300000, guid: c45118b983a430240971e3eed8d201d8, type: 3}
+  - {fileID: 8300000, guid: ee58b3ae3f350964f840dc696b2e784f, type: 3}
+  - {fileID: 8300000, guid: d588da0b60ceb534ab7f9aeefa885d38, type: 3}
+  audWallJumpVolRange: {x: 0.3, y: 0.5}
 --- !u!114 &5129808908304992711
 MonoBehaviour:
   m_ObjectHideFlags: 0

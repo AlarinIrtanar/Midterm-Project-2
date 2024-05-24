@@ -71,6 +71,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float stepSize;
     float curDistStepped;
 
+    // Jumps
+    [SerializeField] AudioClip[] audJumps;
+    [SerializeField] float2 audJumpVolRange;
+
+    // Landing
+    [SerializeField] AudioClip[] audLandings;
+    [SerializeField] float2 audLandingVolRange;
+    bool prevLanded;
+    bool isLanded;
+    float prevYVel;
+
 
 
     public Transform orientation;
@@ -299,6 +310,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         lastDesiredMoveSpeed = desiredMoveSpeed;
+
+        // Do landing stuff
+        isLanded = grounded || wallrunning || OnSlope();
+        if (isLanded && !prevLanded)
+            PlayRandFromList(audLandings, audLandingVolRange);
+        prevLanded = isLanded;
     }
 
     private IEnumerator SmoothlyLerpMoveSpeed()
@@ -387,6 +404,9 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+
+        // Play sound
+        PlayRandFromList(audJumps, audJumpVolRange);
     }
 
     private void ResetJump()

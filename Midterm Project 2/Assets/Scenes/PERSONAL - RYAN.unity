@@ -1888,6 +1888,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1929427624}
     - target: {fileID: 5657168262379216546, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
+      propertyPath: audLandings.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5496ad7951f36fe49a7416a37beab8ec, type: 3}
+    - target: {fileID: 5657168262379216546, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
       propertyPath: viewBobbingIntensityMultiplier
       value: 0.1
       objectReference: {fileID: 0}

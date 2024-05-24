@@ -41,6 +41,11 @@ public class WallRunning : MonoBehaviour
     PlayerMovement pm;
     Rigidbody rb;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    [SerializeField] AudioClip[] audWallJumps;
+    [SerializeField] Vector2 audWallJumpVolRange;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -180,5 +185,13 @@ public class WallRunning : MonoBehaviour
         // Apply force (Also reset y velocity before to make jump feel natural)
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         rb.AddForce(forceToApply, ForceMode.Impulse);
+
+        // Wall jump audio
+        PlayRandFromList(audWallJumps, audWallJumpVolRange);
+    }
+
+    private void PlayRandFromList(AudioClip[] auds, Vector2 volRange)
+    {
+        audioSource.PlayOneShot(auds[UnityEngine.Random.Range(0, auds.Length)], UnityEngine.Random.Range(volRange.x, volRange.y));
     }
 }
