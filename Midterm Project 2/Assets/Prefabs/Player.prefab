@@ -411,6 +411,8 @@ MonoBehaviour:
   viewBobbingIntensityMultiplierVert: 0.13
   viewBobbingIntensityMultiplierHoriz: 0.09
   viewBobbingSpeed: 0.5
+  fovShiftIntensity: 20
+  fovShiftFalloffIntensity: 20
   shootDamage: 5
   shootCooldown: 0.1
   shootDistance: 100
@@ -418,8 +420,8 @@ MonoBehaviour:
   audShoots:
   - {fileID: 8300000, guid: 469aaab432f7b9749894442b3460ce88, type: 3}
   audShootVolRange:
-    x: 0.2
-    y: 0.4
+    x: 0.05
+    y: 0.08
   audSteps:
   - {fileID: 8300000, guid: 5fdb63ac93ba88a40864154373c6075d, type: 3}
   - {fileID: 8300000, guid: f472781630197404ea41550ac4ac1d85, type: 3}
@@ -720,7 +722,7 @@ AudioSource:
   m_GameObject: {fileID: 9187275283544095468}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 594398737546384054, guid: aef2720eaf5305e499a2e20d1fd481ae, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
