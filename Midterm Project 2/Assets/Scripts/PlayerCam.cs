@@ -46,8 +46,13 @@ public class PlayerCam : MonoBehaviour
             sensiMult = 1f;
 
         // Get mouse input
-        float mouseX = Input.GetAxisRaw("Mouse X") * sensX * sensiMult;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * sensY * sensiMult;
+        float mouseX = 0f;
+        float mouseY = 0f;
+        if (!MenuManager.instance.isPaused)
+        {
+            mouseX = Input.GetAxisRaw("Mouse X") * sensX * sensiMult;
+            mouseY = Input.GetAxisRaw("Mouse Y") * sensY * sensiMult;
+        }
 
         // Get rotation
         rotY += mouseX;
