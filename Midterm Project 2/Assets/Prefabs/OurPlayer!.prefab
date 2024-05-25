@@ -210,6 +210,22 @@ PrefabInstance:
       propertyPath: crouchKey
       value: 306
       objectReference: {fileID: 0}
+    - target: {fileID: 5657168262379216546, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
+      propertyPath: audShoots.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5657168262379216546, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
+      propertyPath: audShoots.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5685c802c044eea429fed4419e86eedf, type: 3}
+    - target: {fileID: 5657168262379216546, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
+      propertyPath: audShoots.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 83752c68c7bda1243a0a7d52771a90a8, type: 3}
+    - target: {fileID: 5657168262379216546, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
+      propertyPath: audShoots.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 51521921503ec7e46a35f40e7d21529d, type: 3}
     - target: {fileID: 6585446355755494993, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
       propertyPath: cam
       value: 
@@ -218,7 +234,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5129808908304992711, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -255,6 +272,14 @@ MonoBehaviour:
   grindingSpeed: 10
   heightOffset: 1
   lerpSpeed: 10
+  playerOrientation: {fileID: 0}
+  sphereCastRadius: 1
+  railMask:
+    serializedVersion: 2
+    m_Bits: 0
+  maxDistance: 1
+  railCooldown: 0
+  railCooldownTimer: 0.5
   currentRailScript: {fileID: 0}
 --- !u!82 &8378968832825721775
 AudioSource:
