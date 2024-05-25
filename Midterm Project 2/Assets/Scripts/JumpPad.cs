@@ -5,13 +5,14 @@ using UnityEngine;
 public class JumpPad : MonoBehaviour
 {
     [SerializeField] float launchSpeed;
+    [SerializeField] AudioSource jumpSource;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             other.attachedRigidbody.AddForce(transform.up * launchSpeed, ForceMode.Impulse);
-            Debug.Log("TEST");
+            jumpSource.Play();
         }
     }
 }
