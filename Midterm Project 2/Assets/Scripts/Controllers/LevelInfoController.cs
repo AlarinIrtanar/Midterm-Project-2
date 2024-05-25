@@ -59,7 +59,7 @@ public class LevelInfoController : MonoBehaviour
         unlockedEffect.Play();
         unlockAud.Play();
         yield return new WaitForSeconds(0.5f);
-        lockedImage.gameObject.SetActive(false);
+        lockedImage.enabled = false;
     }
     public void SetUnlocked(bool isUnlocked)
     {

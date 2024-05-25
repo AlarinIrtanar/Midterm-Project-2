@@ -20,20 +20,32 @@ public class PlayerRailGrinding : MonoBehaviour
     float timeForFullSpline;
     float elapsedTime;
     [SerializeField] float lerpSpeed = 10f;
+    bool isFacingForward;
+
+    [Header("Sphere Cast")]
+    [SerializeField] GameObject playerOrientation;
+    [SerializeField] float sphereCastRadius = 1f;
+    public LayerMask railMask;
+    RaycastHit hit;
+    [SerializeField] float maxDistance = 1f;
+    [SerializeField] float railCooldown = 0;
+    [SerializeField] float railCooldownTimer = .5f;
 
     [Header("Scripts")]
-    [SerializeField] RailGrinding currentRailScript;
+    public RailGrinding currentRailScript;
     Rigidbody rb;
 
 
     void Start()
     {
-        //timeForFullSpline = currentRailScript.totalSplineLength / grindingSpeed;
+
     }
 
     void Update()
     {
         rb = GetComponent<Rigidbody>();
+        DetectRail();
+        railCooldown -= Time.deltaTime;
     }
 
     //jump off rails here
@@ -51,31 +63,35 @@ public class PlayerRailGrinding : MonoBehaviour
     {
         if (onRail)
         {
+            isFacingForward = currentRailScript.normalDirection;
             MovePlayerAlongRail();
         }
     }
 
     void MovePlayerAlongRail()
     {
-        //Time.timeScale = .1f;
         if (currentRailScript != null && onRail)
         {
             float progress = elapsedTime / timeForFullSpline;
 
-            if (progress < 0 || progress > 1f)
+            if (progress < 0 || progress > 1f)//elapsedTime check
             {
-                ThrowOffRail();
-                return;
+                if (elapsedTime > .2f)
+                {
+                    ThrowOffRail();
+                    return;
+                }
             }
             float nextTimeNormalized;
-            if (currentRailScript.normalDirection)
-            {
+            //if (currentRailScript.normalDirection)
+            /*if (isFacingForward)
+            {*/
                 nextTimeNormalized = (elapsedTime + Time.deltaTime) / timeForFullSpline;
-            }
-            else
+            //}
+            /*else
             {
                 nextTimeNormalized = (elapsedTime - Time.deltaTime) / timeForFullSpline;
-            }
+            }*/
 
             float3 pos, tangent, up;
             float3 nextPosFloat, nextTan, nextUp;
@@ -91,26 +107,32 @@ public class PlayerRailGrinding : MonoBehaviour
             //
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(transform.up, up) * transform.rotation, lerpSpeed * Time.deltaTime);
 
-            if (currentRailScript.normalDirection)
-            {
+            //if (currentRailScript.normalDirection)
+            //{
                 elapsedTime += Time.deltaTime;
-            }
-            else
+            //}
+            /*else
             {
                 elapsedTime -= Time.deltaTime;
-            }
+            }*/
         }
     }
 
-    public void OnColliderHit(Collider other)
+    public void DetectRail()
     {
-        //if(other.gameObject.tag == "Rail")
-        if (other.gameObject.CompareTag("Rail"))
+        if (!onRail)
         {
-            Debug.Log("RAAAAAAAAAAIL!");
-            onRail = true;
-            currentRailScript = other.gameObject.GetComponent<RailGrinding>();
-            CalculateAndSetRailPosition();
+            if (railCooldown <= 0)
+            {
+                if (Physics.SphereCast(transform.position, sphereCastRadius, transform.up * (-1), out hit, maxDistance, railMask))
+                {
+                    railCooldown = railCooldownTimer;
+                    Debug.Log("RAAAAAAAAAAIL!");
+                    onRail = true;
+                    currentRailScript = hit.collider.gameObject.GetComponent<RailGrinding>();
+                    CalculateAndSetRailPosition();
+                }
+            }
         }
     }
 
@@ -124,7 +146,7 @@ public class PlayerRailGrinding : MonoBehaviour
         float3 forward;
         float3 up;
         SplineUtility.Evaluate(currentRailScript.railSpline.Spline, normalizedTime, out pos, out forward, out up);
-        currentRailScript.CalculateDirection(forward, transform.forward);
+        currentRailScript.CalculateDirection(forward, playerOrientation.transform.forward);
         transform.position = SplinePoint + (transform.up * heightOffset);
     }
 
@@ -133,7 +155,14 @@ public class PlayerRailGrinding : MonoBehaviour
         onRail = false;
         currentRailScript = null;
         transform.position += transform.forward * 1; //+1
+
     }
-
-
+    
+    public void ExitRailGrind()
+    {
+        onRail = false;
+        currentRailScript = null;
+        //rb velocity
+        railCooldown = railCooldownTimer;
+    }
 }

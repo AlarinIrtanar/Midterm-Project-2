@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Camera")]
     [SerializeField] GameObject cam; // player camera
+    private PlayerCam playerCamScript; // PlayerCam script
     public bool viewBobbing;
     public float viewBobbingIntensityMultiplierVert;
     public float viewBobbingIntensityMultiplierHoriz;
@@ -61,6 +62,10 @@ public class PlayerMovement : MonoBehaviour
     float viewBobbingTargetIntensity;
     float viewBobbingProgress;
     bool doingViewBobbing;
+
+    // Speed-based fov shifting
+    [SerializeField] float fovShiftIntensity;
+    [SerializeField] float fovShiftFalloffIntensity;
 
     [Header("Shooting")]
     [SerializeField] int shootDamage;
@@ -92,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
     bool isLanded;
     float prevYVel;
 
+    private PlayerRailGrinding playerRailGrinding;
 
 
     public Transform orientation;
@@ -122,6 +128,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        playerRailGrinding = GetComponent<PlayerRailGrinding>();
+
         // Jump Button
         if (PlayerPrefs.HasKey("Jump Button"))
             jumpButton = PlayerPrefs.GetString("Jump Button");
@@ -146,6 +154,8 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
 
         startYScale = transform.localScale.y;
+
+        playerCamScript = cam.GetComponent<PlayerCam>();
 
         //SpawnPlayer();
     }
@@ -216,7 +226,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Do shooting
-        if (!isShooting && Input.GetButtonDown("Shoot"))
+        if (!MenuManager.instance.isPaused && !isShooting && Input.GetButtonDown("Shoot"))
             StartCoroutine(Shoot());
     }
 
@@ -330,6 +340,10 @@ public class PlayerMovement : MonoBehaviour
         if (isLanded && !prevLanded)
             PlayRandFromList(audLandings, audLandingVolRange);
         prevLanded = isLanded;
+
+        // Do speed-based fov shifting
+        float camFovShift = fovShiftIntensity * (1f - (fovShiftFalloffIntensity / (rb.velocity.magnitude + fovShiftFalloffIntensity))) * (Vector3.Dot(Camera.main.transform.forward, rb.velocity.normalized));
+        playerCamScript.SetFovShift(camFovShift);
     }
 
     private IEnumerator SmoothlyLerpMoveSpeed()
@@ -412,6 +426,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        playerRailGrinding.ExitRailGrind();
         exitingSlope = true;
 
         // Reset y velocity
