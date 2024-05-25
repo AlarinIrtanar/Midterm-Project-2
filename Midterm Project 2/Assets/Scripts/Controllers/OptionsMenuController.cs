@@ -27,6 +27,9 @@ public class OptionsMenuController : MonoBehaviour
     [SerializeField] Slider sensiSlider;
     [SerializeField] Slider speedSlider;
 
+    [Header("CheckBoxes")]
+    [SerializeField] Toggle devMode;
+
     bool shootPressed;
     bool grapplePressed;
     bool crouchPressed;
@@ -94,6 +97,23 @@ public class OptionsMenuController : MonoBehaviour
         else
         {
             PlayerPrefs.SetString("Jump Button", jumpText.text);
+        }
+
+        // DevMode Toggle
+        if (PlayerPrefs.HasKey("DevMode"))
+        {
+            if (PlayerPrefs.GetInt("DevMode") == 0)
+            {
+                devMode.isOn = false;
+            }
+            else
+            {
+                devMode.isOn = true;
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("DevMode", 0);
         }
 
         // Sensitivity
@@ -188,6 +208,9 @@ public class OptionsMenuController : MonoBehaviour
         PlayerPrefs.SetString("Crouch Button", crouchText.text);
         PlayerPrefs.SetString("Sprint Button", sprintText.text);
         PlayerPrefs.SetString("Jump Button", jumpText.text);
+        
+        PlayerPrefs.SetInt("DevMode", devMode.isOn ? 1 : 0);
+        //Debug.Log(PlayerPrefs.GetInt("DevMode"));
 
         PlayerPrefs.SetFloat("Sensitivity", sensiSlider.value);
         PlayerPrefs.SetFloat("GameSpeed", speedSlider.value);
