@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] public float timer = 120f;
     [SerializeField] GameObject PlayerPreFab;
     [SerializeField] GameObject playerSpawnPos;
 
@@ -16,8 +17,6 @@ public class GameManager : MonoBehaviour
    
     public PlayerController playerScript;
 
-    public float timer;
-
     public AudioSource timeLow;
 
     public int score;
@@ -28,8 +27,6 @@ public class GameManager : MonoBehaviour
         Instance = this;
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
-        timer = 120f;
-
     }
     public void YouWin()
     {
