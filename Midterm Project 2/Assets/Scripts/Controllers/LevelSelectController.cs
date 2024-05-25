@@ -102,7 +102,7 @@ public class LevelSelectController : MonoBehaviour
         if (levelMenuActive)
         {
             levelMenu.transform.position = Vector3.Lerp(levelMenu.transform.position, levelMenuActiveLoc, Time.deltaTime * 5);
-            if (Mathf.Abs(levelMenu.transform.position.y - levelMenuActiveLoc.y) < 0.1f)
+            if (Mathf.Abs(levelMenu.transform.position.y - levelMenuActiveLoc.y) < 2f)
             {
                 levelMenu.transform.position = levelMenuActiveLoc;
                 if (inPlace == false)

@@ -12,6 +12,7 @@ public class LevelInfoController : MonoBehaviour
     [SerializeField] TMP_Text levelNumText;
     [SerializeField] TMP_Text levelNameText;
     [SerializeField] Image lockedImage;
+    [SerializeField] Button cheatButton;
 
     [Header("Audio")]
     [SerializeField] AudioSource selectAud;
@@ -29,6 +30,16 @@ public class LevelInfoController : MonoBehaviour
     private void OnEnable()
     {
         unlockedEffect.Pause();
+        if (PlayerPrefs.HasKey("DevMode") && PlayerPrefs.GetInt("DevMode") == 1)
+        {
+            //cheatButton.enabled = true;
+            cheatButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            //cheatButton.enabled = false;
+            cheatButton.gameObject.SetActive(false);
+        }
     }
     private void OnDisable()
     {
