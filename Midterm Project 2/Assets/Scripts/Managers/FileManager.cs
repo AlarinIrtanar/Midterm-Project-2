@@ -82,6 +82,7 @@ public class FileManager : MonoBehaviour
         }
         else if(worldId < worlds.Count - 1)
         {
+            Debug.Log("World " +  worldId + 1 + " unlocked");
             worlds[worldId + 1].levels[0].isUnlocked = true;
         }
         else
