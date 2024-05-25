@@ -11,8 +11,9 @@ public class JumpPad : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.attachedRigidbody.AddForce(transform.up * launchSpeed, ForceMode.Impulse);
             jumpSource.Play();
+            other.attachedRigidbody.AddForce(transform.up * launchSpeed, ForceMode.Impulse);
+            
         }
     }
 }
