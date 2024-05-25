@@ -61,6 +61,19 @@ public class LevelInfoController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         lockedImage.enabled = false;
     }
+    IEnumerator LockAnimation()
+    {
+        while (!parent.parentController.inPlace)
+        {
+            yield return null;
+        }
+        unlockedEffect.gameObject.SetActive(true);
+        lockedImage.enabled = true;
+        unlockAnim.enabled = true;
+        unlockAnim.Play("LevelUnlockSpiral", 0, 0);
+        unlockAnim.speed = 0;
+        yield return new WaitForSeconds(0f);
+    }
     public void SetUnlocked(bool isUnlocked)
     {
         this.isUnlocked = isUnlocked;
@@ -81,8 +94,11 @@ public class LevelInfoController : MonoBehaviour
         }
         else
         {
-            lockedImage.gameObject.SetActive(true);
-            unlockAnim.speed = 0;
+            if (this.isActiveAndEnabled)
+            {
+                lockedImage.gameObject.SetActive(true);
+                StartCoroutine(LockAnimation());
+            }
         }
     }
     public bool GetUnlocked()
