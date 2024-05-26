@@ -99,7 +99,7 @@ public class LevelSelectController : MonoBehaviour
         if (PlayerPrefs.HasKey("NextLevel") && PlayerPrefs.GetInt("NextLevel") == 1)
         {
             ToggleLevelMenuActive();
-            levelMenu.transform.position = levelMenuInactiveLoc;
+            levelMenu.transform.position = levelMenuActiveLoc;
             StartCoroutine(NextLevel0());
         }
     }
