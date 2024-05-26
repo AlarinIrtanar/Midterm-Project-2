@@ -140,9 +140,8 @@ public class MainMenuController : MonoBehaviour
 
         if (PlayerPrefs.HasKey("NextLevel") && PlayerPrefs.GetInt("NextLevel") == 1)
         {
+            ToggleMainMenuActive();
             mainMenu.transform.position = mainMenuInactiveLoc;
-            levelSelect.onClick.Invoke();
-            PlayerPrefs.SetInt("NextLevel", 0);
         }
 
     }
