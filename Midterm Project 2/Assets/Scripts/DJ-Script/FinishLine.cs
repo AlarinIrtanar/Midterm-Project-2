@@ -9,8 +9,12 @@ public class FinishLine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        audioSource.Play();
-        GameManager.Instance.YouWin();
+        if ( other.tag == "Player")
+        {
+            audioSource.Play();
+            GameManager.Instance.YouWin();
+        }
+
     }
     void Start()
     {
