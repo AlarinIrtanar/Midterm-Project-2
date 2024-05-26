@@ -162,6 +162,10 @@ PrefabInstance:
       propertyPath: grappleShootAudio
       value: 
       objectReference: {fileID: 6339183224272488537}
+    - target: {fileID: 1819691899899977048, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
+      propertyPath: whatIsGrappleable.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4726250197252779033, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
