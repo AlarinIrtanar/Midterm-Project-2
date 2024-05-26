@@ -13,6 +13,7 @@ public class MainMenuController : MonoBehaviour
     [Header("Components")]
     [SerializeField] Button levelSelect;
     [SerializeField] Button btnNewGameNo;
+    [SerializeField] Button btnQuit;
     [SerializeField] GameObject mainMenu;
     [SerializeField] LevelSelectController levelSelectMenu;
     [SerializeField] GameObject newGameMenu;
@@ -33,6 +34,11 @@ public class MainMenuController : MonoBehaviour
     {
         
         FileManager.instance.LoadWorldUnlocks();
+
+        if (Application.platform != RuntimePlatform.WindowsPlayer && Application.platform != RuntimePlatform.WindowsEditor)
+        {
+            btnQuit.gameObject.SetActive(false);
+        }
 
         levelSelect.Select();
 
