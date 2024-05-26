@@ -47,8 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bc7188f1c71da43afc7dbb682e421e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostSpeed: 5000
-  teleportTarget: {fileID: 0}
+  boostSpeed: 500
 --- !u!33 &6020556765769686319
 MeshFilter:
   m_ObjectHideFlags: 0

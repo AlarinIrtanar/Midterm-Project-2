@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GrapplingHookPull : MonoBehaviour
 {
+    [Header("GRAPPLE ENABLING")]
+    [SerializeField] bool canGrapple;
 
     [Header("References")]
     private PlayerMovement playerMovement;
@@ -80,32 +82,36 @@ public class GrapplingHookPull : MonoBehaviour
     //throws grappling hook but doesn't start pulling yet
     private void StartGrappling()
     {
-        if (!MenuManager.instance.isPaused)
+        if (canGrapple)
         {
-            if (grapplingCooldown > 0)
+
+            if (!MenuManager.instance.isPaused)
             {
-                return;
+                if (grapplingCooldown > 0)
+                {
+                    return;
+                }
+                grappleShootAudio.Play();
+                isGrappling = true;
+
+                RaycastHit hit;
+
+                if (Physics.Raycast(camera.position, camera.forward, out hit, grappleRange, whatIsGrappleable))
+                {
+                    grapplePoint = hit.point;
+
+                    Invoke(nameof(ExecuteGrappling), grappleDelay);
+                }
+                else
+                {
+                    grapplePoint = camera.position + camera.forward * grappleRange;
+
+                    Invoke(nameof(StopGrappling), grappleDelay);
+                }
+
+                lineRenderer.enabled = true;
+                lineRenderer.SetPosition(1, grapplePoint);
             }
-            grappleShootAudio.Play();
-            isGrappling = true;
-
-            RaycastHit hit;
-
-            if (Physics.Raycast(camera.position, camera.forward, out hit, grappleRange, whatIsGrappleable))
-            {
-                grapplePoint = hit.point;
-
-                Invoke(nameof(ExecuteGrappling), grappleDelay);
-            }
-            else
-            {
-                grapplePoint = camera.position + camera.forward * grappleRange;
-
-                Invoke(nameof(StopGrappling), grappleDelay);
-            }
-
-            lineRenderer.enabled = true;
-            lineRenderer.SetPosition(1, grapplePoint);
         }
     }
 
