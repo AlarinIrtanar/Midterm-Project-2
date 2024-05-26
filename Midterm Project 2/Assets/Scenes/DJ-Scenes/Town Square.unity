@@ -691,6 +691,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level 4 Build
       objectReference: {fileID: 0}
+    - target: {fileID: 6134087749044952722, guid: aee454ecf4468054ca756b0fafbff1c0, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6157569036707191552, guid: aee454ecf4468054ca756b0fafbff1c0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
