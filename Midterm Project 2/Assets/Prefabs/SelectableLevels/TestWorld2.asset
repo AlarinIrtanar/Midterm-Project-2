@@ -15,7 +15,9 @@ MonoBehaviour:
   levelImagePrefab: {fileID: 1249369623761289563, guid: 00536049e3f8cba48b2b1f7d77eae6cc, type: 3}
   worldName: Floating Skies
   levelName:
+  - Up!
   - Slice And Dice
+  - Sliding
   - Caltrop
   worldId: 1
   spacing: 2
