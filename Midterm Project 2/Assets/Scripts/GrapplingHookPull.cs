@@ -42,6 +42,10 @@ public class GrapplingHookPull : MonoBehaviour
 
     void Start()
     {
+        if (!canGrapple)
+        {
+            HUDManager.instance.ToggleGrapple();
+        }
         playerMovement = GetComponent<PlayerMovement>();
         playerRailGrinding = GetComponent<PlayerRailGrinding>();
         if (PlayerPrefs.HasKey("Grapple Button"))
