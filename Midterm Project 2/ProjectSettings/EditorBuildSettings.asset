@@ -45,6 +45,9 @@ EditorBuildSettings:
     path: Assets/Scenes/World 2/Caltrop.unity
     guid: e7d8597bf90b51941953b8be41b43443
   - enabled: 1
+    path: Assets/Scenes/Spiral Shot.unity
+    guid: a40a81ba7ba77754b8c46c31f2bb122b
+  - enabled: 1
     path: Assets/Scenes/Grapple City.unity
     guid: f8b6e48836029ed408e41fbb5a3b86bb
   - enabled: 1
