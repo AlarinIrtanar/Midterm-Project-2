@@ -261,7 +261,10 @@ MonoBehaviour:
   heightOffset: 1
   lerpSpeed: 10
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
   playerOrientation: {fileID: 3994641967470445107}
   sphereCastRadius: 1
   railMask:
