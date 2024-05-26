@@ -9,7 +9,7 @@ public class InstaKillObject : MonoBehaviour
         IDamage dmg = other.GetComponent<IDamage>();
         if (dmg != null)
         {
-            dmg.TakeDamage(9999);
+            dmg.TakeDamage(9999, this.name);
         }
     }
 }

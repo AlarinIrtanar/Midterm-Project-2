@@ -10,7 +10,6 @@ public class FileManager : MonoBehaviour
 {
     public static FileManager instance;
     string filePath;
-    string optionsPath;
     public List<bool> levelUnlocks;
 
     public List<World> worlds;
@@ -22,7 +21,6 @@ public class FileManager : MonoBehaviour
     {
         instance = this;
         filePath = Application.persistentDataPath;
-        optionsPath = filePath + "/options.dat";
 
         worlds = new List<World>();
         worldUnlocksFileName = ("/WorldUnlocks.dat");
@@ -30,27 +28,6 @@ public class FileManager : MonoBehaviour
     }
 
 
-    public void SaveOptions()
-    {
-        BinaryFormatter bout = new BinaryFormatter();
-        FileStream fout = File.Open(optionsPath, FileMode.OpenOrCreate);
-
-        fout.Close();
-    }
-    public void LoadOptions()
-    {
-        if (File.Exists(optionsPath))
-        {
-            BinaryFormatter bin = new BinaryFormatter();
-            FileStream fin = File.Open(optionsPath, FileMode.Open);
-
-            fin.Close();
-        }
-        else
-        {
-            SaveOptions();
-        }
-    }
     public void ClearWorlds()
     {
         worlds.Clear();

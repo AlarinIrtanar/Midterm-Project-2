@@ -9,8 +9,7 @@ public class UnderOutofBounds : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance.YouLose();
-
+            other.GetComponent<PlayerController>().TakeDamage(999, "Falling");
         }
 
     }
