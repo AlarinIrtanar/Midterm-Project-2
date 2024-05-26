@@ -8,11 +8,12 @@ TagManager:
   - Test
   - Rail
   - Axe
+  - Player SpawnPos
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Test
+  - Grapple
   - Water
   - UI
   - Ground
