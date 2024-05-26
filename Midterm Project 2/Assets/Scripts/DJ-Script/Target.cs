@@ -92,5 +92,6 @@ public class Target : MonoBehaviour, IDamage
 
         Rigidbody rb = cube.AddComponent<Rigidbody>();
         rb.AddExplosionForce(force, transform.position, radius);
+        Destroy(cube, 7f);
     }
 }
