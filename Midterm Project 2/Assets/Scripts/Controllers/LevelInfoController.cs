@@ -27,6 +27,10 @@ public class LevelInfoController : MonoBehaviour
     bool isUnlocked;
     SelectableWorlds parent;
 
+    private void Start()
+    {
+        unlockedEffect.Pause();
+    }
     private void OnEnable()
     {
         unlockedEffect.Pause();
@@ -78,7 +82,6 @@ public class LevelInfoController : MonoBehaviour
         {
             yield return null;
         }
-        unlockedEffect.gameObject.SetActive(true);
         lockedImage.enabled = true;
         unlockAnim.enabled = true;
         unlockAnim.Play("LevelUnlockSpiral", 0, 0);
