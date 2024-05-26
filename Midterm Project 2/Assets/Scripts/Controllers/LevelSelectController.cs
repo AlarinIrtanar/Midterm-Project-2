@@ -95,8 +95,19 @@ public class LevelSelectController : MonoBehaviour
         worldName.text = newWorldsList[worldSelectCount].worldName;
         notFirstTime = true;
         OnEnable();
-    }
 
+        if (PlayerPrefs.HasKey("NextLevel") && PlayerPrefs.GetInt("NextLevel") == 1)
+        {
+            ToggleLevelMenuActive();
+            levelMenu.transform.position = levelMenuInactiveLoc;
+            StartCoroutine(NextLevel0());
+        }
+    }
+    IEnumerator NextLevel0()
+    {
+        yield return new WaitForEndOfFrame();
+        PlayerPrefs.SetInt("NextLevel", 0);
+    }
     private void Update()
     {
         if (levelMenuActive)
@@ -235,13 +246,33 @@ public class LevelSelectController : MonoBehaviour
 
     public void ToggleLevelMenuActive()
     {
+
+
         levelMenuActive = !levelMenuActive;
+
+        if (PlayerPrefs.HasKey("SelectedWorld"))
+        {
+            worldSelectCount = PlayerPrefs.GetInt("SelectedWorld");
+        }
+        else
+        {
+            worldSelectCount = 0;
+        }
+
         if (levelMenuActive)
         {
             this.gameObject.SetActive(true);
+            //Debug.Log("Starting For Loop");
+            //Debug.Log("World Select Count: " + worldSelectCount);
+            //Debug.Log("Is NewWorldsList NULL: " + (newWorldsList == null).ToString());
+            //Debug.Log("Worlds Count: " + newWorldsList.Count);
+            //Debug.Log("Is This World NULL: " + (newWorldsList[worldSelectCount] == null).ToString());
+            //Debug.Log("World Levels Count: " + newWorldsList[worldSelectCount].levelImages.Count);
             for (int level = 0; level < newWorldsList[worldSelectCount].levelImages.Count; level++)
             {
+                //Debug.Log("World: " + worldSelectCount + " Level: " + level);
                 newWorldsList[worldSelectCount].levelImages[level].GetComponent<LevelInfoController>().SetUnlocked(FileManager.instance.GetUnlock(worldSelectCount, level));
+                //Debug.Log("No Crash");
             }
             btnMainMenu.Select();
         }
