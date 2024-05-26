@@ -28,6 +28,12 @@ public class MenuManager : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioMixer mixer;
 
+    [Header("----- Buttons -----")]
+    [SerializeField] Button pauseResume;
+    [SerializeField] Button loseRestart;
+    [SerializeField] Button winNextLevel;
+    [SerializeField] Button optionsApply;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -104,6 +110,7 @@ public class MenuManager : MonoBehaviour
                 Pause();
                 menuActive = menuPause;
                 menuActive.SetActive(isPaused);
+                pauseResume.Select();
             }
         }
     }
@@ -165,6 +172,7 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetFloat("Sensitivity", sensiSlider.value);
 
         PlayerPrefs.SetFloat("GameSpeed", speedSlider.value);
+        pauseResume.Select();
     }
     public void PressCancel()
     {
@@ -191,6 +199,7 @@ public class MenuManager : MonoBehaviour
         {
             speedSlider.value = PlayerPrefs.GetFloat("GameSpeed");
         }
+        pauseResume.Select();
     }
 
     void Unpause()
@@ -239,6 +248,8 @@ public class MenuManager : MonoBehaviour
 
         menuActive = menuWin;
         menuActive.SetActive(isPaused);
+
+        winNextLevel.Select();
     }
     public void ShowLose()
     {
@@ -246,5 +257,11 @@ public class MenuManager : MonoBehaviour
 
         menuActive = menuLose;
         menuActive.SetActive(isPaused);
+
+        loseRestart.Select();
+    }
+    public void PressOptions()
+    {
+        optionsApply.Select();
     }
 }
