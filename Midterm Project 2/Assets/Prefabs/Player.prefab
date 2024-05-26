@@ -294,7 +294,6 @@ GameObject:
   - component: {fileID: 5657168262379216546}
   - component: {fileID: 3947481916929668817}
   - component: {fileID: 6585446355755494993}
-  - component: {fileID: 5129808908304992711}
   - component: {fileID: 1458423852063153188}
   - component: {fileID: 6927792446904020794}
   - component: {fileID: 1020873463462963792}
@@ -362,6 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0e6ba366f3bfe4f9600f0af03ddd0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canGrapple: 0
   camera: {fileID: 0}
   gunTip: {fileID: 0}
   lineRenderer: {fileID: 0}
@@ -506,21 +506,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ee58b3ae3f350964f840dc696b2e784f, type: 3}
   - {fileID: 8300000, guid: d588da0b60ceb534ab7f9aeefa885d38, type: 3}
   audWallJumpVolRange: {x: 0.3, y: 0.5}
---- !u!114 &5129808908304992711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9187275283544095468}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbe0053d35433fb45bf3e072c41b8e88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMovement: {fileID: 5657168262379216546}
-  FootstepSource: {fileID: 1458423852063153188}
-  SlideSource: {fileID: 6927792446904020794}
 --- !u!82 &1458423852063153188
 AudioSource:
   m_ObjectHideFlags: 0
