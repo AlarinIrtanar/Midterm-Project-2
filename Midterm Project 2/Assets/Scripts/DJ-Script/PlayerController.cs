@@ -22,9 +22,19 @@ public class PlayerController : MonoBehaviour, IDamage
         if (Hp <= 0)
             Die();
     }
+    public void TakeDamage(int amount, string deathItemName)
+    {
+        Hp -= amount;
+        if (Hp <= 0)
+            Die(deathItemName);
+    }
 
     public void Die()
     {
         GameManager.Instance.YouLose();
+    }
+    public void Die(string deathItemName)
+    {
+        GameManager.Instance.YouLose(deathItemName);
     }
 }

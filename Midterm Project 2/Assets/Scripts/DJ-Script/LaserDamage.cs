@@ -12,19 +12,9 @@ public class LaserDamage : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerController>().TakeDamage(damageAmount);
+            other.GetComponent<PlayerController>().TakeDamage(damageAmount, this.name);
         }
     }
 
     
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -22,6 +22,7 @@ public class OptionsMenuController : MonoBehaviour
     [SerializeField] TMP_Text crouchText;
     [SerializeField] TMP_Text sprintText;
     [SerializeField] TMP_Text jumpText;
+    [SerializeField] TMP_Text pauseText;
 
     [Header("----- Sliders -----")]
     [SerializeField] Slider sensiSlider;
@@ -35,6 +36,7 @@ public class OptionsMenuController : MonoBehaviour
     bool crouchPressed;
     bool sprintPressed;
     bool jumpPressed;
+    bool pausePressed;
 
     private void Start()
     {
@@ -97,6 +99,15 @@ public class OptionsMenuController : MonoBehaviour
         else
         {
             PlayerPrefs.SetString("Jump Button", jumpText.text);
+        }
+        // Pause Button
+        if (PlayerPrefs.HasKey("Pause Button"))
+        {
+            pauseText.text = PlayerPrefs.GetString("Pause Button");
+        }
+        else
+        {
+            PlayerPrefs.SetString("Pause Button", pauseText.text);
         }
 
         // DevMode Toggle
@@ -191,6 +202,12 @@ public class OptionsMenuController : MonoBehaviour
             jumpText.text = inputString;
             jumpPressed = false;
         }
+        if (pausePressed && Input.anyKeyDown)
+        {
+            string inputString = CheckInput(pauseText.text);
+            pauseText.text = inputString;
+            pausePressed = false;
+        }
         /*        if (Input.GetKeyDown(shootText.text))
                 {
                     Debug.Log("shootButton: " + shootText.text);
@@ -203,12 +220,14 @@ public class OptionsMenuController : MonoBehaviour
         crouchPressed = false;
         sprintPressed = false;
         jumpPressed = false;
+        pausePressed = false;
         PlayerPrefs.SetString("Shoot Button", shootText.text);
         PlayerPrefs.SetString("Grapple Button", grappleText.text);
         PlayerPrefs.SetString("Crouch Button", crouchText.text);
         PlayerPrefs.SetString("Sprint Button", sprintText.text);
         PlayerPrefs.SetString("Jump Button", jumpText.text);
-        
+        PlayerPrefs.SetString("Pause Button", pauseText.text);
+
         PlayerPrefs.SetInt("DevMode", devMode.isOn ? 1 : 0);
         //Debug.Log(PlayerPrefs.GetInt("DevMode"));
 
@@ -254,6 +273,10 @@ public class OptionsMenuController : MonoBehaviour
     public void PressJump()
     {
         jumpPressed = true;
+    }
+    public void PressPause()
+    {
+        pausePressed = true;
     }
     string CheckInput(string ogText)
     {
