@@ -35,10 +35,19 @@ public class MenuManager : MonoBehaviour
     [SerializeField] Button winNextLevel;
     [SerializeField] Button optionsApply;
 
+    string pauseButton;
+
     // Start is called before the first frame update
     void Awake()
     {
+
         instance = this;
+
+        // Pause Button
+        if (PlayerPrefs.HasKey("Pause Button"))
+            pauseButton = PlayerPrefs.GetString("Pause Button");
+        else
+            pauseButton = "escape";
 
         float temp;
         // Master Volume
@@ -98,7 +107,7 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Cancel"))
+        if(Input.GetKeyDown(pauseButton))
         {
             if (isPaused && menuActive == menuPause)
             {

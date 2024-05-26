@@ -31,6 +31,7 @@ public class MainMenuController : MonoBehaviour
     Vector3 newGameMenuInactiveLoc;
     public void Start()
     {
+        
         FileManager.instance.LoadWorldUnlocks();
 
         levelSelect.Select();
@@ -111,6 +112,12 @@ public class MainMenuController : MonoBehaviour
         if (!PlayerPrefs.HasKey("Jump Button"))
         {
             PlayerPrefs.SetString("Jump Button", "space");
+        }
+
+        // Pause Button
+        if (!PlayerPrefs.HasKey("Pause Button"))
+        {
+            PlayerPrefs.SetString("Pause Button", "escape");
         }
 
         // Sensitivity
