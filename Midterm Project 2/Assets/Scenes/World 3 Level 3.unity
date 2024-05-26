@@ -516,6 +516,10 @@ PrefabInstance:
       propertyPath: railMask.m_Bits
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 1965032128974651729, guid: c2de8b1849d06a446992b9a141ff23dd, type: 3}
+      propertyPath: playerOrientation
+      value: 
+      objectReference: {fileID: 1361941089}
     - target: {fileID: 2444593144436036986, guid: c2de8b1849d06a446992b9a141ff23dd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.21521492
@@ -2082,6 +2086,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0199a8ca7f7be0643aca9a9ab2ef0f16, type: 3}
+--- !u!1 &1361941089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3994641967470445107, guid: c2de8b1849d06a446992b9a141ff23dd, type: 3}
+  m_PrefabInstance: {fileID: 264341790}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1389398094
 GameObject:
   m_ObjectHideFlags: 0

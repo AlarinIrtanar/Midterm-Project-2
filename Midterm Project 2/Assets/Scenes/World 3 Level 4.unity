@@ -374,27 +374,7 @@ MonoBehaviour:
           y: 0.72483855
           z: 6.704851e-34
           w: -0.6889187
-    - Position:
-        x: -22.75
-        y: 22.25
-        z: 69.75
-      TangentIn:
-        x: -0
-        y: -0
-        z: -0
-      TangentOut:
-        x: 0
-        y: 0
-        z: 0
-      Rotation:
-        value:
-          x: 0
-          y: 0
-          z: 0
-          w: 1
     m_MetaData:
-    - Mode: 0
-      Tension: 0.5
     - Mode: 0
       Tension: 0.5
     - Mode: 0
@@ -421,12 +401,7 @@ MonoBehaviour:
     m_ObjectData:
       m_Data: []
   m_Knots:
-    m_KnotsLink:
-    - Knots:
-      - Spline: 0
-        Knot: 7
-      - Spline: 0
-        Knot: 8
+    m_KnotsLink: []
 --- !u!4 &150048894
 Transform:
   m_ObjectHideFlags: 0
