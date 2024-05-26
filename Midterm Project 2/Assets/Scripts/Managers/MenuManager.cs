@@ -14,6 +14,7 @@ public class MenuManager : MonoBehaviour
     public static MenuManager instance;
     [SerializeField] Slider sensiSlider;
     [SerializeField] Slider speedSlider;
+    [SerializeField] TMP_Text loseText;
 
     [Header("----- Menus -----")]
     [SerializeField] GameObject menuActive;
@@ -34,10 +35,19 @@ public class MenuManager : MonoBehaviour
     [SerializeField] Button winNextLevel;
     [SerializeField] Button optionsApply;
 
+    string pauseButton;
+
     // Start is called before the first frame update
     void Awake()
     {
+
         instance = this;
+
+        // Pause Button
+        if (PlayerPrefs.HasKey("Pause Button"))
+            pauseButton = PlayerPrefs.GetString("Pause Button");
+        else
+            pauseButton = "escape";
 
         float temp;
         // Master Volume
@@ -97,7 +107,7 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Cancel"))
+        if(Input.GetKeyDown(pauseButton))
         {
             if (isPaused && menuActive == menuPause)
             {
@@ -178,15 +188,15 @@ public class MenuManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("MasterVolume"))
         {
-            mixer.SetFloat("MasterVolume", PlayerPrefs.GetFloat("MasterVolume") / 20);
+            mixer.SetFloat("MasterVolume", PlayerPrefs.GetFloat("MasterVolume"));
         }
         if (PlayerPrefs.HasKey("MusicVolume"))
         {
-            mixer.SetFloat("MusicVolume", PlayerPrefs.GetFloat("MusicVolume") /20);
+            mixer.SetFloat("MusicVolume", PlayerPrefs.GetFloat("MusicVolume"));
         }
         if (PlayerPrefs.HasKey("SFXVolume"))
         {
-            mixer.SetFloat("SFXVolume", PlayerPrefs.GetFloat("SFXVolume") / 20);
+            mixer.SetFloat("SFXVolume", PlayerPrefs.GetFloat("SFXVolume"));
         }
 
         // Sensitivity
@@ -257,6 +267,19 @@ public class MenuManager : MonoBehaviour
 
         menuActive = menuLose;
         menuActive.SetActive(isPaused);
+
+        loseText.text = "RIP";
+
+        loseRestart.Select();
+    }
+    public void ShowLose(string deathItemName)
+    {
+        Pause();
+
+        menuActive = menuLose;
+        menuActive.SetActive(isPaused);
+
+        loseText.text = "Killed By: " + deathItemName;
 
         loseRestart.Select();
     }

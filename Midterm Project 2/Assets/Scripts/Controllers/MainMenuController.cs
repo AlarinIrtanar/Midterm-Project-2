@@ -13,6 +13,7 @@ public class MainMenuController : MonoBehaviour
     [Header("Components")]
     [SerializeField] Button levelSelect;
     [SerializeField] Button btnNewGameNo;
+    [SerializeField] Button btnQuit;
     [SerializeField] GameObject mainMenu;
     [SerializeField] LevelSelectController levelSelectMenu;
     [SerializeField] GameObject newGameMenu;
@@ -31,8 +32,13 @@ public class MainMenuController : MonoBehaviour
     Vector3 newGameMenuInactiveLoc;
     public void Start()
     {
-        FileManager.instance.LoadOptions();
+        
         FileManager.instance.LoadWorldUnlocks();
+
+        if (Application.platform != RuntimePlatform.WindowsPlayer && Application.platform != RuntimePlatform.WindowsEditor)
+        {
+            btnQuit.gameObject.SetActive(false);
+        }
 
         levelSelect.Select();
 
@@ -114,6 +120,12 @@ public class MainMenuController : MonoBehaviour
             PlayerPrefs.SetString("Jump Button", "space");
         }
 
+        // Pause Button
+        if (!PlayerPrefs.HasKey("Pause Button"))
+        {
+            PlayerPrefs.SetString("Pause Button", "escape");
+        }
+
         // Sensitivity
         if (!PlayerPrefs.HasKey("Sensitivity"))
         {
@@ -128,9 +140,8 @@ public class MainMenuController : MonoBehaviour
 
         if (PlayerPrefs.HasKey("NextLevel") && PlayerPrefs.GetInt("NextLevel") == 1)
         {
+            ToggleMainMenuActive();
             mainMenu.transform.position = mainMenuInactiveLoc;
-            levelSelect.onClick.Invoke();
-            PlayerPrefs.SetInt("NextLevel", 0);
         }
 
     }

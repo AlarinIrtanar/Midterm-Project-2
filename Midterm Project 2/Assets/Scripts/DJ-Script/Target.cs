@@ -22,10 +22,19 @@ public class Target : MonoBehaviour, IDamage
             DestroyTarget();
         }
     }
-   
+    public void TakeDamage(int damage, string deathItemName)
+    {
+        Health -= damage;
+        if (Health <= 0)
+        {
+            GameManager.Instance.score += 10;
+            DestroyTarget();
+        }
+    }
 
 
-   void DestroyTarget()
+
+    void DestroyTarget()
    {
         Vector3 originalScale = transform.localScale;
         Quaternion originalRotation = transform.rotation;
@@ -83,5 +92,6 @@ public class Target : MonoBehaviour, IDamage
 
         Rigidbody rb = cube.AddComponent<Rigidbody>();
         rb.AddExplosionForce(force, transform.position, radius);
+        Destroy(cube, 7f);
     }
 }

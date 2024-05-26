@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] public float timer = 120f;
     [SerializeField] GameObject PlayerPreFab;
     [SerializeField] GameObject playerSpawnPos;
@@ -56,6 +58,13 @@ public class GameManager : MonoBehaviour
         if (MenuManager.instance != null)
         {
             MenuManager.instance.ShowLose();
+        }
+    }
+    public void YouLose(string deathItemName)
+    {
+        if (MenuManager.instance != null)
+        {
+            MenuManager.instance.ShowLose(deathItemName);
         }
     }
 
