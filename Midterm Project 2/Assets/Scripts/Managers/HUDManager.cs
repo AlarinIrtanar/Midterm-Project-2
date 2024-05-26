@@ -46,4 +46,8 @@ public class HUDManager : MonoBehaviour
     {
         grappleIcon.fillAmount = current / max;
     }
+    public void ToggleGrapple()
+    {
+        grappleIcon.enabled = !grappleIcon.isActiveAndEnabled;
+    }
 }
