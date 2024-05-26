@@ -54,7 +54,7 @@ public class LevelSelectController : MonoBehaviour
         newWorldsList = new List<SelectableWorlds>();
         if (worldsList.Count == FileManager.instance.worlds.Count)
         {
-            //Debug.Log("World List and File World Matched");
+
             for (int i = 0; i < worldsList.Count; ++i)
             {
                 currentWorld = Instantiate(worldsList[i], this.gameObject.transform);
@@ -64,7 +64,7 @@ public class LevelSelectController : MonoBehaviour
         }
         else
         {
-            //Debug.Log("World List and File World Matched");
+
             FileManager.instance.ClearWorlds();
             for (int i = 0; i < worldsList.Count; ++i)
             {
@@ -141,7 +141,7 @@ public class LevelSelectController : MonoBehaviour
     {
         if (notFirstTime)
         {
-            //Debug.Log("Enabling World 1");
+;
             if (PlayerPrefs.HasKey("SelectedWorld"))
             {
                 worldSelectCount = PlayerPrefs.GetInt("SelectedWorld");
@@ -171,15 +171,15 @@ public class LevelSelectController : MonoBehaviour
         }
 
 
-        //Debug.Log("World 1 Enabled");
+
     }
     public void OnDisable()
     {
         for (int i = 0; i < worldsList.Count; ++i)
         {
-            //Debug.Log("Disabling World " + (i + 1).ToString());
+
             newWorldsList[i].SetEnabled(false);
-            //Debug.Log("World " + i.ToString() + " Disabled");
+
         }
     }
     public void PressMainMenu()
@@ -262,17 +262,12 @@ public class LevelSelectController : MonoBehaviour
         if (levelMenuActive)
         {
             this.gameObject.SetActive(true);
-            //Debug.Log("Starting For Loop");
-            //Debug.Log("World Select Count: " + worldSelectCount);
-            //Debug.Log("Is NewWorldsList NULL: " + (newWorldsList == null).ToString());
-            //Debug.Log("Worlds Count: " + newWorldsList.Count);
-            //Debug.Log("Is This World NULL: " + (newWorldsList[worldSelectCount] == null).ToString());
-            //Debug.Log("World Levels Count: " + newWorldsList[worldSelectCount].levelImages.Count);
+
             for (int level = 0; level < newWorldsList[worldSelectCount].levelImages.Count; level++)
             {
-                //Debug.Log("World: " + worldSelectCount + " Level: " + level);
+
                 newWorldsList[worldSelectCount].levelImages[level].GetComponent<LevelInfoController>().SetUnlocked(FileManager.instance.GetUnlock(worldSelectCount, level));
-                //Debug.Log("No Crash");
+
             }
             btnMainMenu.Select();
         }
