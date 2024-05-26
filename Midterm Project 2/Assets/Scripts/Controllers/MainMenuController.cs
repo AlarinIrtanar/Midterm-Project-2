@@ -31,7 +31,6 @@ public class MainMenuController : MonoBehaviour
     Vector3 newGameMenuInactiveLoc;
     public void Start()
     {
-        FileManager.instance.LoadOptions();
         FileManager.instance.LoadWorldUnlocks();
 
         levelSelect.Select();

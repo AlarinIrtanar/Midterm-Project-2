@@ -41,8 +41,4 @@ public class AudioSettings : MonoBehaviour
     {
         mixer.SetFloat("SFXVolume", Mathf.Log10(sliderValue) * 20);
     }
-    public void SetSensitivity(float sliderValue)
-    {
-
-    }
 }
