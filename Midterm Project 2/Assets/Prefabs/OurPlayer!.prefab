@@ -249,6 +249,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6339183224272488537}
   m_SourcePrefab: {fileID: 100100000, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
+--- !u!1 &3994641967470445107 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2215829687884008181, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
+  m_PrefabInstance: {fileID: 3003871161678743750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6255542598949794346 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9187275283544095468, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
@@ -272,11 +277,11 @@ MonoBehaviour:
   grindingSpeed: 10
   heightOffset: 1
   lerpSpeed: 10
-  playerOrientation: {fileID: 0}
+  playerOrientation: {fileID: 3994641967470445107}
   sphereCastRadius: 1
   railMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   maxDistance: 1
   railCooldown: 0
   railCooldownTimer: 0.5
