@@ -10,12 +10,16 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] Button levelSelect;
     [SerializeField] Button btnNewGameNo;
-    [SerializeField] AudioMixer mixer;
     [SerializeField] GameObject mainMenu;
     [SerializeField] LevelSelectController levelSelectMenu;
     [SerializeField] GameObject newGameMenu;
+
+    [Header("Audio")]
+    [SerializeField] AudioMixer mixer;
+    [SerializeField] AudioSource buttonAud;
 
     bool mainMenuActive;
     bool newGameMenuActive;
@@ -199,6 +203,10 @@ public class MainMenuController : MonoBehaviour
 #endif
     }
 
+    public void ButtonPress()
+    {
+        buttonAud.Play();
+    }
     public void ToggleMainMenuActive()
     {
         mainMenuActive = !mainMenuActive;

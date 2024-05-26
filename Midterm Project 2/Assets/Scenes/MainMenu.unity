@@ -217,28 +217,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &508731832 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8370334367105621691, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-  m_PrefabInstance: {fileID: 1996696173}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b3ed55bdcea9b745a7d514994c5bbac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1182942568 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2630135928835792830, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-  m_PrefabInstance: {fileID: 1996696173}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82e8f73ab4a0b414b90784f64d6c7125, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1434918837
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,43 +525,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 551051972359971003, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_text
-      value: '
-
-
-
-        David Jones
-
-
-        Anthony Huggins
-
-
-        Jack San
-        Vicente
-
-        Ryan Berner
-
-
-
-        Anthony Huggins
-
-
-
-        Matthew
-        Weaver
-
-
-
-
-        Ryan Berner
-
-
-
-        Jack San Vicente
-
-'
-      objectReference: {fileID: 0}
     - target: {fileID: 1182158643549710676, guid: 785964410db76734db17ec9ce9797c42, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -611,14 +552,6 @@ PrefabInstance:
     - target: {fileID: 3265895310816255098, guid: 785964410db76734db17ec9ce9797c42, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4008926861384100444, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -549.1894
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378007327819513827, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -549.1894
       objectReference: {fileID: 0}
     - target: {fileID: 6106124782111415140, guid: 785964410db76734db17ec9ce9797c42, type: 3}
       propertyPath: m_Name
@@ -716,90 +649,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7054798998356295814, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1182942568}
-    - target: {fileID: 7054798998356295814, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 508731832}
-    - target: {fileID: 7054798998356295814, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleMainMenuActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 7054798998356295814, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ToggleLevelMenuActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 7054798998356295814, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: PlayButtonPress
-      objectReference: {fileID: 0}
-    - target: {fileID: 7054798998356295814, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MainMenuController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7054798998356295814, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: LevelSelectController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7054798998356295814, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7054798998356295814, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7328091649502344693, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_text
-      value: '
-
-
-
-        World 1
-
-
-        World 2
-
-
-        World 3
-
-
-
-
-        Sound
-        Design
-
-
-        UI
-
-        Level Unlock
-
-        Save File System
-
-
-        Player
-        Creation
-
-        Player Movement
-
-        Advanced Movement
-
-
-        Traps
-
-'
-      objectReference: {fileID: 0}
     - target: {fileID: 8734830415899996543, guid: 785964410db76734db17ec9ce9797c42, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1696348193}
-    - target: {fileID: 8734830415899996543, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
