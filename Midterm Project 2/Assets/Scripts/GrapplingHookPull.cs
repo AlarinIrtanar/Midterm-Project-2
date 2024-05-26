@@ -53,6 +53,7 @@ public class GrapplingHookPull : MonoBehaviour
             grappleButton = "mouse 1";
             PlayerPrefs.SetString("Grapple Button", "mouse 1");
         }
+        HUDManager.instance.SetGrapple(0, 1);
         HUDManager.instance.SetGrapple(grapplingCooldownTimer - grapplingCooldown, grapplingCooldownTimer);
     }
 
