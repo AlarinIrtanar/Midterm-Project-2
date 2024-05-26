@@ -242,7 +242,7 @@ Transform:
   m_GameObject: {fileID: 3897445226926407830}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.002379179, y: 0, z: 0.64003855}
+  m_LocalPosition: {x: 0.01, y: 0, z: 0.1}
   m_LocalScale: {x: 4.5, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -262,14 +262,15 @@ LineRenderer:
   m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 0
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 9d7d8a1a6ae95bd4a89a67dd7885d36d, type: 2}
+  - {fileID: 2100000, guid: 54fdc4f75f78271428f999be958d4852, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -321,16 +322,16 @@ LineRenderer:
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 193
-      ctime1: 64957
+      ctime0: 8096
+      ctime1: 60331
       ctime2: 0
       ctime3: 0
       ctime4: 0
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 386
-      atime1: 64764
+      atime0: 13300
+      atime1: 58789
       atime2: 0
       atime3: 0
       atime4: 0
@@ -344,14 +345,14 @@ LineRenderer:
     numCornerVertices: 90
     numCapVertices: 90
     alignment: 0
-    textureMode: 1
-    textureScale: {x: 2.71, y: -0.85}
+    textureMode: 0
+    textureScale: {x: -0.51, y: 0.08}
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
   m_UseWorldSpace: 0
   m_Loop: 0
-  m_ApplyActiveColorSpace: 1
+  m_ApplyActiveColorSpace: 0
 --- !u!114 &9112923871669629317
 MonoBehaviour:
   m_ObjectHideFlags: 0
