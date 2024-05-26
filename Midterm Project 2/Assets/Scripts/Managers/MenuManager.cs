@@ -14,6 +14,7 @@ public class MenuManager : MonoBehaviour
     public static MenuManager instance;
     [SerializeField] Slider sensiSlider;
     [SerializeField] Slider speedSlider;
+    [SerializeField] TMP_Text loseText;
 
     [Header("----- Menus -----")]
     [SerializeField] GameObject menuActive;
@@ -257,6 +258,19 @@ public class MenuManager : MonoBehaviour
 
         menuActive = menuLose;
         menuActive.SetActive(isPaused);
+
+        loseText.text = "RIP";
+
+        loseRestart.Select();
+    }
+    public void ShowLose(string deathItemName)
+    {
+        Pause();
+
+        menuActive = menuLose;
+        menuActive.SetActive(isPaused);
+
+        loseText.text = "Killed By: " + deathItemName;
 
         loseRestart.Select();
     }
