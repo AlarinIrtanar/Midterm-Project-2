@@ -17,6 +17,7 @@ public class LevelInfoController : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioSource selectAud;
     [SerializeField] AudioSource unlockAud;
+    AudioSource inGameUnlockAud;
 
     [Header("Animations")]
     [SerializeField] Animator unlockAnim;
@@ -30,6 +31,7 @@ public class LevelInfoController : MonoBehaviour
     private void Start()
     {
         unlockedEffect.Pause();
+        inGameUnlockAud = unlockAud;
     }
     private void OnEnable()
     {
@@ -72,7 +74,11 @@ public class LevelInfoController : MonoBehaviour
         unlockAnim.enabled = true;
         unlockAnim.speed = 1;
         unlockedEffect.Play();
-        unlockAud.Play();
+        if (inGameUnlockAud != null)
+        {
+            inGameUnlockAud.Play();
+            inGameUnlockAud = null;
+        }
         yield return new WaitForSeconds(0.5f);
         lockedImage.enabled = false;
     }
