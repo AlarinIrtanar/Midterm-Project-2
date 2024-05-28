@@ -131,6 +131,8 @@ public class LevelInfoController : MonoBehaviour
         selectAud.Play();
         if (isUnlocked)
         {
+            PlayerPrefs.SetInt("SelectedWorld", parent.worldId);
+            PlayerPrefs.SetInt("SelectedLevel", int.Parse(levelNumText.text));
 
             if (PlayerPrefs.HasKey("GameSpeed"))
             {
