@@ -525,55 +525,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 551051972359971003, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_text
-      value: '
-
-
-
-        David Jones
-
-
-        Anthony Huggins
-
-
-        Jack San
-        Vicente
-
-        Ryan Berner
-
-
-
-        Anthony Huggins
-
-
-
-        Matthew
-        Weaver
-
-
-
-
-        Ryan Berner
-
-
-
-
-
-        David Jones
-
-
-
-
-
-
-        Jack
-        San Vicente
-
-
-
-'
-      objectReference: {fileID: 0}
     - target: {fileID: 1182158643549710676, guid: 785964410db76734db17ec9ce9797c42, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -602,17 +553,37 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4008926861384100444, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -952.376
+    - target: {fileID: 3486147215127444520, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4378007327819513827, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -952.37585
+    - target: {fileID: 3486147215127444520, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5355048872243366880, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -2069.6433
+    - target: {fileID: 3486147215127444520, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4494320355391513091, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4494320355391513091, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529734470048236793, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529734470048236793, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529734470048236793, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6106124782111415140, guid: 785964410db76734db17ec9ce9797c42, type: 3}
       propertyPath: m_Name
@@ -710,74 +681,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6894096113775294900, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -1110.4491
+    - target: {fileID: 6946527260367736002, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7328091649502344693, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_text
-      value: '
-
-
-
-        World 1
-
-
-        World 2
-
-
-        World 3
-
-
-
-
-        Sound
-        Design
-
-
-        UI
-
-        Level Unlock
-
-        Save File System
-
-
-        Advanced
-        Player Creation
-
-        Player Movement
-
-        Advanced Movement
-
-
-        Early
-        Player Creation
-
-        Disappearing Floor
-
-        Moving Walls
-
-        Finish
-        Line
-
-        Laser
-
-
-
-        Swinging Axes
-
-        Grappling hook
-
-        Spikes
-
-        Rails
-
-'
+    - target: {fileID: 6946527260367736002, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8734830415899996543, guid: 785964410db76734db17ec9ce9797c42, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1696348193}
+    - target: {fileID: 6946527260367736002, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956359682419924089, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956359682419924089, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7706242649746628948, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7706242649746628948, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -12,9 +12,11 @@ public class MenuManager : MonoBehaviour
     [Header("----- Components -----")]
     [SerializeField] TMP_Text scoreText;
     public static MenuManager instance;
+    [SerializeField] TMP_Text loseText;
+
+    [Header("----- Sliders -----")]
     [SerializeField] Slider sensiSlider;
     [SerializeField] Slider speedSlider;
-    [SerializeField] TMP_Text loseText;
 
     [Header("----- Menus -----")]
     [SerializeField] GameObject menuActive;

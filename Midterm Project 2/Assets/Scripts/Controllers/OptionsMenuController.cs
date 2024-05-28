@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class OptionsMenuController : MonoBehaviour
@@ -28,8 +29,11 @@ public class OptionsMenuController : MonoBehaviour
     [SerializeField] Slider sensiSlider;
     [SerializeField] Slider speedSlider;
 
-    [Header("CheckBoxes")]
+    [Header("----- CheckBoxes -----")]
     [SerializeField] Toggle devMode;
+
+    [Header("----- Audio -----")]
+    [SerializeField] AudioMixer mixer;
 
     bool shootPressed;
     bool grapplePressed;
@@ -230,6 +234,16 @@ public class OptionsMenuController : MonoBehaviour
 
         PlayerPrefs.SetFloat("Sensitivity", sensiSlider.value);
         PlayerPrefs.SetFloat("GameSpeed", speedSlider.value);
+
+        float temp;
+        mixer.GetFloat("MasterVolume", out temp);
+        PlayerPrefs.SetFloat("MasterVolume", temp);
+
+        mixer.GetFloat("MusicVolume", out temp);
+        PlayerPrefs.SetFloat("MusicVolume", temp);
+
+        mixer.GetFloat("SFXVolume", out temp);
+        PlayerPrefs.SetFloat("SFXVolume", temp);
     }
     public void ResetControls()
     {
