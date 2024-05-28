@@ -133,7 +133,7 @@ public class MenuManager : MonoBehaviour
         Unpause();
         
     }
-    public void PressNextLevel()
+    public void PressLevelSelect()
     {
         audioSource.Play();
 
@@ -146,7 +146,23 @@ public class MenuManager : MonoBehaviour
             Time.timeScale = 1;
         }
 
-        SceneManager.LoadScene(mainMenuName); // temp
+        SceneManager.LoadScene(mainMenuName);
+    }
+    public void PressNextLevel()
+    {
+        audioSource.Play();
+        PlayerPrefs.SetInt("NextLevel", 1);
+
+        if (PlayerPrefs.HasKey("GameSpeed"))
+        {
+            Time.timeScale = PlayerPrefs.GetFloat("GameSpeed");
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+
+        SceneManager.LoadScene(mainMenuName);
     }
     public void PressRestart()
     {

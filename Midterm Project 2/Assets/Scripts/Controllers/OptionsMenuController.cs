@@ -28,6 +28,9 @@ public class OptionsMenuController : MonoBehaviour
     [Header("----- Sliders -----")]
     [SerializeField] Slider sensiSlider;
     [SerializeField] Slider speedSlider;
+    [SerializeField] Slider masterSlider;
+    [SerializeField] Slider musicSlider;
+    [SerializeField] Slider sfxSlider;
 
     [Header("----- CheckBoxes -----")]
     [SerializeField] Toggle devMode;
@@ -252,14 +255,20 @@ public class OptionsMenuController : MonoBehaviour
         crouchPressed = false;
         sprintPressed = false;
         jumpPressed = false;
+        pausePressed = false;
         shootText.text = "mouse 0";
         grappleText.text = "mouse 1";
         crouchText.text = "left ctrl";
         sprintText.text = "left shift";
         jumpText.text = "space";
+        pauseText.text = "escape";
 
         sensiSlider.value = 1f;
         speedSlider.value = 1f;
+
+        masterSlider.value = 1f;
+        musicSlider.value = 0.5f;
+        sfxSlider.value = 0.5f;
 
         Apply();
     }

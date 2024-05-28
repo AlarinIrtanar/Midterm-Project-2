@@ -13,6 +13,7 @@ public class LevelInfoController : MonoBehaviour
     [SerializeField] TMP_Text levelNameText;
     [SerializeField] Image lockedImage;
     [SerializeField] Button cheatButton;
+    public Button selectLevel;
 
     [Header("Audio")]
     [SerializeField] AudioSource selectAud;
@@ -140,7 +141,7 @@ public class LevelInfoController : MonoBehaviour
                 Time.timeScale = 1;
             }
             PlayerPrefs.SetInt("SelectedLevel", int.Parse(levelNumText.text));
-            SceneManager.LoadScene(levelNameText.text); // Uncomment when levels are created
+            SceneManager.LoadScene(levelNameText.text);
         }
     }
 }

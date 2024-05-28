@@ -46,7 +46,7 @@ public class LevelSelectController : MonoBehaviour
         levelMenuInactiveLoc.y -= Screen.height;
         levelMenu.transform.position = levelMenuInactiveLoc;
 
-        if (PlayerPrefs.HasKey("NextLevel") && PlayerPrefs.GetInt("NextLevel") == 1)
+        if (PlayerPrefs.HasKey("LevelUnlock") && PlayerPrefs.GetInt("LevelUnlock") == 1)
         {
             levelMenu.transform.position = levelMenuActiveLoc;
         }
@@ -96,17 +96,39 @@ public class LevelSelectController : MonoBehaviour
         notFirstTime = true;
         OnEnable();
 
-        if (PlayerPrefs.HasKey("NextLevel") && PlayerPrefs.GetInt("NextLevel") == 1)
+        if (PlayerPrefs.HasKey("LevelUnlock") && PlayerPrefs.GetInt("LevelUnlock") == 1)
         {
             ToggleLevelMenuActive();
             levelMenu.transform.position = levelMenuActiveLoc;
             StartCoroutine(NextLevel0());
         }
+        
+        if (!winScreen.activeSelf && PlayerPrefs.HasKey("NextLevel") && PlayerPrefs.GetInt("NextLevel") == 1 && PlayerPrefs.HasKey("SelectedWorld") && PlayerPrefs.HasKey("SelectedLevel"))
+        {
+            int world = PlayerPrefs.GetInt("SelectedWorld");
+            int level = PlayerPrefs.GetInt("SelectedLevel");
+
+            if (world > 0 && world < newWorldsList.Count && level >= newWorldsList[world - 1].levelImages.Count)
+            {
+                //world++;
+                level = 0;
+            }
+
+            PlayerPrefs.SetInt("LevelUnlock", 0);
+            PlayerPrefs.SetInt("NextLevel", 0);
+
+            Debug.Log("Loading World " + (world + 1) + " Level " + (level + 1)); ///// debug
+            
+            if (world < newWorldsList.Count && level < newWorldsList[world].levelImages.Count)
+            {
+                newWorldsList[world].levelImages[level].GetComponent<LevelInfoController>().levelSelected();
+            }
+        }
     }
     IEnumerator NextLevel0()
     {
         yield return new WaitForEndOfFrame();
-        PlayerPrefs.SetInt("NextLevel", 0);
+        PlayerPrefs.SetInt("LevelUnlock", 0);
     }
     private void Update()
     {

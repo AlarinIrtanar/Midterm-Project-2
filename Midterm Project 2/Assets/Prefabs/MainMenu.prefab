@@ -9725,6 +9725,9 @@ MonoBehaviour:
   pauseText: {fileID: 2895017975433239766}
   sensiSlider: {fileID: 4232150797379875173}
   speedSlider: {fileID: 7351449347155113842}
+  masterSlider: {fileID: 8589693955689231507}
+  musicSlider: {fileID: 6833562636094896249}
+  sfxSlider: {fileID: 766509256020137561}
   devMode: {fileID: 352788511286519136}
   mixer: {fileID: 24100000, guid: aef2720eaf5305e499a2e20d1fd481ae, type: 2}
 --- !u!223 &5089521879934527956

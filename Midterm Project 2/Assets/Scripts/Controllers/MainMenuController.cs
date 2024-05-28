@@ -139,7 +139,7 @@ public class MainMenuController : MonoBehaviour
             PlayerPrefs.SetFloat("GameSpeed", 1f);
         }
 
-        if (PlayerPrefs.HasKey("NextLevel") && PlayerPrefs.GetInt("NextLevel") == 1)
+        if (PlayerPrefs.HasKey("LevelUnlock") && PlayerPrefs.GetInt("LevelUnlock") == 1)
         {
             ToggleMainMenuActive();
             mainMenu.transform.position = mainMenuInactiveLoc;

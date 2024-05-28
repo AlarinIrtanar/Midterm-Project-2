@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
             MenuManager.instance.ShowWin();
         }
 
-        PlayerPrefs.SetInt("NextLevel", 1);
+        PlayerPrefs.SetInt("LevelUnlock", 1);
 
     }
 
