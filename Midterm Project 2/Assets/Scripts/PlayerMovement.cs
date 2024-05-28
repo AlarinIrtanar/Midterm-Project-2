@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     string sprintButton; // Replacement by Matthew
     //public KeyCode crouchKey = KeyCode.LeftControl;
     string crouchButton; // Replacement by Matthew
+    string shootButton; // Replacement by Matthew
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -148,6 +149,12 @@ public class PlayerMovement : MonoBehaviour
         else
             crouchButton = "left ctrl";
 
+        // Shoot Button
+        if (PlayerPrefs.HasKey("Shoot Button"))
+            crouchButton = PlayerPrefs.GetString("Shoot Button");
+        else
+            crouchButton = "mouse 0";
+
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
@@ -227,7 +234,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Do shooting
-        if (!MenuManager.instance.isPaused && !isShooting && Input.GetButtonDown("Shoot"))
+        if (!MenuManager.instance.isPaused && !isShooting && Input.GetKeyDown(shootButton))
             StartCoroutine(Shoot());
     }
 
