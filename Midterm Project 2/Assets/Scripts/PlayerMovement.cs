@@ -151,9 +151,9 @@ public class PlayerMovement : MonoBehaviour
 
         // Shoot Button
         if (PlayerPrefs.HasKey("Shoot Button"))
-            crouchButton = PlayerPrefs.GetString("Shoot Button");
+            shootButton = PlayerPrefs.GetString("Shoot Button");
         else
-            crouchButton = "mouse 0";
+            shootButton = "mouse 0";
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;

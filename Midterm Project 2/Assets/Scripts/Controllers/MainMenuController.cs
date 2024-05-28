@@ -32,7 +32,8 @@ public class MainMenuController : MonoBehaviour
     Vector3 newGameMenuInactiveLoc;
     public void Start()
     {
-        
+        Time.timeScale = 1;
+
         FileManager.instance.LoadWorldUnlocks();
 
         if (Application.platform != RuntimePlatform.WindowsPlayer && Application.platform != RuntimePlatform.WindowsEditor)

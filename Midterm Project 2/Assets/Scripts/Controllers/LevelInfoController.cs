@@ -131,6 +131,14 @@ public class LevelInfoController : MonoBehaviour
         if (isUnlocked)
         {
 
+            if (PlayerPrefs.HasKey("GameSpeed"))
+            {
+                Time.timeScale = PlayerPrefs.GetFloat("GameSpeed");
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
             PlayerPrefs.SetInt("SelectedLevel", int.Parse(levelNumText.text));
             SceneManager.LoadScene(levelNameText.text); // Uncomment when levels are created
         }

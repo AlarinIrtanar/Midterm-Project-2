@@ -230,7 +230,6 @@ public class OptionsMenuController : MonoBehaviour
 
         PlayerPrefs.SetFloat("Sensitivity", sensiSlider.value);
         PlayerPrefs.SetFloat("GameSpeed", speedSlider.value);
-        Time.timeScale = speedSlider.value;
     }
     public void ResetControls()
     {
