@@ -208,10 +208,7 @@ public class OptionsMenuController : MonoBehaviour
             pauseText.text = inputString;
             pausePressed = false;
         }
-        /*        if (Input.GetKeyDown(shootText.text))
-                {
-                    Debug.Log("shootButton: " + shootText.text);
-                }*/
+
     }
     public void Apply()
     {
@@ -229,7 +226,7 @@ public class OptionsMenuController : MonoBehaviour
         PlayerPrefs.SetString("Pause Button", pauseText.text);
 
         PlayerPrefs.SetInt("DevMode", devMode.isOn ? 1 : 0);
-        //Debug.Log(PlayerPrefs.GetInt("DevMode"));
+
 
         PlayerPrefs.SetFloat("Sensitivity", sensiSlider.value);
         PlayerPrefs.SetFloat("GameSpeed", speedSlider.value);

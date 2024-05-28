@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     public void YouWin()
     {
         score += (int)timer;
-        //Debug.Log("Germ");
+
 
 
         if (PlayerPrefs.HasKey("SelectedWorld") && PlayerPrefs.HasKey("SelectedLevel"))
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         timer -= Time.deltaTime;
-        //Debug.Log(timer);
+
         if (timer < 30)
         {
             if (!timeLow.isPlaying)

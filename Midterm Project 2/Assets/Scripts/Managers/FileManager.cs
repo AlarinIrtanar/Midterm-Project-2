@@ -49,17 +49,14 @@ public class FileManager : MonoBehaviour
     public void UnlockLevel(int worldId, int levelId)
     {
         LoadWorldUnlocks();
-/*        Debug.Log("World: " + worldId);
-        Debug.Log("Level: " + levelId);
-        Debug.Log("World Count: " + worlds.Count);
-        Debug.Log("Level Count: " + worlds[worldId].levels.Count);*/
+    
         if (levelId < worlds[worldId].levels.Count)
         {
             worlds[worldId].levels[levelId].isUnlocked = true;
         }
         else if(worldId < worlds.Count - 1)
         {
-            //Debug.Log("World " +  worldId + 1 + " unlocked");
+          
             worlds[worldId + 1].levels[0].isUnlocked = true;
         }
         else
@@ -85,10 +82,7 @@ public class FileManager : MonoBehaviour
     public bool GetUnlock(int worldId, int levelId)
     {
         LoadWorldUnlocks();
-/*        Debug.Log("World: " + worldId);
-        Debug.Log("Level: " + levelId);
-        Debug.Log("World Count: " + worlds.Count);
-        Debug.Log("Level Count: " + worlds[worldId].levels.Count);*/
+
 
         if (worldId < worlds.Count && levelId < worlds[worldId].levels.Count)
         {
