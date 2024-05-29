@@ -279,9 +279,19 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.Sprinting;
             desiredMoveSpeed = sprintSpeed;
 
-            // Drain sprint stamina
-            sprintStamina -= sprintStaminaDrainSpeed * Time.deltaTime;
-            if (sprintStamina < 0f) sprintStamina = 0f;
+            
+            if (horizontalInput != 0f || verticalInput != 0f)
+            {
+                // Drain sprint stamina (Moving)
+                sprintStamina -= sprintStaminaDrainSpeed * Time.deltaTime;
+                if (sprintStamina < 0f) sprintStamina = 0f;
+            }
+            else
+            {
+                // Regen sprint stamina (Not moving)
+                sprintStamina += sprintStaminaRegenSpeed * Time.deltaTime;
+                if (sprintStamina > 1f) sprintStamina = 1f;
+            }
 
             if (HUDManager.instance != null)
             {
