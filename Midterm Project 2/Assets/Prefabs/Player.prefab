@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 9200862530798410489}
   - component: {fileID: 1819691899899977048}
   - component: {fileID: 5657168262379216546}
+  - component: {fileID: 4753236316747907060}
   - component: {fileID: 3947481916929668817}
   - component: {fileID: 6585446355755494993}
   - component: {fileID: 1458423852063153188}
@@ -415,7 +416,7 @@ MonoBehaviour:
   fovShiftFalloffIntensity: 20
   shootDamage: 5
   shootCooldown: 0.1
-  shootDistance: 100
+  shootDistance: 25
   audioSource: {fileID: 1020873463462963792}
   audShoots:
   - {fileID: 8300000, guid: 469aaab432f7b9749894442b3460ce88, type: 3}
@@ -451,6 +452,27 @@ MonoBehaviour:
   sliding: 0
   wallrunning: 0
   activeGrappling: 0
+--- !u!114 &4753236316747907060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9187275283544095468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b001a966ce35d742a0d591d59eb3674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootDamage: 5
+  shootDistance: 25
+  shootCooldown: 0.1
+  audioSource: {fileID: 1020873463462963792}
+  audShoots:
+  - {fileID: 8300000, guid: 5685c802c044eea429fed4419e86eedf, type: 3}
+  - {fileID: 8300000, guid: 83752c68c7bda1243a0a7d52771a90a8, type: 3}
+  - {fileID: 8300000, guid: 51521921503ec7e46a35f40e7d21529d, type: 3}
+  audShootVolRange: {x: 0.05, y: 0.08}
 --- !u!114 &3947481916929668817
 MonoBehaviour:
   m_ObjectHideFlags: 0
