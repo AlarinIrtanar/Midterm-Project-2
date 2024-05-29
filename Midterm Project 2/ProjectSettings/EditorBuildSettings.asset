@@ -45,16 +45,16 @@ EditorBuildSettings:
     path: Assets/Scenes/World 2/Caltrop.unity
     guid: e7d8597bf90b51941953b8be41b43443
   - enabled: 1
-    path: Assets/Scenes/Spiral Shot.unity
+    path: Assets/Scenes/World 3/Spiral Shot.unity
     guid: a40a81ba7ba77754b8c46c31f2bb122b
   - enabled: 1
-    path: Assets/Scenes/Grapple City.unity
+    path: Assets/Scenes/World 3/Grapple City.unity
     guid: f8b6e48836029ed408e41fbb5a3b86bb
   - enabled: 1
-    path: Assets/Scenes/Rail Street.unity
+    path: Assets/Scenes/World 3/Rail Street.unity
     guid: f398ce860a11bae4cb310b57efd6ad4e
   - enabled: 1
-    path: Assets/Scenes/City Struggle.unity
+    path: Assets/Scenes/World 3/City Struggle.unity
     guid: 4b20242486c71be43b61bc5d2430636f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a51168f78e93d8c41a5c524b8c4c2881, type: 2}
