@@ -51,9 +51,9 @@ public class SelectableWorlds : ScriptableObject
         }
         for (int i = 0; i < levelImages.Count; i++)
         {
-            //Debug.Log("Disabling Level " + (i + 1).ToString());
+
             levelImages[i].gameObject.SetActive(isEnabled);
-            //Debug.Log("Level " + (i + 1).ToString() + " Disabled");
+
         }
 
     }

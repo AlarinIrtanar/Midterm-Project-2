@@ -13,6 +13,7 @@ public class LevelInfoController : MonoBehaviour
     [SerializeField] TMP_Text levelNameText;
     [SerializeField] Image lockedImage;
     [SerializeField] Button cheatButton;
+    public Button selectLevel;
 
     [Header("Audio")]
     [SerializeField] AudioSource selectAud;
@@ -130,9 +131,19 @@ public class LevelInfoController : MonoBehaviour
         selectAud.Play();
         if (isUnlocked)
         {
-            //Debug.Log("Attempting to go to: " +  levelNameText.text); // Comment when levels are created
+            PlayerPrefs.SetInt("SelectedWorld", parent.worldId);
             PlayerPrefs.SetInt("SelectedLevel", int.Parse(levelNumText.text));
-            SceneManager.LoadScene(levelNameText.text); // Uncomment when levels are created
+
+            if (PlayerPrefs.HasKey("GameSpeed"))
+            {
+                Time.timeScale = PlayerPrefs.GetFloat("GameSpeed");
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
+            PlayerPrefs.SetInt("SelectedLevel", int.Parse(levelNumText.text));
+            SceneManager.LoadScene(levelNameText.text);
         }
     }
 }

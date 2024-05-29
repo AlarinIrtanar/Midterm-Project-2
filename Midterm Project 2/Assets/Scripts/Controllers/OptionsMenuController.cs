@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class OptionsMenuController : MonoBehaviour
@@ -27,9 +28,15 @@ public class OptionsMenuController : MonoBehaviour
     [Header("----- Sliders -----")]
     [SerializeField] Slider sensiSlider;
     [SerializeField] Slider speedSlider;
+    [SerializeField] Slider masterSlider;
+    [SerializeField] Slider musicSlider;
+    [SerializeField] Slider sfxSlider;
 
-    [Header("CheckBoxes")]
+    [Header("----- CheckBoxes -----")]
     [SerializeField] Toggle devMode;
+
+    [Header("----- Audio -----")]
+    [SerializeField] AudioMixer mixer;
 
     bool shootPressed;
     bool grapplePressed;
@@ -208,10 +215,7 @@ public class OptionsMenuController : MonoBehaviour
             pauseText.text = inputString;
             pausePressed = false;
         }
-        /*        if (Input.GetKeyDown(shootText.text))
-                {
-                    Debug.Log("shootButton: " + shootText.text);
-                }*/
+
     }
     public void Apply()
     {
@@ -229,11 +233,20 @@ public class OptionsMenuController : MonoBehaviour
         PlayerPrefs.SetString("Pause Button", pauseText.text);
 
         PlayerPrefs.SetInt("DevMode", devMode.isOn ? 1 : 0);
-        //Debug.Log(PlayerPrefs.GetInt("DevMode"));
+
 
         PlayerPrefs.SetFloat("Sensitivity", sensiSlider.value);
         PlayerPrefs.SetFloat("GameSpeed", speedSlider.value);
-        Time.timeScale = speedSlider.value;
+
+        float temp;
+        mixer.GetFloat("MasterVolume", out temp);
+        PlayerPrefs.SetFloat("MasterVolume", temp);
+
+        mixer.GetFloat("MusicVolume", out temp);
+        PlayerPrefs.SetFloat("MusicVolume", temp);
+
+        mixer.GetFloat("SFXVolume", out temp);
+        PlayerPrefs.SetFloat("SFXVolume", temp);
     }
     public void ResetControls()
     {
@@ -242,14 +255,20 @@ public class OptionsMenuController : MonoBehaviour
         crouchPressed = false;
         sprintPressed = false;
         jumpPressed = false;
+        pausePressed = false;
         shootText.text = "mouse 0";
         grappleText.text = "mouse 1";
         crouchText.text = "left ctrl";
         sprintText.text = "left shift";
         jumpText.text = "space";
+        pauseText.text = "escape";
 
         sensiSlider.value = 1f;
         speedSlider.value = 1f;
+
+        masterSlider.value = 1f;
+        musicSlider.value = 0.5f;
+        sfxSlider.value = 0.5f;
 
         Apply();
     }

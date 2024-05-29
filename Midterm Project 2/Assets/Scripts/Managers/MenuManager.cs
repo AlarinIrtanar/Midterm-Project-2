@@ -12,9 +12,11 @@ public class MenuManager : MonoBehaviour
     [Header("----- Components -----")]
     [SerializeField] TMP_Text scoreText;
     public static MenuManager instance;
+    [SerializeField] TMP_Text loseText;
+
+    [Header("----- Sliders -----")]
     [SerializeField] Slider sensiSlider;
     [SerializeField] Slider speedSlider;
-    [SerializeField] TMP_Text loseText;
 
     [Header("----- Menus -----")]
     [SerializeField] GameObject menuActive;
@@ -131,7 +133,7 @@ public class MenuManager : MonoBehaviour
         Unpause();
         
     }
-    public void PressNextLevel()
+    public void PressLevelSelect()
     {
         audioSource.Play();
 
@@ -144,7 +146,23 @@ public class MenuManager : MonoBehaviour
             Time.timeScale = 1;
         }
 
-        SceneManager.LoadScene(mainMenuName); // temp
+        SceneManager.LoadScene(mainMenuName);
+    }
+    public void PressNextLevel()
+    {
+        audioSource.Play();
+        PlayerPrefs.SetInt("NextLevel", 1);
+
+        if (PlayerPrefs.HasKey("GameSpeed"))
+        {
+            Time.timeScale = PlayerPrefs.GetFloat("GameSpeed");
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+
+        SceneManager.LoadScene(mainMenuName);
     }
     public void PressRestart()
     {

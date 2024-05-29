@@ -32,7 +32,8 @@ public class MainMenuController : MonoBehaviour
     Vector3 newGameMenuInactiveLoc;
     public void Start()
     {
-        
+        Time.timeScale = 1;
+
         FileManager.instance.LoadWorldUnlocks();
 
         if (Application.platform != RuntimePlatform.WindowsPlayer && Application.platform != RuntimePlatform.WindowsEditor)
@@ -138,7 +139,7 @@ public class MainMenuController : MonoBehaviour
             PlayerPrefs.SetFloat("GameSpeed", 1f);
         }
 
-        if (PlayerPrefs.HasKey("NextLevel") && PlayerPrefs.GetInt("NextLevel") == 1)
+        if (PlayerPrefs.HasKey("LevelUnlock") && PlayerPrefs.GetInt("LevelUnlock") == 1)
         {
             ToggleMainMenuActive();
             mainMenu.transform.position = mainMenuInactiveLoc;
