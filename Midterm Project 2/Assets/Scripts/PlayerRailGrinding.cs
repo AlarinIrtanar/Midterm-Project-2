@@ -127,7 +127,6 @@ public class PlayerRailGrinding : MonoBehaviour
                 if (Physics.SphereCast(transform.position, sphereCastRadius, transform.up * (-1), out hit, maxDistance, railMask))
                 {
                     railCooldown = railCooldownTimer;
-                    Debug.Log("RAAAAAAAAAAIL!");
                     onRail = true;
                     currentRailScript = hit.collider.gameObject.GetComponent<RailGrinding>();
                     CalculateAndSetRailPosition();
