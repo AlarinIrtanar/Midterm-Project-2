@@ -56,7 +56,7 @@ public class Target : MonoBehaviour, IDamage
     void CreateCube(Vector3 coordinates, Vector3 originalScale, Quaternion originalRotation, Vector3 originalPosition)
     {
         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-
+        cube.layer = 9;
         Renderer rd = cube.GetComponent<Renderer>();
         rd.material = GetComponent<Renderer>().material;
 

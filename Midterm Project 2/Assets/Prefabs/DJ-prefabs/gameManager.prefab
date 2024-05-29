@@ -50,6 +50,7 @@ MonoBehaviour:
   PlayerPreFab: {fileID: 0}
   playerSpawnPos: {fileID: 0}
   mainCamera: {fileID: 0}
+  sfxGroup: {fileID: 24100000, guid: aef2720eaf5305e499a2e20d1fd481ae, type: 2}
   player: {fileID: 0}
   playerScript: {fileID: 0}
   timeLow: {fileID: 2308976595508529957}

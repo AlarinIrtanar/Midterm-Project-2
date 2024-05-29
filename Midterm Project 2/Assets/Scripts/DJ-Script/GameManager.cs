@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -14,7 +15,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public Camera mainCamera;
 
-
+    public AudioMixer sfxGroup;
     public GameObject player;
    
     public PlayerController playerScript;
@@ -29,13 +30,14 @@ public class GameManager : MonoBehaviour
         Instance = this;
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
+        sfxGroup.SetFloat("SFXVolume", PlayerPrefs.GetFloat("SFXVolume"));
     }
     public void YouWin()
     {
         score += (int)timer;
 
 
-
+        sfxGroup.SetFloat("SFXVolume", -80);
         if (PlayerPrefs.HasKey("SelectedWorld") && PlayerPrefs.HasKey("SelectedLevel"))
         {
             int world = PlayerPrefs.GetInt("SelectedWorld");
@@ -82,6 +84,7 @@ public class GameManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         timer -= Time.deltaTime;
 
         if (timer < 30)
