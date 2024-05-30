@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -25,6 +26,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuOptions;
     [SerializeField] string mainMenuName;
+    [SerializeField] string loadingScreenName;
 
     [Header("----- Audio -----")]
     //[SerializeField] AudioClip buttonPressSound;
@@ -136,6 +138,7 @@ public class MenuManager : MonoBehaviour
     public void PressLevelSelect()
     {
         audioSource.Play();
+        PlayerPrefs.SetInt("NextLevel", 0);
 
         if (PlayerPrefs.HasKey("GameSpeed"))
         {
@@ -150,6 +153,17 @@ public class MenuManager : MonoBehaviour
     }
     public void PressNextLevel()
     {
+        if (PlayerPrefs.HasKey("SelectedWorld") && PlayerPrefs.HasKey("SelectedLevel"))
+        {
+            int world = PlayerPrefs.GetInt("SelectedWorld");
+            int level = PlayerPrefs.GetInt("SelectedLevel");
+
+            FileManager.instance.UnlockLevel(world, level);
+
+            PlayerPrefs.SetInt("SelectedWorld", world);
+            PlayerPrefs.SetInt("SelectedLevel", level + 1) ;
+        }
+
         audioSource.Play();
         PlayerPrefs.SetInt("NextLevel", 1);
 
@@ -161,8 +175,19 @@ public class MenuManager : MonoBehaviour
         {
             Time.timeScale = 1;
         }
-
-        SceneManager.LoadScene(mainMenuName);
+        int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextScene >= SceneManager.sceneCountInBuildSettings)
+        {
+            Debug.Log("Total Scenes: " + SceneManager.sceneCountInBuildSettings);
+            PlayerPrefs.SetInt("AllLevelsCompleted", 1);
+            PlayerPrefs.SetInt("NextLevel", 0);
+            SceneManager.LoadScene(mainMenuName);
+        }
+        else
+        {
+            Debug.Log("Loading Scene: " + nextScene);
+            SceneManager.LoadScene(nextScene);
+        }
     }
     public void PressRestart()
     {

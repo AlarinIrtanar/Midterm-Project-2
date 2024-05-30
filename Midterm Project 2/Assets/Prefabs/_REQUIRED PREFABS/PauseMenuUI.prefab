@@ -5327,6 +5327,7 @@ MonoBehaviour:
   menuLose: {fileID: 2140497567082905954}
   menuOptions: {fileID: 6566504743909263471}
   mainMenuName: MainMenu
+  loadingScreenName: LoadingScreen
   audioSource: {fileID: 7471735513167055373}
   mixer: {fileID: 24100000, guid: aef2720eaf5305e499a2e20d1fd481ae, type: 2}
   pauseResume: {fileID: 3774426792426376401}
