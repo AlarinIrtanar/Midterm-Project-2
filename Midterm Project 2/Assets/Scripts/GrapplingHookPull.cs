@@ -98,12 +98,10 @@ public class GrapplingHookPull : MonoBehaviour
                 }
                 grappleShootAudio.Play();
                 isGrappling = true;
-
                 RaycastHit hit;
 
                 Physics.Raycast(camera.position, camera.forward, out hit, grappleRange);
-
-                if (hit.collider.CompareTag("Test"))
+                if (hit.collider != null && hit.collider.CompareTag("Test"))
                 {
                     grapplePoint = hit.point;
 
