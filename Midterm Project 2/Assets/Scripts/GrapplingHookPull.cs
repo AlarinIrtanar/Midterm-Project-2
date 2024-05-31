@@ -101,7 +101,9 @@ public class GrapplingHookPull : MonoBehaviour
 
                 RaycastHit hit;
 
-                if (Physics.Raycast(camera.position, camera.forward, out hit, grappleRange, whatIsGrappleable))
+                Physics.Raycast(camera.position, camera.forward, out hit, grappleRange);
+
+                if (hit.collider.CompareTag("Test"))
                 {
                     grapplePoint = hit.point;
 
