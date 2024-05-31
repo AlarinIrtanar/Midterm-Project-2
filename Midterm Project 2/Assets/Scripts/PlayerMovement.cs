@@ -97,6 +97,8 @@ public class PlayerMovement : MonoBehaviour
     bool prevLanded;
     bool isLanded;
     float prevYVel;
+    const float landSoundCooldown = 0.25f; // time to tick for
+    float landSoundTimer; // what ticks
 
     private PlayerRailGrinding playerRailGrinding;
 
@@ -356,8 +358,13 @@ public class PlayerMovement : MonoBehaviour
         // Do landing stuff
         isLanded = grounded || wallrunning || OnSlope();
         if (isLanded && !prevLanded)
-            PlayRandFromList(audLandings, audLandingVolRange);
+        {
+            if (landSoundTimer <= 0f)
+                PlayRandFromList(audLandings, audLandingVolRange);
+            landSoundTimer = landSoundCooldown;
+        }
         prevLanded = isLanded;
+        landSoundTimer -= Time.deltaTime;
 
         // Do speed-based fov shifting
         float camFovShift = fovShiftIntensity * (1f - (fovShiftFalloffIntensity / (rb.velocity.magnitude + fovShiftFalloffIntensity))) * (Vector3.Dot(Camera.main.transform.forward, rb.velocity.normalized));
