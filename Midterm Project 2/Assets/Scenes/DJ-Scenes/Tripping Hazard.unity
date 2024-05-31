@@ -2310,7 +2310,7 @@ GameObject:
   - component: {fileID: 7191624479827421553}
   - component: {fileID: 1266585018274389962}
   - component: {fileID: 4921989251285470950}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3042,7 +3042,7 @@ GameObject:
   - component: {fileID: 1356649399961804146}
   - component: {fileID: 1356649399961804144}
   - component: {fileID: 1356649399961804145}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3060,7 +3060,7 @@ GameObject:
   - component: {fileID: 1356649400054361799}
   - component: {fileID: 1356649400054361797}
   - component: {fileID: 1356649400054361798}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3158,7 +3158,7 @@ GameObject:
   - component: {fileID: 1356649400806370232}
   - component: {fileID: 1356649400806370238}
   - component: {fileID: 1356649400806370239}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3291,7 +3291,7 @@ GameObject:
   - component: {fileID: 1356649401516350963}
   - component: {fileID: 1356649401516350961}
   - component: {fileID: 1356649401516350962}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3374,7 +3374,7 @@ GameObject:
   - component: {fileID: 1356649401622217077}
   - component: {fileID: 1356649401622217067}
   - component: {fileID: 1356649401622217076}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4810,7 +4810,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1538383944737075962}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Desert_Village_Fence_Full (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5120,7 +5120,7 @@ GameObject:
   - component: {fileID: 2365756342931610660}
   - component: {fileID: 2365756342931610661}
   - component: {fileID: 2365756342931610662}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5211,7 +5211,7 @@ GameObject:
   - component: {fileID: 2365756343654226271}
   - component: {fileID: 2365756343654226268}
   - component: {fileID: 2365756343654226272}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5317,7 +5317,7 @@ GameObject:
   - component: {fileID: 2365756344217106161}
   - component: {fileID: 2365756344217106158}
   - component: {fileID: 2365756344217106162}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5423,7 +5423,7 @@ GameObject:
   - component: {fileID: 2365756344322976363}
   - component: {fileID: 2365756344322976360}
   - component: {fileID: 2365756344322976364}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6954,7 +6954,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2836814359310108000}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Desert_Village_Fence_Full (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8932,7 +8932,7 @@ GameObject:
   - component: {fileID: 3654890903467999318}
   - component: {fileID: 6802770110444729077}
   - component: {fileID: 3054194670294025536}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10703,7 +10703,7 @@ GameObject:
   - component: {fileID: 4620243541293163105}
   - component: {fileID: 2917092317147078488}
   - component: {fileID: 4630435000525092126}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11473,7 +11473,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6366432399523291413}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Desert_Village_Fence_Full (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11948,7 +11948,7 @@ GameObject:
   - component: {fileID: 6137445360175439744}
   - component: {fileID: 6137445360175439747}
   - component: {fileID: 6137445360175439750}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12039,7 +12039,7 @@ GameObject:
   - component: {fileID: 6137445360493370107}
   - component: {fileID: 6137445360493370106}
   - component: {fileID: 6137445360493370110}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12160,7 +12160,7 @@ GameObject:
   - component: {fileID: 6137445360844156084}
   - component: {fileID: 6137445360844156087}
   - component: {fileID: 6137445360844156090}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12266,7 +12266,7 @@ GameObject:
   - component: {fileID: 6137445361812025390}
   - component: {fileID: 6137445361812025393}
   - component: {fileID: 6137445361812025396}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12972,7 +12972,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5955499735013606335}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Desert_Village_Fence_Full (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13801,7 +13801,7 @@ GameObject:
   - component: {fileID: 6904200696284368414}
   - component: {fileID: 6904200696284368413}
   - component: {fileID: 6904200696284368415}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13915,7 +13915,7 @@ GameObject:
   - component: {fileID: 6904200696994222724}
   - component: {fileID: 6904200696994222747}
   - component: {fileID: 6904200696994222748}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14078,7 +14078,7 @@ GameObject:
   - component: {fileID: 6904200697505692970}
   - component: {fileID: 6904200697505692969}
   - component: {fileID: 6904200697505692976}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14169,7 +14169,7 @@ GameObject:
   - component: {fileID: 6904200697859242065}
   - component: {fileID: 6904200697859242064}
   - component: {fileID: 6904200697859242072}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16713,7 +16713,7 @@ GameObject:
   - component: {fileID: 8422295529197169144}
   - component: {fileID: 8422295529197169147}
   - component: {fileID: 8422295529197169148}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16884,7 +16884,7 @@ GameObject:
   - component: {fileID: 8422295529303111010}
   - component: {fileID: 8422295529303111037}
   - component: {fileID: 8422295529303111040}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16925,7 +16925,7 @@ GameObject:
   - component: {fileID: 8422295529881606860}
   - component: {fileID: 8422295529881606863}
   - component: {fileID: 8422295529881606864}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17031,7 +17031,7 @@ GameObject:
   - component: {fileID: 8422295530734346167}
   - component: {fileID: 8422295530734346166}
   - component: {fileID: 8422295530734346168}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence_1_2 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17595,7 +17595,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8316099384185915123}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Desert_Village_Fence_Full
   m_TagString: Untagged
   m_Icon: {fileID: 0}
