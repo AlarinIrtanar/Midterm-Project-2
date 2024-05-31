@@ -1145,17 +1145,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1965032128974651729, guid: c2de8b1849d06a446992b9a141ff23dd, type: 3}
-      propertyPath: grindingSpeed
-      value: 30
+      propertyPath: railExitVelocityMagnifier
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1965032128974651729, guid: c2de8b1849d06a446992b9a141ff23dd, type: 3}
-      propertyPath: railMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965032128974651729, guid: c2de8b1849d06a446992b9a141ff23dd, type: 3}
-      propertyPath: playerOrientation
-      value: 
-      objectReference: {fileID: 264341791}
     - target: {fileID: 2444593144436036986, guid: c2de8b1849d06a446992b9a141ff23dd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1196,32 +1188,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3526103881347454366, guid: c2de8b1849d06a446992b9a141ff23dd, type: 3}
-      propertyPath: canGrapple
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3526103881347454366, guid: c2de8b1849d06a446992b9a141ff23dd, type: 3}
-      propertyPath: grappleRange
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 6848938411405654777, guid: c2de8b1849d06a446992b9a141ff23dd, type: 3}
       propertyPath: m_Name
       value: OurPlayer!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8271934362007938711, guid: c2de8b1849d06a446992b9a141ff23dd, type: 3}
-      propertyPath: maxWallRunTime
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2de8b1849d06a446992b9a141ff23dd, type: 3}
---- !u!1 &264341791 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3994641967470445107, guid: c2de8b1849d06a446992b9a141ff23dd, type: 3}
-  m_PrefabInstance: {fileID: 264341790}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &269357926
 PrefabInstance:
   m_ObjectHideFlags: 0

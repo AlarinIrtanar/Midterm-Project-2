@@ -9,6 +9,7 @@ public class Sliding : MonoBehaviour
     public Transform playerObj;
     Rigidbody rb;
     PlayerMovement pm;
+    PlayerRailGrinding playerRailGrinding;
 
     [Header("Sliding")]
     public float maxSlideTime;
@@ -27,6 +28,7 @@ public class Sliding : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<PlayerMovement>();
+        playerRailGrinding = GetComponent<PlayerRailGrinding>();
 
         startYScale = playerObj.localScale.y;
     }
@@ -51,6 +53,11 @@ public class Sliding : MonoBehaviour
 
     private void StartSlide()
     {
+        if (playerRailGrinding.onRail)
+        {
+            return;
+        }
+
         pm.sliding = true;
 
         playerObj.localScale = new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);

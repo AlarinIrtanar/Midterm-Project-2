@@ -123,7 +123,10 @@ public class GrapplingHookPull : MonoBehaviour
     //start pulling towards target
     private void ExecuteGrappling()
     {
-        playerRailGrinding.ExitRailGrind();
+        if (playerRailGrinding.onRail)
+        {
+            playerRailGrinding.ExitRailGrind();
+        }
 
         grapplePullAudio.Play();
         Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
