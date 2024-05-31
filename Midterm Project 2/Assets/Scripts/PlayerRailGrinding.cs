@@ -15,12 +15,13 @@ public class PlayerRailGrinding : MonoBehaviour
 
     [Header("Variables")]
     public bool onRail;
-    [SerializeField] float grindingSpeed;
+    public float grindingSpeed;
     [SerializeField] float heightOffset;
     float timeForFullSpline;
     float elapsedTime;
     [SerializeField] float lerpSpeed = 10f;
     bool isFacingForward;
+    [SerializeField] float railExitVelocityMagnifier = 1.5f;
 
     [Header("Sphere Cast")]
     [SerializeField] GameObject playerOrientation;
@@ -38,25 +39,14 @@ public class PlayerRailGrinding : MonoBehaviour
 
     void Start()
     {
-
+        playerMovement = GetComponent<PlayerMovement>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        rb = GetComponent<Rigidbody>();
         DetectRail();
         railCooldown -= Time.deltaTime;
-    }
-
-    //jump off rails here
-    public void HandleJump()
-    {
-
-    }
-    //movement here
-    public void HandleMovement()
-    {
-
     }
 
     private void FixedUpdate()
@@ -83,15 +73,7 @@ public class PlayerRailGrinding : MonoBehaviour
                 }
             }
             float nextTimeNormalized;
-            //if (currentRailScript.normalDirection)
-            /*if (isFacingForward)
-            {*/
-                nextTimeNormalized = (elapsedTime + Time.deltaTime) / timeForFullSpline;
-            //}
-            /*else
-            {
-                nextTimeNormalized = (elapsedTime - Time.deltaTime) / timeForFullSpline;
-            }*/
+            nextTimeNormalized = (elapsedTime + Time.deltaTime) / timeForFullSpline;
 
             float3 pos, tangent, up;
             float3 nextPosFloat, nextTan, nextUp;
@@ -107,14 +89,7 @@ public class PlayerRailGrinding : MonoBehaviour
             //
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(transform.up, up) * transform.rotation, lerpSpeed * Time.deltaTime);
 
-            //if (currentRailScript.normalDirection)
-            //{
-                elapsedTime += Time.deltaTime;
-            //}
-            /*else
-            {
-                elapsedTime -= Time.deltaTime;
-            }*/
+            elapsedTime += Time.deltaTime;
         }
     }
 
@@ -148,20 +123,23 @@ public class PlayerRailGrinding : MonoBehaviour
         currentRailScript.CalculateDirection(forward, playerOrientation.transform.forward);
         transform.position = SplinePoint + (transform.up * heightOffset);
     }
+    public void ExitRailGrind()
+    {
+        float progress = elapsedTime / timeForFullSpline;
+        float3 pos, tangent, up;
+        SplineUtility.Evaluate(currentRailScript.railSpline.Spline, progress, out pos, out tangent, out up);
+        playerMovement.rb.velocity = new Vector3(grindingSpeed * railExitVelocityMagnifier * tangent.x, grindingSpeed * railExitVelocityMagnifier * tangent.y, grindingSpeed * railExitVelocityMagnifier * tangent.z);
+
+        onRail = false;
+        currentRailScript = null;
+        railCooldown = railCooldownTimer;
+    }
 
     void ThrowOffRail()
     {
-        onRail = false;
-        currentRailScript = null;
+        ExitRailGrind();
         transform.position += transform.forward * 1; //+1
 
     }
-    
-    public void ExitRailGrind()
-    {
-        onRail = false;
-        currentRailScript = null;
-        //rb velocity
-        railCooldown = railCooldownTimer;
-    }
+
 }

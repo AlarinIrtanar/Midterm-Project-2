@@ -76,11 +76,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
-
-    //// Shooting
-    //[SerializeField] AudioClip[] audShoots;
-    //[SerializeField] float2 audShootVolRange;
-    
     // Steps
     [SerializeField] AudioClip[] audSteps;
     [SerializeField] float2 audStepVolRange;
@@ -110,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 moveDir;
 
-    Rigidbody rb;
+    public Rigidbody rb;
 
     public MovementState state;
 
@@ -223,14 +218,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Start crouch
-        if (Input.GetKeyDown(crouchButton))
+        if (Input.GetKeyDown(crouchButton) && !playerRailGrinding.onRail)
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
             rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
         }
 
         // Stop crouch
-        if (Input.GetKeyUp(crouchButton))
+        if (Input.GetKeyUp(crouchButton) || playerRailGrinding.onRail)
         {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
         }
@@ -267,7 +262,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Mode - Crouching
-        else if (Input.GetKey(crouchButton))
+        else if (Input.GetKey(crouchButton) && !playerRailGrinding.onRail)
         {
             state = MovementState.Crouching;
             desiredMoveSpeed = crouchSpeed;
@@ -281,7 +276,7 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.Sprinting;
             desiredMoveSpeed = sprintSpeed;
 
-            
+
             if (horizontalInput != 0f || verticalInput != 0f)
             {
                 // Drain sprint stamina (Moving)
@@ -395,6 +390,10 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
+        if (playerRailGrinding.onRail)
+        {
+            return;
+        }
 
         // Calculate movement direction
         moveDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
@@ -451,7 +450,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        playerRailGrinding.ExitRailGrind();
+        if (playerRailGrinding.onRail)
+        {
+            playerRailGrinding.ExitRailGrind();
+        }
         exitingSlope = true;
 
         // Reset y velocity
@@ -474,7 +476,7 @@ public class PlayerMovement : MonoBehaviour
     {
         audioSource.PlayOneShot(auds[UnityEngine.Random.Range(0, auds.Length)], UnityEngine.Random.Range(volRange.x, volRange.y));
     }
-    
+
     private void DoStepping()
     {
         Vector3 horizontalMovement = new Vector3(rb.velocity.x, 0f, rb.velocity.z);

@@ -151,6 +151,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2607661574675201726}
     - target: {fileID: 1819691899899977048, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
+      propertyPath: canGrapple
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819691899899977048, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
       propertyPath: lineRenderer
       value: 
       objectReference: {fileID: 6765558210557041356}
@@ -234,6 +238,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 152219164923971589}
+    - target: {fileID: 6585446355755494993, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
+      propertyPath: maxWallRunTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9187275283544095468, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
       propertyPath: m_Name
       value: Player
@@ -278,9 +286,10 @@ MonoBehaviour:
   jump: 0
   input: {x: 0, y: 0, z: 0}
   onRail: 0
-  grindingSpeed: 10
+  grindingSpeed: 30
   heightOffset: 1
   lerpSpeed: 10
+  railExitVelocityMagnifier: 1.5
   playerOrientation: {fileID: 3994641967470445107}
   sphereCastRadius: 1
   railMask:
