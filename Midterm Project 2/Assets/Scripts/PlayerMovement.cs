@@ -68,19 +68,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float fovShiftIntensity;
     [SerializeField] float fovShiftFalloffIntensity;
 
-    [Header("Shooting")]
-    [SerializeField] int shootDamage;
-    [SerializeField] float shootCooldown;
-    [SerializeField] float shootDistance;
-    bool isShooting;
+    //[Header("Shooting")]
+    //[SerializeField] int shootDamage;
+    //[SerializeField] float shootCooldown;
+    //[SerializeField] float shootDistance;
+    //bool isShooting;
 
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
-
-    // Shooting
-    [SerializeField] AudioClip[] audShoots;
-    [SerializeField] float2 audShootVolRange;
-
     // Steps
     [SerializeField] AudioClip[] audSteps;
     [SerializeField] float2 audStepVolRange;
@@ -97,6 +92,8 @@ public class PlayerMovement : MonoBehaviour
     bool prevLanded;
     bool isLanded;
     float prevYVel;
+    const float landSoundCooldown = 0.25f; // time to tick for
+    float landSoundTimer; // what ticks
 
     private PlayerRailGrinding playerRailGrinding;
 
@@ -149,11 +146,11 @@ public class PlayerMovement : MonoBehaviour
         else
             crouchButton = "left ctrl";
 
-        // Shoot Button
-        if (PlayerPrefs.HasKey("Shoot Button"))
-            shootButton = PlayerPrefs.GetString("Shoot Button");
-        else
-            shootButton = "mouse 0";
+        //// Shoot Button
+        //if (PlayerPrefs.HasKey("Shoot Button"))
+        //    shootButton = PlayerPrefs.GetString("Shoot Button");
+        //else
+        //    shootButton = "mouse 0";
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -233,9 +230,9 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
         }
 
-        // Do shooting
-        if (!MenuManager.instance.isPaused && !isShooting && Input.GetKeyDown(shootButton))
-            StartCoroutine(Shoot());
+        //// Do shooting
+        //if (!MenuManager.instance.isPaused && !isShooting && Input.GetKeyDown(shootButton))
+        //    StartCoroutine(Shoot());
     }
 
     private void StateHandler()
@@ -356,8 +353,13 @@ public class PlayerMovement : MonoBehaviour
         // Do landing stuff
         isLanded = grounded || wallrunning || OnSlope();
         if (isLanded && !prevLanded)
-            PlayRandFromList(audLandings, audLandingVolRange);
+        {
+            if (landSoundTimer <= 0f)
+                PlayRandFromList(audLandings, audLandingVolRange);
+            landSoundTimer = landSoundCooldown;
+        }
         prevLanded = isLanded;
+        landSoundTimer -= Time.deltaTime;
 
         // Do speed-based fov shifting
         float camFovShift = fovShiftIntensity * (1f - (fovShiftFalloffIntensity / (rb.velocity.magnitude + fovShiftFalloffIntensity))) * (Vector3.Dot(Camera.main.transform.forward, rb.velocity.normalized));
@@ -551,21 +553,21 @@ public class PlayerMovement : MonoBehaviour
         return xzVelocity + yVelocity;
     }
 
-    IEnumerator Shoot()
-    {
-        isShooting = true;
-        PlayRandFromList(audShoots, audShootVolRange);
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
-        {
-            IDamage dmg = hit.collider.GetComponent<IDamage>();
-            if (dmg != null)
-            {
-                // Shot something!!!
-                dmg.TakeDamage(shootDamage);
-            }
-        }
-        yield return new WaitForSeconds(shootCooldown);
-        isShooting = false;
-    }
+    //IEnumerator Shoot()
+    //{
+    //    isShooting = true;
+    //    PlayRandFromList(audShoots, audShootVolRange);
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
+    //    {
+    //        IDamage dmg = hit.collider.GetComponent<IDamage>();
+    //        if (dmg != null)
+    //        {
+    //            // Shot something!!!
+    //            dmg.TakeDamage(shootDamage);
+    //        }
+    //    }
+    //    yield return new WaitForSeconds(shootCooldown);
+    //    isShooting = false;
+    //}
 }

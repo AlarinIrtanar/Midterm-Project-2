@@ -565,6 +565,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3674132089165666986, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674132089165666986, guid: 785964410db76734db17ec9ce9797c42, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4494320355391513091, guid: 785964410db76734db17ec9ce9797c42, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

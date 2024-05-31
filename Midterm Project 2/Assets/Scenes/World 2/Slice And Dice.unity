@@ -259,14 +259,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swinging Axe
       objectReference: {fileID: 0}
-    - target: {fileID: 3939858049080410867, guid: 142479d2c1d611c47a6fb9b6869cf2ed, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4600627016814735384, guid: 142479d2c1d611c47a6fb9b6869cf2ed, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4947752907647797399, guid: 142479d2c1d611c47a6fb9b6869cf2ed, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30
@@ -306,26 +298,6 @@ PrefabInstance:
     - target: {fileID: 4947752907647797399, guid: 142479d2c1d611c47a6fb9b6869cf2ed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8359682192770319953, guid: 142479d2c1d611c47a6fb9b6869cf2ed, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8359682192770319953, guid: 142479d2c1d611c47a6fb9b6869cf2ed, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8359682192770319953, guid: 142479d2c1d611c47a6fb9b6869cf2ed, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8359682192770319953, guid: 142479d2c1d611c47a6fb9b6869cf2ed, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8359682192770319953, guid: 142479d2c1d611c47a6fb9b6869cf2ed, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -228,6 +228,15 @@ public class MainMenuController : MonoBehaviour
             levelSelect.Select();
         }
     }
+    public void ToggleMainMenuActive(bool toggle)
+    {
+        mainMenuActive = toggle;
+        if (mainMenuActive)
+        {
+            mainMenu.SetActive(true);
+            levelSelect.Select();
+        }
+    }
     public void ToggleNewGameMenuActive()
     {
         newGameMenuActive = !newGameMenuActive;
