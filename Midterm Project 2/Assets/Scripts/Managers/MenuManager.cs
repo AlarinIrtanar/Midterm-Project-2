@@ -178,14 +178,12 @@ public class MenuManager : MonoBehaviour
         int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
         if (nextScene >= SceneManager.sceneCountInBuildSettings)
         {
-            Debug.Log("Total Scenes: " + SceneManager.sceneCountInBuildSettings);
             PlayerPrefs.SetInt("AllLevelsCompleted", 1);
             PlayerPrefs.SetInt("NextLevel", 0);
             SceneManager.LoadScene(mainMenuName);
         }
         else
         {
-            Debug.Log("Loading Scene: " + nextScene);
             SceneManager.LoadScene(nextScene);
         }
     }

@@ -37,7 +37,7 @@ public class LevelInfoController : MonoBehaviour
     private void OnEnable()
     {
         unlockedEffect.Pause();
-        if (PlayerPrefs.HasKey("DevMode") && PlayerPrefs.GetInt("DevMode") == 1)
+/*        if (PlayerPrefs.HasKey("DevMode") && PlayerPrefs.GetInt("DevMode") == 1)
         {
             //cheatButton.enabled = true;
             cheatButton.gameObject.SetActive(true);
@@ -46,7 +46,7 @@ public class LevelInfoController : MonoBehaviour
         {
             //cheatButton.enabled = false;
             cheatButton.gameObject.SetActive(false);
-        }
+        }*/
     }
     private void OnDisable()
     {
