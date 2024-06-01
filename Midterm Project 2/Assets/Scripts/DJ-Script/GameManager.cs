@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public PlayerController playerScript;
 
     public AudioSource timeLow;
+    public AudioSource death;
 
     public int score;
     // Start is called before the first frame update
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
         if (MenuManager.instance != null)
         {
             MenuManager.instance.ShowLose();
+            death.Play();
         }
     }
     public void YouLose(string deathItemName)
@@ -67,6 +69,7 @@ public class GameManager : MonoBehaviour
         if (MenuManager.instance != null)
         {
             MenuManager.instance.ShowLose(deathItemName);
+            death.Play();
         }
     }
 
