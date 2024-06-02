@@ -219,6 +219,10 @@ PrefabInstance:
       value: 306
       objectReference: {fileID: 0}
     - target: {fileID: 5657168262379216546, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
+      propertyPath: whatIsGround.m_Bits
+      value: 320
+      objectReference: {fileID: 0}
+    - target: {fileID: 5657168262379216546, guid: 6237f2bffaca563449885ceb6e436f6c, type: 3}
       propertyPath: audShoots.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -289,7 +293,7 @@ MonoBehaviour:
   grindingSpeed: 30
   heightOffset: 1
   lerpSpeed: 10
-  railExitVelocityMagnifier: 1.5
+  railExitVelocityMagnifier: 1
   playerOrientation: {fileID: 3994641967470445107}
   sphereCastRadius: 1
   railMask:
