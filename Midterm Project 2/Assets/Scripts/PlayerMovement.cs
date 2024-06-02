@@ -210,7 +210,7 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // When to jump
-        if (Input.GetKey(jumpButton) && readyToJump && (grounded || OnSlope()))
+        if (Input.GetKey(jumpButton) && readyToJump && (grounded || OnSlope() || playerRailGrinding.onRail))
         {
             readyToJump = false;
             Jump();

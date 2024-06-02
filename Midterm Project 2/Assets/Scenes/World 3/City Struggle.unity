@@ -1146,7 +1146,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1965032128974651729, guid: c2de8b1849d06a446992b9a141ff23dd, type: 3}
       propertyPath: railExitVelocityMagnifier
-      value: 1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 2444593144436036986, guid: c2de8b1849d06a446992b9a141ff23dd, type: 3}
       propertyPath: m_LocalPosition.x
